@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Statistika - VisualMath.Lim | TKA Matematika Wajib SMA</title>
+<link rel="icon" href="logo.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+:root{--navy:#022050;--navy2:#0a3377;--cyan:#00d6d8;--cyan-d:#00a9ab;--yel:#ffd300;--bg:#f3f7fc;--card:#fff;--ink:#14213d;--mut:#5b6b85;--line:#d9e3f0;--ok:#16a34a;--bad:#dc2626;--okbg:#e8f8ee;--badbg:#fdecec}
+@media(prefers-color-scheme:dark){:root{--bg:#07142e;--card:#0d1f42;--ink:#e8eefb;--mut:#9fb0cf;--line:#1f3568;--okbg:#0f3322;--badbg:#401616}}
+*{box-sizing:border-box}
+html{font-size:100%;scroll-behavior:smooth;scroll-padding-top:130px}
+body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:1rem;-webkit-text-size-adjust:100%}
+header{position:sticky;top:0;z-index:50;background:var(--navy);color:#fff;border-bottom:4px solid var(--yel);box-shadow:0 2px 12px rgba(0,0,0,.3)}
+.bar{max-width:1100px;margin:auto;display:flex;align-items:center;gap:12px;padding:8px 14px}
+.bar img{width:52px;height:52px;border-radius:50%;background:var(--navy);flex:none}
+.brand{flex:1;min-width:0;line-height:1.2}
+.brand b{display:block;font-size:1.15rem;color:var(--cyan)}
+.brand span{font-size:.8rem;color:#cfe0ff}
+.btn{background:var(--cyan);color:var(--navy);border:0;border-radius:10px;padding:8px 14px;font-weight:700;text-decoration:none;cursor:pointer;font-size:.9rem;display:inline-flex;align-items:center;gap:6px;transition:.2s}
+.btn:hover{background:var(--yel);transform:translateY(-1px)}
+.zoom{display:flex;gap:4px}.zoom .btn{padding:6px 10px}
+nav.chips{background:var(--navy2);overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+nav.chips div{max-width:1100px;margin:auto;padding:6px 10px;display:flex;gap:6px}
+nav.chips a{color:#fff;text-decoration:none;font-size:.82rem;padding:5px 12px;border-radius:99px;border:1px solid rgba(255,255,255,.25);flex:none}
+nav.chips a:hover,nav.chips a.on{background:var(--yel);color:var(--navy);border-color:var(--yel)}
+main{max-width:1000px;margin:auto;padding:16px 14px 60px}
+.hero{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border-radius:18px;padding:26px 22px;margin-bottom:18px;border-left:8px solid var(--yel)}
+.hero h1{margin:0 0 6px;font-size:1.7rem;color:var(--yel)}
+.hero p{margin:4px 0;color:#dce8ff}
+.tag{display:inline-block;background:var(--cyan);color:var(--navy);font-weight:700;border-radius:8px;padding:2px 10px;font-size:.8rem;margin-right:6px}
+section.bab{background:var(--card);border-radius:16px;padding:20px 18px;margin:18px 0;border:1px solid var(--line);box-shadow:0 2px 10px rgba(2,32,80,.06)}
+h2{margin:0 0 10px;color:var(--navy);font-size:1.45rem;border-bottom:3px solid var(--cyan);padding-bottom:6px}
+@media(prefers-color-scheme:dark){h2{color:var(--cyan)}}
+h3{margin:22px 0 8px;font-size:1.15rem;color:var(--navy2);border-left:5px solid var(--yel);padding-left:10px}
+@media(prefers-color-scheme:dark){h3{color:#8fe9ea}}
+h4{margin:14px 0 6px}
+.box{border-radius:12px;padding:12px 14px;margin:12px 0;border-left:6px solid}
+.box>b:first-child{display:block;margin-bottom:4px}
+.rumus{background:#e6fbfb;border-color:var(--cyan-d);color:#023;text-align:center}
+.rumus .katex-display{margin:.5em 0}
+.contoh{background:#eef3ff;border-color:#4a6fd8;color:#0d1b4a}
+.jebakan{background:#fff0f0;border-color:var(--bad);color:#4a0d0d}
+.tips{background:#fff9d9;border-color:var(--yel);color:#3d3200}
+.ingat{background:#eaf7ee;border-color:var(--ok);color:#0b3318}
+.box.contoh *,.box.rumus *,.box.jebakan *,.box.tips *,.box.ingat *{color:inherit}
+.box a{color:inherit}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:10px 0}
+table{border-collapse:collapse;width:100%;font-size:.93rem;min-width:300px}
+th,td{border:1px solid var(--line);padding:6px 9px;text-align:center}
+th{background:var(--navy);color:#fff}
+td.l,th.l{text-align:left}
+tr:nth-child(even) td{background:rgba(0,214,216,.07)}
+tr.tot td{font-weight:700;background:rgba(255,211,0,.25)}
+.fig{margin:14px auto;text-align:center}
+.fig svg{max-width:100%;height:auto;background:#fff;border:1px solid var(--line);border-radius:12px}
+.fig .row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.fig .row svg{flex:1 1 300px;max-width:480px}
+.fig figcaption{font-size:.85rem;color:var(--mut);margin-top:4px;font-style:italic}
+ul,ol{padding-left:22px}
+li{margin:4px 0}
+details.kunci{background:var(--card);border:1px dashed var(--cyan-d);border-radius:12px;padding:8px 12px;margin:10px 0}
+details.kunci summary{cursor:pointer;font-weight:700;color:var(--cyan-d)}
+.lat li{margin:8px 0}
+/* soal */
+.lv{background:var(--navy);color:#fff;border-radius:12px;padding:10px 14px;margin:26px 0 10px;border-left:8px solid var(--cyan)}
+.soal{border:1px solid var(--line);border-radius:14px;padding:14px;margin:14px 0;background:var(--card)}
+.soal .no{display:inline-block;background:var(--yel);color:var(--navy);font-weight:800;border-radius:8px;padding:0 10px;margin-right:6px}
+.soal .meta{display:block;font-size:.8rem;color:var(--mut);margin:4px 0}
+.opt{display:flex;gap:10px;align-items:flex-start;padding:9px 11px;margin:6px 0;border:2px solid var(--line);border-radius:10px;cursor:pointer;transition:.15s}
+.opt:hover{border-color:var(--cyan)}
+.opt input{margin-top:6px;transform:scale(1.2);flex:none}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}
+.opt.bad{border-color:var(--bad);background:var(--badbg)}
+.opt.miss{border-color:var(--ok);border-style:dashed}
+.soal.done .opt{cursor:default}
+table.bs td.l{text-align:left}
+table.bs td.c.ok{background:var(--okbg)}table.bs td.c.bad{background:var(--badbg)}
+.sub{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap}
+.hasil{margin-top:10px}
+.hasil .st{font-weight:800;padding:8px 12px;border-radius:10px;margin-bottom:8px}
+.st.ok{background:var(--okbg);color:var(--ok)}.st.bad{background:var(--badbg);color:var(--bad)}
+.cepat,.lengkap{border-radius:12px;padding:10px 14px;margin:8px 0}
+.cepat{background:#fff9d9;border-left:6px solid var(--yel);color:#3d3200}
+.lengkap{background:#eef3ff;border-left:6px solid #4a6fd8;color:#0d1b4a}
+.cepat *,.lengkap *{color:inherit}
+.cepat h5,.lengkap h5{margin:0 0 6px;font-size:1rem}
+.lengkap ol.step{list-style:none;padding:0;counter-reset:s}
+.lengkap ol.step>li{counter-increment:s;position:relative;padding:6px 0 6px 40px;border-bottom:1px dotted #9db0e0}
+.lengkap ol.step>li:last-child{border:0}
+.lengkap ol.step>li:before{content:counter(s);position:absolute;left:0;top:6px;width:28px;height:28px;border-radius:50%;background:#022050;color:#ffd300;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:.85rem}
+.skor{position:sticky;bottom:10px;margin-top:14px;background:var(--navy);color:#fff;border-radius:12px;padding:10px 14px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center;border:2px solid var(--yel)}
+footer{text-align:center;color:var(--mut);padding:20px;font-size:.85rem}
+.katex{font-size:1.08em}
+.katex-display{overflow-x:auto;overflow-y:hidden;padding:2px 0}
+@media(max-width:600px){.brand b{font-size:.95rem}.brand span{display:none}.bar img{width:42px;height:42px}.hero h1{font-size:1.35rem}section.bab{padding:14px 12px}.btn span.t{display:none}}
+</style>
+</head>
+<body>
+<header>
+ <div class="bar">
+  <img src="logo.png" alt="Logo VisualMath.Lim">
+  <div class="brand"><b>VisualMath.Lim - TKA Matematika Wajib SMA</b><span>SEE • THINK • SOLVE</span></div>
+  <div class="zoom"><button class="btn" id="zm" aria-label="Perkecil huruf">A−</button><button class="btn" id="zp" aria-label="Perbesar huruf">A+</button></div>
+  <a class="btn" href="index.html">🏠<span class="t"> Home</span></a>
+ </div>
+ <nav class="chips"><div>
+  <a href="#peta">Peta</a><a href="#bab0">Bab 0 Prasyarat</a><a href="#bab1">Bab 1 Penyajian Data</a><a href="#bab2">Bab 2 Pemusatan</a><a href="#bab3">Bab 3 Penyebaran</a><a href="#bab4">Bab 4 Data Kelompok</a><a href="#bab5">Bab 5 Rangkuman</a><a href="#bab6">Bab 6 Latihan TKA</a>
+ </div></nav>
+</header>
+<main>
+<div class="hero">
+ <h1>Statistika (Pengolahan Data)</h1>
+ <p><span class="tag">TKA Matematika</span><span class="tag">SMA Kelas 12</span></p>
+ <p>Elemen: Data dan Peluang • Sub-elemen: Data</p>
+ <p>Belajar urut dari prasyarat, konsep bergambar, contoh, <b>Cara Lengkap</b> (langkah demi langkah) dan <b>Cara Cepat</b>, lalu latihan soal TKA yang bisa langsung dijawab.</p>
+</div>
+
+<section class="bab" id="peta">
+ <h2>Gambaran Materi</h2>
+ <div class="scroll"><table>
+  <tr><th>Tahap</th><th class="l">Isi</th></tr>
+  <tr><td><b>Tahap 1</b></td><td class="l">Penyajian data visual: diagram batang, garis, lingkaran, tabel, histogram, frekuensi biasa vs kumulatif</td></tr>
+  <tr><td><b>Tahap 2</b></td><td class="l">Ukuran pemusatan dan penyebaran: mean, median, modus, jangkauan, kuartil, simpangan baku, data tunggal dan kelompok, plus <b>Cara Cepat</b> rata-rata sementara (coding)</td></tr>
+  <tr><td><b>Latihan</b></td><td class="l">29 soal prediksi TKA Level 1–3 (pilihan ganda, pilihan ganda kompleks, benar–salah) dengan pembahasan Cara Cepat dan Cara Lengkap</td></tr>
+ </table></div>
+ <h3>Peta Kompetensi</h3>
+ <div class="scroll"><table>
+  <tr><th>Level</th><th>Proses berpikir</th><th class="l">Contoh pada sub-elemen Data</th><th>Soal</th></tr>
+  <tr><td rowspan="4"><b>Level 1</b><br>Pengetahuan &amp; Pemahaman</td><td>Menghitung</td><td class="l">Mean, median, kuartil data tunggal</td><td>1, 2, 9</td></tr>
+  <tr><td>Memahami informasi</td><td class="l">Diagram batang, lingkaran, frekuensi kumulatif</td><td>3, 4, 5</td></tr>
+  <tr><td>Mengelompokkan</td><td class="l">Jenis ukuran</td><td>6</td></tr>
+  <tr><td>Mengidentifikasi</td><td class="l">Memilih diagram, modus tabel</td><td>7, 8</td></tr>
+  <tr><td rowspan="3"><b>Level 2</b><br>Aplikasi</td><td>Memodelkan</td><td class="l">Mean dan model cerita</td><td>10</td></tr>
+  <tr><td>Menerapkan</td><td class="l">Mean gabungan, mean tabel, simpangan baku, modus dan median kelompok, Cara Cepat</td><td>11, 13, 15–19</td></tr>
+  <tr><td>Menginterpretasikan</td><td class="l">Diagram garis, sudut diagram lingkaran, pengaruh pencilan</td><td>12, 14, 20</td></tr>
+  <tr><td rowspan="6"><b>Level 3</b><br>Penalaran</td><td>Menganalisis</td><td class="l">Mean dan perubahan data</td><td>21</td></tr>
+  <tr><td>Memecahkan masalah</td><td class="l">Transformasi data, mencari data dari ciri-cirinya, coding</td><td>22, 27, 29</td></tr>
+  <tr><td>Mengevaluasi</td><td class="l">Membandingkan sebaran, kumulatif vs biasa</td><td>23, 28</td></tr>
+  <tr><td>Menyimpulkan</td><td class="l">Distribusi frekuensi</td><td>24</td></tr>
+  <tr><td>Generalisasi</td><td class="l">Sifat jika data diubah</td><td>25</td></tr>
+  <tr><td>Menjustifikasi</td><td class="l">Contoh penyangkal</td><td>26</td></tr>
+ </table></div>
+</section>
+
+<!-- ================= BAB 0 ================= -->
+<section class="bab" id="bab0">
+ <h2>Bab 0 — Prasyarat: Bekal Dasar Sebelum Statistika</h2>
+ <p>Bagian ini boleh dilewati jika sudah lancar. Jika masih ragu, <b>jangan dilewati</b>: sebagian besar salah hitung di statistika berasal dari sini.</p>
+ <h3>0.1 Pecahan, desimal, dan persen</h3>
+ <div class="scroll"><table>
+  <tr><th>Pecahan</th><th>Desimal</th><th>Persen</th><th>Cara ingat</th></tr>
+  <tr><td>\(\dfrac{1}{2}\)</td><td>0,5</td><td>50%</td><td>separuh</td></tr>
+  <tr><td>\(\dfrac{1}{4}\)</td><td>0,25</td><td>25%</td><td>seperempat</td></tr>
+  <tr><td>\(\dfrac{3}{4}\)</td><td>0,75</td><td>75%</td><td>tiga perempat</td></tr>
+  <tr><td>\(\dfrac{1}{5}\)</td><td>0,2</td><td>20%</td><td>seperlima</td></tr>
+  <tr><td>\(\dfrac{1}{10}\)</td><td>0,1</td><td>10%</td><td>sepersepuluh</td></tr>
+ </table></div>
+ <div class="box rumus"><b>Rumus</b>\[ x\%\ \text{dari}\ N=\dfrac{x}{100}\times N \]</div>
+ <div class="box contoh"><b>Contoh 0.1</b>Berapa 35% dari 200 siswa?
+  \[ \dfrac{35}{100}\times 200 = 0{,}35\times 200 = \mathbf{70\ siswa} \]</div>
+ <h3>0.2 Bilangan negatif</h3>
+ <ul>
+  <li>Selisih bisa negatif: \(6-8=-2\).</li>
+  <li>Negatif × negatif = positif, sehingga \((-3)\times(-3)=9\). Karena itu <b>kuadrat bilangan apa pun tidak pernah negatif</b>: \((-3)^2=9\) dan \(3^2=9\).</li>
+  <li>Nilai mutlak membuang tanda: \(|-4|=4\) dan \(|4|=4\).</li>
+ </ul>
+ <h3>0.3 Kuadrat dan akar</h3>
+ <div class="scroll"><table>
+  <tr><th>\(n\)</th><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>10</td></tr>
+  <tr><th>\(n^2\)</th><td>4</td><td>9</td><td>16</td><td>25</td><td>36</td><td>49</td><td>64</td><td>100</td></tr>
+  <tr><th>\(\sqrt{n^2}\)</th><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>10</td></tr>
+ </table></div>
+ <p>Akar yang tidak bulat boleh dibiarkan: \(\sqrt{8}=2\sqrt{2}\approx 2{,}83\). Di soal TKA, angka biasanya dirancang agar akarnya bulat.</p>
+ <h3>0.4 Notasi \(n\) dan \(\Sigma\) (sigma)</h3>
+ <p><b>\(n\)</b> = banyak data. <b>\(\Sigma\)</b> dibaca “jumlahkan semuanya”. Jadi <b>\(\Sigma x\)</b> artinya jumlah seluruh data.</p>
+ <div class="box contoh"><b>Contoh 0.4</b>Data: 3, 5, 7. Maka \(n=3\) dan \(\Sigma x=3+5+7=\mathbf{15}\).</div>
+ <h3>0.5 Mengurutkan dan membulatkan</h3>
+ <ul>
+  <li>Mengurutkan data dari kecil ke besar adalah langkah pertama untuk median, kuartil, dan jangkauan.</li>
+  <li>Pembulatan: angka berikutnya 5 atau lebih → naik; kurang dari 5 → tetap. Contoh 7,456 menjadi 7,46 (dua desimal).</li>
+ </ul>
+ <h3>Latihan prasyarat</h3>
+ <ol class="lat"><li>Berapa 25% dari 80?</li><li>Ubah \(\dfrac{3}{5}\) menjadi persen.</li><li>Hitung \((-4)^2\).</li><li>Hitung \(5-9\).</li><li>Hitung \(\sqrt{49}\).</li><li>Untuk data 4, 9, 2, 5 tentukan \(n\) dan \(\Sigma x\).</li></ol>
+ <details class="kunci"><summary>Lihat kunci</summary>1) 20 &nbsp; 2) 60% &nbsp; 3) 16 &nbsp; 4) −4 &nbsp; 5) 7 &nbsp; 6) \(n=4\) dan \(\Sigma x=20\).</details>
+</section>
+
+<!-- ================= BAB 1 ================= -->
+<section class="bab" id="bab1">
+ <h2>Bab 1 — Penyajian Data Visual (Tahap 1)</h2>
+ <p><b>Tujuan:</b> dapat membaca, memahami, dan menyimpulkan informasi dari tabel, diagram batang, diagram garis, diagram lingkaran, serta membedakan <b>frekuensi biasa</b> dan <b>frekuensi kumulatif</b>.</p>
+ <h3>1.1 Memilih penyajian yang tepat</h3>
+ <div class="scroll"><table>
+  <tr><th>Penyajian</th><th class="l">Paling cocok untuk</th><th class="l">Contoh</th></tr>
+  <tr><td>Tabel</td><td class="l">Data lengkap dan angka pasti</td><td class="l">Daftar nilai siswa</td></tr>
+  <tr><td>Diagram batang</td><td class="l">Membandingkan <b>beberapa kategori</b></td><td class="l">Peminat ekstrakurikuler</td></tr>
+  <tr><td>Diagram garis</td><td class="l">Melihat <b>perubahan</b> dari waktu ke waktu</td><td class="l">Penjualan per bulan, suhu per jam</td></tr>
+  <tr><td>Diagram lingkaran</td><td class="l">Melihat <b>bagian dari keseluruhan</b> (persen)</td><td class="l">Rincian pengeluaran</td></tr>
+  <tr><td>Histogram</td><td class="l">Data numerik yang dikelompokkan ke kelas</td><td class="l">Sebaran nilai ulangan</td></tr>
+ </table></div>
+ <h3>1.2 Diagram batang</h3>
+ <p>Tinggi batang menunjukkan nilainya. Baca dari <b>sumbu tegak</b> dan perhatikan satuannya.</p>
+ <figure class="fig" data-chart="g1"></figure>
+ <div class="box contoh"><b>Contoh 1.2</b>
+  <p>a) Ekstrakurikuler paling diminati? <b>Pramuka (60 siswa)</b>.</p>
+  <p>b) Selisih peminat terbanyak dan tersedikit: \(60-20=\mathbf{40\ siswa}\).</p>
+  <p>c) Total siswa \(=60+50+40+30+20=200\). Persentase peminat Futsal:
+  \[ \dfrac{50}{200}\times 100\% = \mathbf{25\%} \]</p></div>
+ <h3>1.3 Diagram garis</h3>
+ <p>Garis <b>naik</b> berarti bertambah dan <b>turun</b> berarti berkurang. Untuk “kenaikan terbesar”, hitung <b>selisih antarbulan berurutan</b>, bukan melihat titik tertinggi.</p>
+ <figure class="fig" data-chart="g2"></figure>
+ <div class="box contoh"><b>Contoh 1.3</b>
+  <p>a) Penjualan tertinggi: <b>Mei (50 juta)</b>.</p>
+  <p>b) Selisih antarbulan: Feb +10, Mar −5, Apr +15, Mei +10, Jun −5. Kenaikan terbesar: <b>April (+15 juta)</b>.</p>
+  <p>c) Rata-rata penjualan:
+  \[ \dfrac{20+30+25+40+50+45}{6}=\dfrac{210}{6}=\mathbf{35\ juta} \]</p></div>
+ <div class="box jebakan"><b>⚠ Awas, Jebakan!</b>Bulan penjualan <b>tertinggi</b> (Mei) belum tentu bulan <b>kenaikan terbesar</b> (April). Soal sering menjebak di sini.</div>
+ <h3>1.4 Diagram lingkaran</h3>
+ <div class="box rumus"><b>Rumus</b>
+  \[ \text{Sudut sektor}=\dfrac{\text{bagian}}{\text{total}}\times 360^\circ \]
+  \[ \text{Bagian}=\dfrac{\text{sudut}}{360^\circ}\times\text{total} \qquad \text{Persen}=\dfrac{\text{sudut}}{360^\circ}\times 100\% \]</div>
+ <figure class="fig" data-chart="g3"></figure>
+ <div class="box contoh"><b>Contoh 1.4</b>
+  <p>Total pengeluaran Rp6.000.000.</p>
+  <p>Makan 40%: \(0{,}4\times 6.000.000=\mathbf{Rp2.400.000}\); sudutnya \(40\%\times 360^\circ=\mathbf{144^\circ}\).</p>
+  <p>Pendidikan 25% = Rp1.500.000; sudutnya \(90^\circ\).</p>
+  <p>Cek: \(40\%+25\%+15\%+10\%+10\%=100\%\) dan \(144^\circ+90^\circ+54^\circ+36^\circ+36^\circ=360^\circ\).</p></div>
+ <div class="box tips"><b>💡 Tips &amp; Trik</b>Sudut \(90^\circ\) = <b>seperempat</b> (25%). Sudut \(180^\circ\) = <b>separuh</b> (50%). Hafalkan: \(90^\circ=25\%\), \(180^\circ=50\%\), \(36^\circ=10\%\).</div>
+ <h3>1.5 Frekuensi biasa vs frekuensi kumulatif</h3>
+ <p>Dua tabel bisa tampak mirip tetapi artinya berbeda jauh. <b>Frekuensi biasa (<i>f</i>)</b> menjawab “berapa siswa <b>di kelas ini saja</b>?”. <b>Frekuensi kumulatif (<i>fk</i>)</b> menjawab “berapa siswa <b>dari awal sampai kelas ini</b>?”. Angka kumulatif selalu naik dan angka terakhirnya sama dengan banyak seluruh data (\(n\)).</p>
+ <figure class="fig" data-chart="g4"></figure>
+ <div class="scroll"><table>
+  <tr><th>Nilai</th><th>\(f\) (biasa)</th><th><i>fk</i> “kurang dari”</th><th><i>fk</i> “lebih dari”</th></tr>
+  <tr><td>41–50</td><td>2</td><td>2 (nilai ≤ 50)</td><td>40 (nilai &gt; 40,5)</td></tr>
+  <tr><td>51–60</td><td>4</td><td>6 (nilai ≤ 60)</td><td>38 (nilai &gt; 50,5)</td></tr>
+  <tr><td>61–70</td><td>8</td><td>14 (nilai ≤ 70)</td><td>34 (nilai &gt; 60,5)</td></tr>
+  <tr><td>71–80</td><td>10</td><td>24 (nilai ≤ 80)</td><td>26 (nilai &gt; 70,5)</td></tr>
+  <tr><td>81–90</td><td>12</td><td>36 (nilai ≤ 90)</td><td>16 (nilai &gt; 80,5)</td></tr>
+  <tr><td>91–100</td><td>4</td><td>40 (nilai ≤ 100)</td><td>4 (nilai &gt; 90,5)</td></tr>
+ </table></div>
+ <div class="box ingat"><b>📌 Pindah antara f dan fk</b>
+  <p><b>Dari f ke fk:</b> jumlahkan berurutan dari kelas pertama (2, 2+4 = 6, 6+8 = 14, ...).</p>
+  <p><b>Dari fk ke f:</b> kurangkan dua fk yang berurutan.</p>
+  \[ f_{\text{kelas}} = fk_{\text{kelas ini}} - fk_{\text{kelas sebelumnya}} \]
+  <p><b>Siswa “di atas” suatu nilai:</b> \(n-fk\) (sampai nilai itu).</p></div>
+ <div class="box contoh"><b>Contoh 1.5</b>
+  <p>a) Banyak siswa bernilai 61–70: \(fk(\le 70)-fk(\le 60)=14-6=\mathbf{8\ siswa}\).</p>
+  <p>b) Banyak siswa bernilai lebih dari 80: \(40-24=\mathbf{16\ siswa}\) (12 + 4).</p>
+  <p>c) Persentase siswa bernilai 60 ke bawah:
+  \[ \dfrac{6}{40}\times 100\%=\mathbf{15\%} \]</p>
+  <p>d) Median dari grafik kumulatif: cari nilai pada sumbu mendatar saat \(fk=\tfrac12 n=20\). Itu berada di kelas 71–80.</p></div>
+ <div class="box jebakan"><b>⚠ Awas, Jebakan!</b>
+  <ol><li>Angka pada tabel kumulatif <b>bukan</b> banyak siswa di kelas itu. Kurangkan dulu dengan fk sebelumnya.</li>
+  <li>Pada grafik kumulatif, tinggi titik terakhir selalu \(n\). Jika tidak sama dengan \(n\), ada yang salah.</li>
+  <li>Baca judul tabel: “kurang dari” (naik) berbeda dengan “lebih dari” (turun).</li>
+  <li>“Di atas 70” dan “70 ke atas” berbeda. Perhatikan kata <b>lebih dari</b> dan <b>sama dengan</b>.</li></ol></div>
+ <h3>1.6 Jebakan membaca grafik</h3>
+ <ul>
+  <li><b>Sumbu tegak tidak dimulai dari 0</b> sehingga batang tampak berbeda jauh padahal selisihnya kecil.</li>
+  <li><b>Satuan</b> (ribuan, juta, persen) terlewat.</li>
+  <li>Diagram lingkaran berisi <b>persen atau sudut</b>, bukan banyak data. Banyak data harus dihitung dari total.</li>
+  <li>Tertukar antara “nilai tertinggi” dan “kenaikan terbesar” pada diagram garis.</li>
+  <li>Tertukar antara <b>frekuensi biasa</b> dan <b>frekuensi kumulatif</b> (Bab 1.5).</li>
+ </ul>
+ <h3>Latihan Bab 1</h3>
+ <ol class="lat">
+  <li>Pada Gambar 1, berapa persen peminat Pramuka?</li>
+  <li>Pada Gambar 2, di antara bulan apa terjadi penurunan penjualan?</li>
+  <li>Pada Gambar 3, berapa rupiah pengeluaran transportasi, dan berapa sudutnya?</li>
+  <li>Tabel fk “kurang dari”: ≤10 → 3, ≤20 → 9, ≤30 → 20. Berapa siswa bernilai 21–30?</li></ol>
+ <details class="kunci"><summary>Lihat kunci</summary>
+  <p>1) \(\dfrac{60}{200}\times 100\%=30\%\)</p><p>2) Februari–Maret dan Mei–Juni</p>
+  <p>3) \(15\%\times 6.000.000=\) Rp900.000; sudut \(54^\circ\)</p><p>4) \(20-9=11\) siswa.</p></details>
+</section>
+
+<!-- ================= BAB 2 ================= -->
+<section class="bab" id="bab2">
+ <h2>Bab 2 — Ukuran Pemusatan Data Tunggal (Tahap 2)</h2>
+ <p><b>Tujuan:</b> menentukan dan menafsirkan mean, median, dan modus. Ukuran pemusatan menjawab pertanyaan: <i>“Data ini rata-rata ada di sekitar angka berapa?”</i></p>
+ <h3>2.1 Mean (rata-rata)</h3>
+ <p>Mean adalah hasil “meratakan” semua data: jumlahkan semua, lalu bagi banyaknya.</p>
+ <div class="box rumus"><b>Rumus</b>\[ \bar{x}=\dfrac{\Sigma x}{n}=\dfrac{x_1+x_2+\dots+x_n}{n} \]</div>
+ <div class="box contoh"><b>Contoh 2.1</b>Nilai 10 siswa: 4, 6, 6, 7, 8, 8, 8, 9, 9, 10. \(\Sigma x=75\) dan \(n=10\), sehingga
+  \[ \text{mean}=\dfrac{75}{10}=\mathbf{7{,}5} \]</div>
+ <h3>2.2 Median (nilai tengah)</h3>
+ <div class="box ingat"><b>📌 Ingat! Urutkan dulu dari kecil ke besar!</b>
+  <p>Baru cari nilai tengahnya.</p>
+  <p><b>\(n\) ganjil:</b> median = data ke-\(\dfrac{n+1}{2}\).</p>
+  <p><b>\(n\) genap:</b> median = rata-rata dua data tengah (data ke-\(\dfrac{n}{2}\) dan ke-\(\left(\dfrac{n}{2}+1\right)\)).</p></div>
+ <div class="box contoh"><b>Contoh 2.2</b>
+  <p>a) Data 7, 3, 9, 5, 8 → terurut 3, 5, <b>7</b>, 8, 9. Median = <b>7</b>.</p>
+  <p>b) Data pada Contoh 2.1 (\(n=10\)): data ke-5 dan ke-6 keduanya 8, sehingga median \(=\dfrac{8+8}{2}=\mathbf{8}\).</p></div>
+ <h3>2.3 Modus</h3>
+ <p>Modus adalah data yang <b>paling sering muncul</b>. Data bisa tidak bermodus (semua muncul sekali) atau bermodus lebih dari satu. Pada Contoh 2.1, angka 8 muncul 3 kali, jadi modus = <b>8</b>.</p>
+ <h3>2.4 Mean dari tabel frekuensi</h3>
+ <div class="box rumus"><b>Rumus</b>\[ \bar{x}=\dfrac{\Sigma(f\cdot x)}{\Sigma f} \]</div>
+ <div class="scroll"><table>
+  <tr><th>Nilai (\(x\))</th><th>Frekuensi (\(f\))</th><th>\(f\cdot x\)</th></tr>
+  <tr><td>5</td><td>1</td><td>5</td></tr><tr><td>6</td><td>3</td><td>18</td></tr><tr><td>7</td><td>8</td><td>56</td></tr><tr><td>8</td><td>5</td><td>40</td></tr><tr><td>9</td><td>3</td><td>27</td></tr>
+  <tr class="tot"><td>Jumlah</td><td>\(\Sigma f=20\)</td><td>\(\Sigma(f\cdot x)=146\)</td></tr>
+ </table></div>
+ <p>Mean \(=\dfrac{146}{20}=\mathbf{7{,}3}\). Modus = <b>7</b> (frekuensi terbanyak, yaitu 8). Median: data ke-10 dan ke-11 keduanya 7 (frekuensi kumulatif 1, 4, 12), sehingga median = <b>7</b>.</p>
+ <div class="box jebakan"><b>⚠ Awas, Jebakan!</b>Modus adalah <b>nilainya</b> (7), bukan frekuensinya (8).</div>
+ <h3>2.5 Mean gabungan</h3>
+ <div class="box rumus"><b>Rumus</b>\[ \bar{x}_{\text{gab}}=\dfrac{n_1\cdot\bar{x}_1+n_2\cdot\bar{x}_2}{n_1+n_2} \]</div>
+ <div class="box contoh"><b>Contoh 2.5</b>Kelas A: 30 siswa, mean 70. Kelas B: 20 siswa, mean 80.
+  <p>Jumlah A \(=30\times 70=2.100\); jumlah B \(=20\times 80=1.600\).</p>
+  \[ \bar{x}_{\text{gab}}=\dfrac{2.100+1.600}{50}=\mathbf{74} \]
+  <p>(Bukan \(\dfrac{70+80}{2}=75\), karena jumlah siswanya berbeda.)</p></div>
+ <h3>2.6 Mean jika data ditambah atau dibuang</h3>
+ <div class="box tips"><b>💡 Tips &amp; Trik</b>Ubah mean menjadi <b>jumlah total</b>: jumlah = mean × banyak data. Lalu tambah atau kurangi jumlahnya, baru bagi lagi.</div>
+ <div class="box contoh"><b>Contoh 2.6</b>
+  <p>a) Mean 9 siswa = 72. Siswa ke-10 bernilai 82 bergabung. Mean baru \(=\dfrac{9\times 72+82}{10}=\dfrac{730}{10}=\mathbf{73}\).</p>
+  <p>b) Mean 5 bilangan = 8. Ditambah satu bilangan, mean menjadi 9. Bilangan baru \(=6\times 9-5\times 8=54-40=\mathbf{14}\).</p></div>
+ <h3>2.7 Mean, median, atau modus? (pengaruh pencilan)</h3>
+ <p>Pencilan adalah nilai yang sangat jauh dari yang lain. <b>Mean ikut tertarik pencilan</b>, sedangkan median hampir tidak.</p>
+ <div class="box contoh"><b>Contoh 2.7</b>Gaji 5 karyawan (juta): 3, 3, 4, 4, 40. Mean \(=\dfrac{54}{5}=10{,}8\) (tidak menggambarkan gaji umum). Median = 4 (lebih mewakili). Kesimpulan: bila ada pencilan, <b>median</b> lebih tepat daripada mean.</div>
+ <div class="scroll"><table>
+  <tr><th>Ukuran</th><th class="l">Dipakai jika</th><th class="l">Kelemahan</th></tr>
+  <tr><td>Mean</td><td class="l">Data merata, tanpa pencilan</td><td class="l">Terpengaruh nilai ekstrem</td></tr>
+  <tr><td>Median</td><td class="l">Ada pencilan, data miring</td><td class="l">Tidak memakai semua nilai</td></tr>
+  <tr><td>Modus</td><td class="l">Mencari yang paling sering/populer (juga data kategori)</td><td class="l">Bisa tidak ada atau lebih dari satu</td></tr>
+ </table></div>
+ <h3>2.8 ⚡ CARA CEPAT: Rata-rata sementara untuk angka besar</h3>
+ <p>Menjumlahkan angka seperti 78, 82, 85, 79 ... melelahkan dan mudah salah. <b>Idenya:</b> tebak satu angka dekat tengah data (rata-rata sementara, \(x_s\)), hitung <b>selisih</b> tiap data terhadap tebakan itu, rata-ratakan selisihnya (angkanya kecil), lalu tambahkan kembali ke tebakan.</p>
+ <div class="box rumus"><b>Rumus Cara Cepat</b>
+  <p>Data tunggal, dengan \(d=x-x_s\):</p>\[ \bar{x}=x_s+\dfrac{\Sigma d}{n} \]
+  <p>Tabel frekuensi:</p>\[ \bar{x}=x_s+\dfrac{\Sigma(f\cdot d)}{\Sigma f} \]</div>
+ <div class="box contoh"><b>Contoh 2.8a — data tunggal</b>Data: 78, 82, 85, 79, 81, 90, 83, 80. Pilih \(x_s=80\).
+  <p>Selisih \(d\): −2, +2, +5, −1, +1, +10, +3, 0 → \(\Sigma d=18\).</p>
+  \[ \bar{x}=80+\dfrac{18}{8}=80+2{,}25=\mathbf{82{,}25} \]
+  <p>Cek cara biasa: \(\Sigma x=658\), \(\dfrac{658}{8}=82{,}25\).</p></div>
+ <p><b>Contoh 2.8b — tabel frekuensi</b> (\(x_s=80\)):</p>
+ <div class="scroll"><table>
+  <tr><th>Nilai (\(x\))</th><th>\(f\)</th><th>\(d=x-80\)</th><th>\(f\cdot d\)</th></tr>
+  <tr><td>70</td><td>3</td><td>−10</td><td>−30</td></tr><tr><td>75</td><td>4</td><td>−5</td><td>−20</td></tr><tr><td>80</td><td>6</td><td>0</td><td>0</td></tr><tr><td>85</td><td>5</td><td>5</td><td>25</td></tr><tr><td>90</td><td>2</td><td>10</td><td>20</td></tr>
+  <tr class="tot"><td>Jumlah</td><td>\(\Sigma f=20\)</td><td></td><td>\(\Sigma(f\cdot d)=-5\)</td></tr>
+ </table></div>
+ <p>\[ \bar{x}=80+\dfrac{-5}{20}=80-0{,}25=\mathbf{79{,}75} \]</p>
+ <p>Cara biasa memberi hasil sama: \(\Sigma(f\cdot x)=1.595\) dan \(\dfrac{1.595}{20}=79{,}75\).</p>
+ <div class="box tips"><b>💡 Tips &amp; Trik</b>Tebakan \(x_s\) <b>boleh sembarang</b>; hasil akhirnya selalu sama. Pilih yang dekat tengah agar angkanya kecil. Cek cepat: jika \(\Sigma d\) positif, mean di <b>atas</b> \(x_s\); jika negatif, mean di <b>bawah</b> \(x_s\).</div>
+ <div class="box jebakan"><b>⚠ Awas, Jebakan!</b>Jangan lupa <b>menambahkan \(x_s\) kembali</b> di akhir, dan bagi dengan <b>\(\Sigma f\)</b> (jumlah frekuensi), bukan banyak baris tabel.</div>
+ <h3>Latihan Bab 2</h3>
+ <ol class="lat"><li>Tentukan mean, median, dan modus data: 2, 3, 3, 5, 7.</li><li>Mean 4 bilangan = 10. Jika satu bilangan 6 dibuang, berapa mean tiga bilangan sisanya?</li><li>Gunakan \(x_s=50\) untuk data 48, 52, 55, 47, 53: tentukan meannya.</li></ol>
+ <details class="kunci"><summary>Lihat kunci</summary>
+  <p>1) mean 4; median 3; modus 3.</p><p>2) Jumlah 40, sisa 34, mean \(\dfrac{34}{3}\approx 11{,}33\).</p>
+  <p>3) \(d\): −2, 2, 5, −3, 3 → \(\Sigma d=5\); mean \(=50+\dfrac{5}{5}=51\).</p></details>
+</section>
+<!-- ================= BAB 3 ================= -->
+<section class="bab" id="bab3">
+ <h2>Bab 3 — Ukuran Penyebaran Data Tunggal (Tahap 2)</h2>
+ <p><b>Tujuan:</b> menghitung dan membandingkan sebaran data. Dua kelas bisa sama-sama bermean 75, tetapi satu kelas nilainya seragam dan satu lagi sangat beragam. Pemusatan saja tidak cukup, sehingga dibutuhkan ukuran penyebaran.</p>
+ <h3>3.1 Jangkauan</h3>
+ <div class="box rumus"><b>Rumus</b>\[ \text{Jangkauan}=\text{data terbesar}-\text{data terkecil} \]</div>
+ <p>Contoh: data 14, 9, 21, 17, 5 → jangkauan \(=21-5=\mathbf{16}\).</p>
+ <h3>3.2 Kuartil, jangkauan antarkuartil (IQR), dan diagram kotak garis</h3>
+ <p>Kuartil membagi data terurut menjadi <b>empat bagian sama banyak</b>. \(Q_2\) = median; \(Q_1\) = median separuh bawah; \(Q_3\) = median separuh atas.</p>
+ <div class="box rumus"><b>Rumus</b>\[ \text{IQR}=Q_3-Q_1 \qquad \text{Simpangan kuartil}=\dfrac12\,(Q_3-Q_1) \]</div>
+ <figure class="fig" data-chart="g5"></figure>
+ <div class="box ingat"><b>📌 Ingat!</b>
+  <ol><li><b>Urutkan</b> data.</li><li>Tentukan <b>\(Q_2\)</b> (median).</li><li>Pisahkan separuh bawah dan atas. Jika \(n\) ganjil, <b>median tidak ikut</b> dimasukkan.</li><li><b>\(Q_1\)</b> = median bawah, <b>\(Q_3\)</b> = median atas.</li></ol></div>
+ <div class="box contoh"><b>Contoh 3.2 (n genap)</b>Data: 3, 4, 5, 6, 7, 8 │ 9, 10, 12, 13, 14, 15 (\(n=12\)).
+  <p>\(Q_2=\dfrac{8+9}{2}=8{,}5\). &nbsp; \(Q_1=\dfrac{5+6}{2}=5{,}5\). &nbsp; \(Q_3=\dfrac{12+13}{2}=12{,}5\).</p>
+  <p>\(\text{IQR}=12{,}5-5{,}5=\mathbf{7}\).</p></div>
+ <h3>3.3 Simpangan rata-rata, ragam, dan simpangan baku</h3>
+ <p>Ide dasarnya: <b>seberapa jauh data rata-rata menyimpang dari mean</b>. Langkah: cari mean → hitung selisih tiap data terhadap mean → olah selisihnya.</p>
+ <div class="box rumus"><b>Rumus</b>
+  \[ SR=\dfrac{\Sigma\,|x-\bar{x}|}{n} \]
+  \[ s^2=\dfrac{\Sigma\,(x-\bar{x})^2}{n} \]
+  \[ s=\sqrt{\text{ragam}} \]</div>
+ <p><b>Contoh 3.3 — Data 4, 6, 8, 10, 12</b> (mean \(=\dfrac{40}{5}=8\)):</p>
+ <div class="scroll"><table>
+  <tr><th>\(x\)</th><th>\(x-\bar{x}\)</th><th>\(|x-\bar{x}|\)</th><th>\((x-\bar{x})^2\)</th></tr>
+  <tr><td>4</td><td>−4</td><td>4</td><td>16</td></tr><tr><td>6</td><td>−2</td><td>2</td><td>4</td></tr><tr><td>8</td><td>0</td><td>0</td><td>0</td></tr><tr><td>10</td><td>2</td><td>2</td><td>4</td></tr><tr><td>12</td><td>4</td><td>4</td><td>16</td></tr>
+  <tr class="tot"><td>Jumlah</td><td>0</td><td>12</td><td>40</td></tr>
+ </table></div>
+ <p>\(SR=\dfrac{12}{5}=\mathbf{2{,}4}\). &nbsp; Ragam \(=\dfrac{40}{5}=\mathbf{8}\). &nbsp; Simpangan baku \(=\sqrt{8}=2\sqrt{2}\approx\mathbf{2{,}83}\).</p>
+ <div class="box tips"><b>💡 Tips &amp; Trik</b>Jumlah selisih \((x-\bar{x})\) selalu <b>0</b>. Jika hasilmu tidak 0, ada yang salah di langkah mean atau selisih.</div>
+ <div class="box jebakan"><b>⚠ Awas, Jebakan!</b>Ragam adalah <b>kuadrat</b> dari simpangan baku (ragam \(=s^2\)). Banyak yang menjawab ragam padahal soal meminta simpangan baku, atau sebaliknya.</div>
+ <h3>3.4 Sifat jika seluruh data diubah</h3>
+ <div class="scroll"><table>
+  <tr><th>Ukuran</th><th>Setiap data <b>DITAMBAH</b> \(k\)</th><th>Setiap data <b>DIKALI</b> \(k\)</th></tr>
+  <tr><td>Mean, median, modus</td><td>bertambah \(k\)</td><td>dikali \(k\)</td></tr>
+  <tr><td>Jangkauan, IQR</td><td><b>tetap</b></td><td>dikali \(|k|\)</td></tr>
+  <tr><td>Simpangan baku</td><td><b>tetap</b></td><td>dikali \(|k|\)</td></tr>
+  <tr><td>Ragam</td><td><b>tetap</b></td><td>dikali \(k^2\)</td></tr>
+ </table></div>
+ <p>Alasan: menggeser semua data sebesar \(k\) tidak mengubah jarak antar data (sebaran tetap), tetapi memindahkan pusatnya.</p>
+ <h3>3.5 Membandingkan sebaran</h3>
+ <p><b>Simpangan baku kecil</b> berarti data seragam (mengumpul di dekat mean). <b>Simpangan baku besar</b> berarti data beragam (menyebar jauh dari mean). Jika mean sama, kelompok dengan simpangan baku lebih kecil lebih homogen.</p>
+ <h3>Latihan Bab 3</h3>
+ <ol class="lat"><li>Tentukan jangkauan dan \(Q_1, Q_2, Q_3\) dari data 2, 4, 5, 7, 8, 9, 10, 12.</li><li>Data 2, 2, 6, 6: tentukan ragam dan simpangan baku.</li><li>Data memiliki simpangan baku 3. Setiap data dikali 4 lalu dikurangi 1. Berapa simpangan baku baru?</li></ol>
+ <details class="kunci"><summary>Lihat kunci</summary>
+  <p>1) jangkauan 10; \(Q_1=4{,}5\); \(Q_2=7{,}5\); \(Q_3=9{,}5\).</p>
+  <p>2) mean 4; selisih −2, −2, 2, 2; ragam \(=\dfrac{16}{4}=4\); simpangan baku \(=2\).</p>
+  <p>3) \(3\times 4=12\) (dikurangi 1 tidak mengubah).</p></details>
+</section>
+
+<!-- ================= BAB 4 ================= -->
+<section class="bab" id="bab4">
+ <h2>Bab 4 — Data Kelompok (Tahap 2)</h2>
+ <p><b>Tujuan:</b> mengolah data yang disajikan dalam tabel distribusi frekuensi (kelas interval). Pada data kelompok kita <b>tidak tahu nilai aslinya</b>, hanya berapa data di tiap kelas. Karena itu dipakai nilai perkiraan.</p>
+ <h3>4.1 Istilah pada tabel distribusi frekuensi</h3>
+ <div class="scroll"><table>
+  <tr><th>Istilah</th><th class="l">Arti</th></tr>
+  <tr><td>Kelas</td><td class="l">Rentang nilai, misal 61–70</td></tr>
+  <tr><td>Tepi bawah (\(tb\))</td><td class="l">Batas bawah kelas dikurangi 0,5 (61 → <b>60,5</b>)</td></tr>
+  <tr><td>Tepi atas (\(ta\))</td><td class="l">Batas atas kelas ditambah 0,5 (70 → <b>70,5</b>)</td></tr>
+  <tr><td>Panjang kelas (\(p\))</td><td class="l">\(ta-tb\) (di sini \(70{,}5-60{,}5=\mathbf{10}\))</td></tr>
+  <tr><td>Titik tengah (\(x\))</td><td class="l">\(\dfrac{\text{batas bawah}+\text{batas atas}}{2}\) (61 dan 70 → <b>65,5</b>)</td></tr>
+  <tr><td>Frekuensi (\(f\))</td><td class="l">Banyak data dalam kelas</td></tr>
+  <tr><td>Frekuensi kumulatif (<i>fk</i>)</td><td class="l">Jumlah frekuensi sampai kelas tersebut (lihat Bab 1.5)</td></tr>
+ </table></div>
+ <p>Kita pakai tabel nilai ulangan 40 siswa berikut untuk seluruh bab ini.</p>
+ <div class="scroll"><table>
+  <tr><th>Nilai</th><th>Tepi bawah</th><th>\(f\)</th><th><i>fk</i></th><th>Titik tengah \(x\)</th><th>\(f\cdot x\)</th><th>Ket.</th></tr>
+  <tr><td>41–50</td><td>40,5</td><td>2</td><td>2</td><td>45,5</td><td>91</td><td></td></tr>
+  <tr><td>51–60</td><td>50,5</td><td>4</td><td>6</td><td>55,5</td><td>222</td><td></td></tr>
+  <tr><td>61–70</td><td>60,5</td><td>8</td><td>14</td><td>65,5</td><td>524</td><td>\(Q_1\)</td></tr>
+  <tr><td>71–80</td><td>70,5</td><td>10</td><td>24</td><td>75,5</td><td>755</td><td>Median</td></tr>
+  <tr><td>81–90</td><td>80,5</td><td>12</td><td>36</td><td>85,5</td><td>1.026</td><td>Modus, \(Q_3\)</td></tr>
+  <tr><td>91–100</td><td>90,5</td><td>4</td><td>40</td><td>95,5</td><td>382</td><td></td></tr>
+  <tr class="tot"><td>Jumlah</td><td></td><td>40</td><td></td><td></td><td>3.000</td><td></td></tr>
+ </table></div>
+ <figure class="fig" data-chart="g6"></figure>
+ <h3>4.2 Mean data kelompok</h3>
+ <div class="box rumus"><b>Rumus</b>\[ \bar{x}=\dfrac{\Sigma(f\cdot x)}{\Sigma f} \]</div>
+ <p>Mean \(=\dfrac{3.000}{40}=\mathbf{75}\). (Cara lebih ringkas ada di Bab 4.7.)</p>
+ <h3>4.3 Modus data kelompok</h3>
+ <p>Cari <b>kelas modus</b> (frekuensi terbesar) = 81–90.</p>
+ <div class="box rumus"><b>Rumus</b>
+  \[ \text{Modus}=tb+\left(\dfrac{d_1}{d_1+d_2}\right)\times p \]
+  <p>\(d_1=f_{\text{modus}}-f_{\text{sebelumnya}}\) &nbsp;&nbsp; \(d_2=f_{\text{modus}}-f_{\text{sesudahnya}}\)</p></div>
+ <p>Di sini \(tb=80{,}5\); \(d_1=12-10=2\); \(d_2=12-4=8\); \(p=10\).</p>
+ <p>\[ \text{Modus}=80{,}5+\dfrac{2}{2+8}\times 10=80{,}5+2=\mathbf{82{,}5} \]</p>
+ <h3>4.4 Median data kelompok</h3>
+ <div class="box rumus"><b>Rumus</b>
+  \[ \text{Median}=tb+\left(\dfrac{\tfrac12 n-F}{f}\right)\times p \]
+  <p>\(F\) = frekuensi kumulatif <b>sebelum</b> kelas median &nbsp;&nbsp; \(f\) = frekuensi kelas median</p></div>
+ <p>\(\tfrac12 n=20\). Kelas median adalah kelas pertama yang <i>fk</i>-nya ≥ 20, yaitu 71–80 (<i>fk</i> = 24). \(tb=70{,}5\); \(F=14\); \(f=10\); \(p=10\).</p>
+ <p>\[ \text{Median}=70{,}5+\dfrac{20-14}{10}\times 10=70{,}5+6=\mathbf{76{,}5} \]</p>
+ <h3>4.5 Kuartil data kelompok</h3>
+ <p>Caranya sama dengan median, tetapi \(\tfrac12 n\) diganti \(\tfrac14 n\) (\(Q_1\)) atau \(\tfrac34 n\) (\(Q_3\)):</p>
+ <div class="box rumus">\[ Q_i=tb+\left(\dfrac{\tfrac{i}{4}\,n-F}{f}\right)\times p \]</div>
+ <ul>
+  <li>\(Q_1\): \(\tfrac14 n=10\) → kelas 61–70 (\(F=6\), \(f=8\)): \(60{,}5+\dfrac{10-6}{8}\times 10=\mathbf{65{,}5}\).</li>
+  <li>\(Q_3\): \(\tfrac34 n=30\) → kelas 81–90 (\(F=24\), \(f=12\)): \(80{,}5+\dfrac{30-24}{12}\times 10=\mathbf{85{,}5}\).</li>
+ </ul>
+ <p>\(\text{IQR}=85{,}5-65{,}5=\mathbf{20}\).</p>
+ <h3>4.6 Jangkauan dan ragam data kelompok</h3>
+ <ul>
+  <li>Jangkauan (perkiraan) = titik tengah kelas terakhir − titik tengah kelas pertama \(=95{,}5-45{,}5=\mathbf{50}\). Bila soal menyebut cara lain (tepi atas − tepi bawah), ikuti petunjuk soal.</li>
+  <li>Ragam: \(s^2=\dfrac{\Sigma f\,(x-\bar{x})^2}{\Sigma f}\), dengan \(x\) titik tengah kelas.</li>
+ </ul>
+ <div class="box contoh"><b>Contoh ragam data kelompok</b>Titik tengah 2, 6, 10 dengan frekuensi 2, 4, 2 (\(n=8\)).
+  <p>Mean \(=\dfrac{4+24+20}{8}=6\).</p>
+  <p>\(\Sigma f(x-\bar{x})^2=2\cdot16+4\cdot0+2\cdot16=64\).</p>
+  <p>Ragam \(=\dfrac{64}{8}=\mathbf{8}\).</p></div>
+ <div class="box jebakan"><b>⚠ Awas, Jebakan!</b>Pada <b>median</b> dan <b>modus</b>, yang dipakai <b>tepi bawah</b> (60,5) bukan batas bawah (61). Pada <b>mean</b>, yang dipakai <b>titik tengah</b>. Periksa kelas yang tepat: median = <i>fk</i> ≥ ½n; modus = <i>f</i> terbesar. <b>\(F\) pada median adalah <i>fk</i> kelas sebelumnya</b>, bukan <i>fk</i> kelas median.</div>
+ <div class="box tips"><b>💡 Tips &amp; Trik</b>Hasil median, modus, dan kuartil <b>harus berada di dalam kelasnya</b>. Jika modus kelas 81–90 menghasilkan 95, ada yang salah.</div>
+ <h3>4.7 ⚡ CARA CEPAT: Rata-rata sementara (coding) untuk data kelompok</h3>
+ <p>Rumus \(\Sigma(f\cdot x)\div\Sigma f\) menuntut mengalikan angka besar seperti \(6\times55{,}5\) atau \(12\times85{,}5\). Dengan <b>coding</b>, angka-angka itu diganti kode kecil \(u=\dots,-2,-1,0,1,2,\dots\) sehingga perkaliannya sangat ringan.</p>
+ <h4>Langkah</h4>
+ <ol>
+  <li>Pilih satu <b>titik tengah</b> dekat tengah data sebagai rata-rata sementara <b>\(x_s\)</b> (biasanya kelas dengan frekuensi besar). Beri kode <b>\(u=0\)</b>.</li>
+  <li>Kelas di atasnya diberi \(u=1,2,3,\dots\); kelas di bawahnya \(u=-1,-2,-3,\dots\)</li>
+  <li>Hitung <b>\(f\cdot u\)</b> tiap kelas, lalu jumlahkan menjadi \(\Sigma(f\cdot u)\).</li>
+  <li>Pakai rumus Cara Cepat di bawah.</li>
+ </ol>
+ <figure class="fig" data-chart="g7"></figure>
+ <div class="box rumus"><b>Rumus Cara Cepat</b>
+  \[ \bar{x}=x_s+p\times\left(\dfrac{\Sigma(f\cdot u)}{\Sigma f}\right) \]
+  <p>\(p\) = panjang kelas; \(\Sigma f=n\)</p></div>
+ <p><b>Contoh 4.7 — tabel 40 siswa</b> (\(x_s=75{,}5\); \(p=10\)):</p>
+ <div class="scroll"><table>
+  <tr><th>Nilai</th><th>\(f\)</th><th>Titik tengah \(x\)</th><th>\(u\)</th><th>\(f\cdot u\)</th></tr>
+  <tr><td>41–50</td><td>2</td><td>45,5</td><td>−3</td><td>−6</td></tr><tr><td>51–60</td><td>4</td><td>55,5</td><td>−2</td><td>−8</td></tr><tr><td>61–70</td><td>8</td><td>65,5</td><td>−1</td><td>−8</td></tr><tr><td>71–80</td><td>10</td><td>75,5</td><td>0</td><td>0</td></tr><tr><td>81–90</td><td>12</td><td>85,5</td><td>1</td><td>12</td></tr><tr><td>91–100</td><td>4</td><td>95,5</td><td>2</td><td>8</td></tr>
+  <tr class="tot"><td>Jumlah</td><td>\(\Sigma f=40\)</td><td></td><td></td><td>\(\Sigma(f\cdot u)=-2\)</td></tr>
+ </table></div>
+ <p>\[ \bar{x}=75{,}5+10\times\dfrac{-2}{40}=75{,}5-0{,}5=\mathbf{75} \]</p>
+ <p>Hasilnya sama dengan Bab 4.2 (\(\dfrac{3.000}{40}=75\)), tetapi tanpa mengalikan angka besar.</p>
+ <div class="box tips"><b>💡 Tips &amp; Trik</b>\(\Sigma(f\cdot u)\) negatif berarti mean <b>di bawah</b> \(x_s\); positif berarti <b>di atas</b> \(x_s\). Pilih \(x_s\) di kelas dengan frekuensi besar agar \(\Sigma(f\cdot u)\) kecil.</div>
+ <div class="box contoh"><b>Untuk yang sudah lancar: ragam dengan coding</b>
+  \[ s^2=p^2\times\left[\dfrac{\Sigma(f\cdot u^2)}{\Sigma f}-\left(\dfrac{\Sigma(f\cdot u)}{\Sigma f}\right)^2\right] \]
+  <p>Pada tabel di atas: \(f\cdot u^2=18,16,8,0,12,16\) → \(\Sigma(f\cdot u^2)=70\).</p>
+  \[ s^2=100\times\left[\dfrac{70}{40}-\left(\dfrac{-2}{40}\right)^2\right]=100\times(1{,}75-0{,}0025)=\mathbf{174{,}75} \]
+  <p>sehingga \(s\approx\mathbf{13{,}2}\).</p></div>
+ <div class="box jebakan"><b>⚠ Awas, Jebakan!</b>Kode \(u\) harus <b>berurutan dengan selisih 1</b> karena kelas-kelasnya sama panjang. Jika panjang kelas berbeda, cara ini tidak dipakai. Jangan lupa mengalikan dengan <b>\(p\)</b> dan menambahkan <b>\(x_s\)</b>. Cara Cepat hanya untuk <b>mean (dan ragam)</b>. Median dan modus tetap memakai rumus tepi bawah.</div>
+ <h3>Latihan Bab 4</h3>
+ <ol class="lat"><li>Tabel: 1–10 (\(f=4\)), 11–20 (\(f=6\)), 21–30 (\(f=10\)). Tentukan kelas median dan kelas modus.</li><li>Titik tengah 10, 20, 30 dengan \(f=2,3,5\). Tentukan mean.</li><li>Selesaikan nomor 2 dengan Cara Cepat (\(x_s=20\), \(p=10\)).</li></ol>
+ <details class="kunci"><summary>Lihat kunci</summary>
+  <p>1) \(n=20\); \(\tfrac12 n=10\); <i>fk</i> = 4, 10, 20 → kelas median 11–20; kelas modus 21–30.</p>
+  <p>2) \(\dfrac{20+60+150}{10}=23\).</p>
+  <p>3) \(u=-1,0,1\); \(f\cdot u=-2,0,5\); \(\Sigma=3\); mean \(=20+10\times\dfrac{3}{10}=23\).</p></details>
+</section>
+
+<!-- ================= BAB 5 ================= -->
+<section class="bab" id="bab5">
+ <h2>Bab 5 — Jebakan Umum dan Rangkuman Rumus</h2>
+ <h3>5.1 Dua belas jebakan yang paling sering</h3>
+ <ol>
+  <li>Median dihitung <b>tanpa mengurutkan</b> data.</li>
+  <li>Mean gabungan dihitung dengan merata-ratakan dua mean tanpa memperhatikan banyak data.</li>
+  <li>Modus dijawab dengan <b>frekuensi</b>, bukan nilai datanya.</li>
+  <li>Pada diagram lingkaran, persen langsung dianggap sebagai banyak data.</li>
+  <li>“Nilai tertinggi” tertukar dengan “kenaikan terbesar” pada diagram garis.</li>
+  <li>Angka <b>frekuensi kumulatif</b> dibaca sebagai frekuensi biasa (atau sebaliknya).</li>
+  <li>Ragam dan simpangan baku tertukar (ragam \(=s^2\)).</li>
+  <li>Lupa membagi dengan \(n\) pada ragam atau simpangan rata-rata.</li>
+  <li>Data kelompok: memakai batas bawah, bukan <b>tepi bawah</b>.</li>
+  <li>Data ditambah \(k\) dianggap simpangan baku ikut bertambah (padahal tetap).</li>
+  <li>Cara Cepat: lupa menambahkan \(x_s\) kembali atau lupa mengalikan \(p\).</li>
+  <li>Hasil tidak dicek kewajarannya (mean harus berada di antara data terkecil dan terbesar).</li>
+ </ol>
+ <h3>5.2 Rangkuman rumus</h3>
+ <div class="scroll"><table>
+  <tr><th class="l">Ukuran</th><th>Rumus</th></tr>
+  <tr><td class="l">Mean data tunggal</td><td>\(\bar{x}=\dfrac{\Sigma x}{n}\)</td></tr>
+  <tr><td class="l">Mean tabel / kelompok</td><td>\(\bar{x}=\dfrac{\Sigma(f\cdot x)}{\Sigma f}\) (\(x\) = nilai atau titik tengah)</td></tr>
+  <tr><td class="l">⚡ <b>Cara Cepat</b> data tunggal / tabel</td><td>\(\bar{x}=x_s+\dfrac{\Sigma(f\cdot d)}{\Sigma f}\), &nbsp;\(d=x-x_s\)</td></tr>
+  <tr><td class="l">⚡ <b>Cara Cepat</b> data kelompok</td><td>\(\bar{x}=x_s+p\times\dfrac{\Sigma(f\cdot u)}{\Sigma f}\)</td></tr>
+  <tr><td class="l">Mean gabungan</td><td>\(\dfrac{n_1\bar{x}_1+n_2\bar{x}_2}{n_1+n_2}\)</td></tr>
+  <tr><td class="l">Median</td><td>nilai tengah data terurut</td></tr>
+  <tr><td class="l">Median kelompok</td><td>\(tb+\left(\dfrac{\tfrac12 n-F}{f}\right)p\)</td></tr>
+  <tr><td class="l">Modus kelompok</td><td>\(tb+\left(\dfrac{d_1}{d_1+d_2}\right)p\)</td></tr>
+  <tr><td class="l">Kuartil kelompok</td><td>\(tb+\left(\dfrac{\tfrac{i}{4}n-F}{f}\right)p\)</td></tr>
+  <tr><td class="l">Jangkauan</td><td>terbesar − terkecil</td></tr>
+  <tr><td class="l">IQR</td><td>\(Q_3-Q_1\)</td></tr>
+  <tr><td class="l">Simpangan rata-rata</td><td>\(\dfrac{\Sigma|x-\bar{x}|}{n}\)</td></tr>
+  <tr><td class="l">Ragam</td><td>\(\dfrac{\Sigma(x-\bar{x})^2}{n}\)</td></tr>
+  <tr><td class="l">Simpangan baku</td><td>\(\sqrt{\text{ragam}}\)</td></tr>
+  <tr><td class="l">Diagram lingkaran</td><td>sudut \(=\dfrac{\text{bagian}}{\text{total}}\times360^\circ\)</td></tr>
+  <tr><td class="l">\(f\) dari <i>fk</i></td><td>\(f_{\text{kelas}}=fk_{\text{kelas}}-fk_{\text{kelas sebelumnya}}\)</td></tr>
+ </table></div>
+</section>
+
+<!-- ================= BAB 6 ================= -->
+<section class="bab" id="bab6">
+ <h2>Bab 6 — Prediksi Soal TKA: Statistika</h2>
+ <p>Soal berikut dibuat sebagai <b>latihan prediksi</b> berdasarkan kisi-kisi. Pilih jawabanmu, tekan <b>Periksa Jawaban</b>, lalu pelajari pembahasan <b>Cara Cepat</b> dan <b>Cara Lengkap</b>.</p>
+ <div class="scroll"><table>
+  <tr><th>Level</th><th>Waktu saran</th><th>Target</th></tr>
+  <tr><td>Level 1 Pengetahuan &amp; Pemahaman</td><td>1–2 menit/soal</td><td>Harus benar semua</td></tr>
+  <tr><td>Level 2 Aplikasi</td><td>2–3 menit/soal</td><td>Target minimal 70% benar</td></tr>
+  <tr><td>Level 3 Penalaran</td><td>3–4 menit/soal</td><td>Kerjakan setelah soal lain</td></tr>
+ </table></div>
+ <div id="soalBox"></div>
+ <div class="skor"><span id="skorTxt">Terjawab 0 dari 29 soal</span><span><button class="btn" id="resetAll">↺ Ulangi Semua</button></span></div>
+</section>
+</main>
+<footer>VisualMath.Lim • SEE • THINK • SOLVE &nbsp;|&nbsp; Statistika - TKA Matematika Wajib SMA<br>Soal prediksi bukan soal asli TKA; cocokkan dengan kisi-kisi resmi terbaru.</footer>
+<script>
+/* ===== Pustaka grafik SVG ===== */
+const C={navy:'#1f4e79',org:'#e07b39',grn:'#2e8b57',pur:'#8e44ad',gry:'#95a5a6',red:'#c0392b',cy:'#00a9ab',yl:'#ffd300',nv:'#022050'};
+const TXT='font-family="Segoe UI,Arial,sans-serif" fill="#14213d"';
+function svgWrap(W,H,inner,title){return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${title||'grafik'}" xmlns="http://www.w3.org/2000/svg">${title?`<text x="${W/2}" y="24" text-anchor="middle" font-size="16" font-weight="700" ${TXT}>${title}</text>`:''}${inner}</svg>`}
+function axisY(l,t,W,r,H,b,ymin,ymax,step,ylab){let s='',h=H-t-b,k=h/(ymax-ymin);
+ for(let v=ymin;v<=ymax+1e-9;v+=step){const y=H-b-(v-ymin)*k;s+=`<line x1="${l}" x2="${W-r}" y1="${y}" y2="${y}" stroke="#e3e8ef"/><text x="${l-6}" y="${y+4}" text-anchor="end" font-size="11" ${TXT}>${v}</text>`}
+ s+=`<line x1="${l}" x2="${l}" y1="${t}" y2="${H-b}" stroke="#14213d"/><line x1="${l}" x2="${W-r}" y1="${H-b}" y2="${H-b}" stroke="#14213d"/>`;
+ if(ylab)s+=`<text transform="translate(14 ${t+h/2}) rotate(-90)" text-anchor="middle" font-size="11" ${TXT}>${ylab}</text>`;
+ return s}
+function bar({title,labels,vals,color=C.navy,ymax,step,ylab,W=560,H=330,vl}){const l=52,r=12,t=40,b=52,n=vals.length,w=(W-l-r)/n,k=(H-t-b)/ymax;
+ let s=axisY(l,t,W,r,H,b,0,ymax,step,ylab);
+ vals.forEach((v,i)=>{const x=l+i*w+w*.18,bw=w*.64,y=H-b-v*k;s+=`<rect x="${x}" y="${y}" width="${bw}" height="${v*k}" fill="${Array.isArray(color)?color[i]:color}" rx="2"/><text x="${x+bw/2}" y="${y-5}" text-anchor="middle" font-size="12" font-weight="700" ${TXT}>${vl?vl[i]:v}</text>`;
+  const parts=String(labels[i]).split('|');parts.forEach((p,j)=>s+=`<text x="${x+bw/2}" y="${H-b+16+j*13}" text-anchor="middle" font-size="11" ${TXT}>${p}</text>`)});
+ return svgWrap(W,H,s,title)}
+function line({title,labels,vals,ymin,ymax,step,ylab,W=560,H=330,color=C.red}){const l=52,r=20,t=40,b=40,n=vals.length,w=(W-l-r)/n,k=(H-t-b)/(ymax-ymin);
+ let s=axisY(l,t,W,r,H,b,ymin,ymax,step,ylab),pts=[];
+ vals.forEach((v,i)=>{const x=l+w*(i+.5),y=H-b-(v-ymin)*k;pts.push([x,y]);s+=`<line x1="${x}" x2="${x}" y1="${t}" y2="${H-b}" stroke="#eef1f6"/><text x="${x}" y="${H-b+16}" text-anchor="middle" font-size="11" ${TXT}>${labels[i]}</text>`});
+ s+=`<polyline fill="none" stroke="${color}" stroke-width="3" points="${pts.map(p=>p.join(',')).join(' ')}"/>`;
+ pts.forEach((p,i)=>s+=`<rect x="${p[0]-4.5}" y="${p[1]-4.5}" width="9" height="9" fill="${color}"/><text x="${p[0]}" y="${p[1]-10}" text-anchor="middle" font-size="12" font-weight="700" ${TXT}>${vals[i]}</text>`);
+ return svgWrap(W,H,s,title)}
+function pie({title,items,W=560,H=360}){const cx=W/2,cy=H/2+14,r=105;let a=-Math.PI/2,s='';const cols=[C.navy,C.org,C.grn,C.pur,C.gry,'#d4ac0d'];
+ items.forEach((it,i)=>{const da=it.p/100*2*Math.PI,a2=a+da,x1=cx+r*Math.cos(a),y1=cy+r*Math.sin(a),x2=cx+r*Math.cos(a2),y2=cy+r*Math.sin(a2);
+  s+=`<path d="M${cx} ${cy}L${x1} ${y1}A${r} ${r} 0 ${da>Math.PI?1:0} 1 ${x2} ${y2}Z" fill="${cols[i]}" stroke="#fff" stroke-width="3"/>`;
+  const m=a+da/2,lx=cx+(r+14)*Math.cos(m),ly=cy+(r+14)*Math.sin(m),an=Math.cos(m)>=0?'start':'end';
+  s+=`<text x="${lx}" y="${ly}" text-anchor="${an}" font-size="12.5" ${TXT}>${it.l} ${it.p}%</text>`+(it.d?`<text x="${lx}" y="${ly+14}" text-anchor="${an}" font-size="12" ${TXT}>(${it.d}°)</text>`:'');a=a2});
+ return svgWrap(W,H,s,title)}
+function hist({title,f,W=600,H=340,marks=[],lo=40.5,p=10,ymax=14,ylab='Frekuensi'}){const l=52,r=16,t=40,b=44,n=f.length,hi=lo+n*p,xs=v=>l+(v-lo)/(hi-lo)*(W-l-r),k=(H-t-b)/ymax;
+ let s=axisY(l,t,W,r,H,b,0,ymax,2,ylab);
+ f.forEach((v,i)=>{const x=xs(lo+i*p),w=xs(lo+(i+1)*p)-x;s+=`<rect x="${x}" y="${H-b-v*k}" width="${w}" height="${v*k}" fill="#4a90c2" stroke="#022050"/><text x="${x+w/2}" y="${H-b-v*k-5}" text-anchor="middle" font-size="12" font-weight="700" ${TXT}>${v}</text>`});
+ for(let i=0;i<=n;i++)s+=`<text x="${xs(lo+i*p)}" y="${H-b+15}" text-anchor="middle" font-size="10.5" ${TXT}>${+(lo+i*p).toFixed(1)}</text>`;
+ s+=`<text x="${W/2}" y="${H-6}" text-anchor="middle" font-size="11" ${TXT}>Nilai (tepi kelas)</text>`;
+ marks.forEach((m,i)=>{const x=xs(m.v);s+=`<line x1="${x}" x2="${x}" y1="${t}" y2="${H-b}" stroke="${m.c}" stroke-width="2.5" stroke-dasharray="6 4"/><text x="${x+(m.dx||4)}" y="${t+12+i*14}" font-size="11.5" font-weight="700" fill="${m.c}" font-family="Segoe UI,Arial">${m.t}</text>`});
+ return svgWrap(W,H,s,title)}
+function boxplot(){const W=600,H=230,l=30,r=30,xs=v=>l+v/16*(W-l-r),y=110;let s='';
+ for(let v=0;v<=16;v+=2)s+=`<line x1="${xs(v)}" x2="${xs(v)}" y1="${y+42}" y2="${y+48}" stroke="#14213d"/><text x="${xs(v)}" y="${y+62}" text-anchor="middle" font-size="11" ${TXT}>${v}</text>`;
+ s+=`<line x1="${l}" x2="${W-r}" y1="${y+45}" y2="${y+45}" stroke="#14213d"/>`;
+ [2,4,5,6,7,8,9,10,12,13,15].forEach(v=>s+=`<circle cx="${xs(v)}" cy="${y+22}" r="4.5" fill="#888"/>`);
+ s+=`<line x1="${xs(2)}" x2="${xs(5)}" y1="${y-14}" y2="${y-14}" stroke="#022050" stroke-width="2.5"/><line x1="${xs(12)}" x2="${xs(15)}" y1="${y-14}" y2="${y-14}" stroke="#022050" stroke-width="2.5"/>`;
+ s+=`<rect x="${xs(5)}" y="${y-34}" width="${xs(12)-xs(5)}" height="40" fill="#bfe9ea" stroke="#022050" stroke-width="2.5"/><line x1="${xs(8)}" x2="${xs(8)}" y1="${y-34}" y2="${y+6}" stroke="${C.red}" stroke-width="3.5"/>`;
+ [[2,'min = 2'],[5,'Q₁ = 5'],[8,'Q₂ = 8'],[12,'Q₃ = 12'],[15,'maks = 15']].forEach(([v,t],i)=>s+=`<text x="${xs(v)}" y="${y-48-(i%2?0:0)}" text-anchor="middle" font-size="12" font-weight="700" ${TXT}>${t}</text>`);
+ s+=`<text x="${xs(8.5)}" y="${y-72+14}" text-anchor="middle" font-size="12" fill="${C.red}" font-family="Segoe UI,Arial">IQR = 12 − 5 = 7</text>`;
+ return svgWrap(W,H,s,'Diagram kotak garis')}
+function coding(){const W=640,H=190,n=6,l=10,w=(W-2*l)/n,mid=[45.5,55.5,65.5,75.5,85.5,95.5],u=[-3,-2,-1,0,1,2],cl=['41–50','51–60','61–70','71–80','81–90','91–100'];let s='';
+ for(let i=0;i<n;i++){const x=l+i*w,hl=u[i]===0;s+=`<rect x="${x+3}" y="46" width="${w-6}" height="100" rx="8" fill="${hl?C.yl:'#eaf3ff'}" stroke="#022050" stroke-width="${hl?3:1.5}"/><text x="${x+w/2}" y="68" text-anchor="middle" font-size="12" ${TXT}>${cl[i]}</text><text x="${x+w/2}" y="92" text-anchor="middle" font-size="14" font-weight="700" ${TXT}>x = ${String(mid[i]).replace('.',',')}</text><text x="${x+w/2}" y="132" text-anchor="middle" font-size="22" font-weight="800" fill="${hl?'#022050':(u[i]<0?C.red:C.grn)}" font-family="Segoe UI,Arial">u = ${u[i]}</text>`}
+ s+=`<text x="${l+3*w+w/2}" y="164" text-anchor="middle" font-size="12" font-weight="700" ${TXT}>↑ x_s = 75,5 (kode 0)</text>`;
+ return svgWrap(W,H,s,'Kode u pada titik tengah kelas (p = 10)')}
+const CHARTS={
+ g1:()=>[bar({title:'Peminat Ekstrakurikuler SMA Harapan',labels:['Pramuka','Futsal','PMR','Paduan|Suara','Basket'],vals:[60,50,40,30,20],ymax:70,step:10,ylab:'Jumlah peminat (siswa)'})],
+ g2:()=>[line({title:'Penjualan Toko (juta rupiah)',labels:['Jan','Feb','Mar','Apr','Mei','Jun'],vals:[20,30,25,40,50,45],ymin:0,ymax:60,step:10,ylab:'Juta rupiah'})],
+ g3:()=>[pie({title:'Pengeluaran Bulanan Keluarga Budi (Rp6.000.000)',items:[{l:'Makan',p:40,d:144},{l:'Pendidikan',p:25,d:90},{l:'Transportasi',p:15,d:54},{l:'Tabungan',p:10,d:36},{l:'Lainnya',p:10,d:36}]})],
+ g4:()=>{const L=['41–50','51–60','61–70','71–80','81–90','91–100'];return [bar({title:'Frekuensi biasa (f)',labels:L,vals:[2,4,8,10,12,4],ymax:40,step:10,color:C.navy,W:480,H:300}),bar({title:'Frekuensi kumulatif (fk)',labels:L,vals:[2,6,14,24,36,40],ymax:40,step:10,color:C.org,W:480,H:300})]},
+ g5:()=>[boxplot()],
+ g6:()=>[hist({title:'Histogram nilai ulangan 40 siswa',f:[2,4,8,10,12,4],marks:[{v:75,c:'#16a34a',t:'mean 75',dx:-60},{v:76.5,c:'#7c3aed',t:'median 76,5',dx:-84},{v:82.5,c:'#dc2626',t:'modus 82,5'}]})],
+ g7:()=>[coding()],
+ s3:()=>[bar({title:'Penjualan Buku di Koperasi Sekolah',labels:['Senin','Selasa','Rabu','Kamis','Jumat'],vals:[12,18,15,25,20],ymax:30,step:5,color:C.grn,ylab:'Buku terjual'})],
+ s4:()=>[pie({title:'Cara Siswa ke Sekolah (200 siswa)',items:[{l:'Motor',p:35},{l:'Angkot',p:25},{l:'Jalan kaki',p:20},{l:'Sepeda',p:10},{l:'Antar jemput',p:10}]})],
+ s12:()=>[line({title:'Pengunjung Perpustakaan Sekolah',labels:['Jan','Feb','Mar','Apr','Mei','Jun'],vals:[200,260,240,300,380,340],ymin:150,ymax:400,step:50,ylab:'Pengunjung'})],
+ sh:()=>[hist({title:'Nilai Ujian 40 Siswa',f:[2,2,8,10,12,6]})]
+};
+const CAP={g1:'Gambar 1. Diagram batang peminat ekstrakurikuler',g2:'Gambar 2. Diagram garis penjualan toko (juta rupiah)',g3:'Gambar 3. Diagram lingkaran pengeluaran keluarga',g4:'Gambar 4. Data yang sama: frekuensi biasa (kiri) dan frekuensi kumulatif (kanan)',g5:'Gambar 5. Kuartil dan diagram kotak garis untuk data 2, 4, 5, 6, 7, 8, 9, 10, 12, 13, 15',g6:'Gambar 6. Histogram nilai ulangan 40 siswa beserta mean, median, dan modus',g7:'Gambar 7. Kode u pada titik tengah kelas (x_s = 75,5 dan p = 10)'};
+function figHTML(k,cap){const arr=CHARTS[k]();return `<div class="row">${arr.join('')}</div>`+(cap?`<figcaption>${cap}</figcaption>`:'')}
+document.querySelectorAll('figure[data-chart]').forEach(f=>{const k=f.dataset.chart;f.innerHTML=figHTML(k,CAP[k])});
+/* ===== Data soal ===== */
+const r=String.raw;
+const LV={1:'LEVEL 1 — Pengetahuan dan Pemahaman',2:'LEVEL 2 — Aplikasi',3:'LEVEL 3 — Penalaran'};
+const T=(h,rows)=>r`<div class="scroll"><table><tr>${h.map((x,i)=>i?`<th>${x}</th>`:`<th class="l">${x}</th>`).join('')}</tr>${rows.map(x=>'<tr>'+x.map((c,i)=>i?`<td>${c}</td>`:`<td class="l"><b>${c}</b></td>`).join('')+'</tr>').join('')}</table></div>`;
+const SOAL=[
+{n:1,lv:1,tag:'Menghitung – Mean data tunggal',t:'pg',q:r`Rata-rata dari data 5, 7, 8, 6, 9, 7, 10, 8 adalah ....`,o:['6,5','7','7,25','7,5','8'],a:3,
+ cepat:r`Pilih \(x_s=7\). Selisih \(d\): −2, 0, 1, −1, 2, 0, 3, 1 → \(\Sigma d=4\). \[ \bar{x}=7+\dfrac{4}{8}=\mathbf{7{,}5} \]`,
+ steps:[r`Tulis rumus mean: \[ \bar{x}=\dfrac{\Sigma x}{n} \]`,r`Jumlahkan semua data: \(\Sigma x=5+7+8+6+9+7+10+8=60\).`,r`Hitung banyak data: \(n=8\).`,r`Bagi: \[ \bar{x}=\dfrac{60}{8}=\mathbf{7{,}5} \] Jawaban: <b>D</b>.`]},
+{n:2,lv:1,tag:'Menghitung – Median data tunggal',t:'pg',q:r`Median dari data 12, 7, 9, 15, 8, 10, 11 adalah ....`,o:['8','9','10','11','12'],a:2,
+ cepat:r`Urutkan, lalu ambil data paling tengah: 7, 8, 9, <b>10</b>, 11, 12, 15 → <b>10</b>. (7 data → tengahnya data ke-4.)`,
+ steps:[r`<b>Urutkan</b> dari kecil ke besar: 7, 8, 9, 10, 11, 12, 15.`,r`Hitung \(n=7\) (ganjil).`,r`Posisi median: \[ \dfrac{n+1}{2}=\dfrac{7+1}{2}=4 \] yaitu data ke-4.`,r`Data ke-4 adalah <b>10</b>. Jawaban: <b>C</b>. Jebakan: tidak mengurutkan dulu.`]},
+{n:3,lv:1,tag:'Memahami informasi – Diagram batang',t:'pg',fig:'s3',q:r`Perhatikan diagram batang penjualan buku. Selisih penjualan tertinggi dan terendah adalah ... buku.`,o:['8','10','12','13','15'],a:3,
+ cepat:r`Batang tertinggi 25 (Kamis), terendah 12 (Senin): \(25-12=\mathbf{13}\).`,
+ steps:[r`Baca tinggi tiap batang: Senin 12, Selasa 18, Rabu 15, Kamis 25, Jumat 20.`,r`Tertinggi = 25 (Kamis). Terendah = 12 (Senin).`,r`Selisih: \(25-12=\mathbf{13}\). Jawaban: <b>D</b>.`]},
+{n:4,lv:1,tag:'Memahami informasi – Diagram lingkaran',t:'pg',fig:'s4',q:r`Dari diagram lingkaran, banyak siswa yang ke sekolah naik motor atau sepeda adalah ... siswa.`,o:['70','80','90','100','110'],a:2,
+ cepat:r`Motor + sepeda \(=35\%+10\%=45\%\). \(45\%\times200=\mathbf{90}\).`,
+ steps:[r`Baca persen: motor 35%, sepeda 10%.`,r`Jumlahkan: \(35\%+10\%=45\%\).`,r`Total siswa 200. Ubah persen ke banyak siswa: \[ \dfrac{45}{100}\times 200=\mathbf{90} \] Jawaban: <b>C</b>.`]},
+{n:5,lv:1,tag:'Memahami informasi – Frekuensi kumulatif',t:'pg',q:r`Tabel berikut menunjukkan <b>frekuensi kumulatif</b> (banyak siswa yang nilainya sampai batas tertentu) dari nilai ulangan 40 siswa. Banyak siswa yang bernilai 61–70 adalah ... siswa.`+T(['Nilai','≤ 50','≤ 60','≤ 70','≤ 80','≤ 90'],[['Frekuensi kumulatif',4,10,22,34,40]]),o:['10','12','16','22','34'],a:1,
+ cepat:r`Kelas 61–70 = <i>fk</i>(≤70) − <i>fk</i>(≤60) \(=22-10=\mathbf{12}\).`,
+ steps:[r`Angka di tabel adalah <b>kumulatif</b> (dari awal), bukan banyak siswa di satu kelas.`,r`\(fk(\le 70)=22\) berarti 22 siswa bernilai 70 ke bawah.`,r`\(fk(\le 60)=10\) berarti 10 siswa bernilai 60 ke bawah.`,r`Siswa bernilai 61–70 \(=22-10=\mathbf{12}\). Jawaban: <b>B</b>. (Pengecoh 22 muncul jika kumulatif dibaca sebagai biasa.)`]},
+{n:6,lv:1,tag:'Mengelompokkan – Jenis ukuran (pilih lebih dari satu jawaban)',t:'multi',q:r`Pilihlah <b>semua</b> yang termasuk <b>ukuran pemusatan data</b>.`,o:['Median','Jangkauan','Modus','Simpangan baku','Rata-rata (mean)'],a:[0,2,4],
+ cepat:r`Pemusatan = “di mana pusat data”: <b>mean, median, modus</b>. Penyebaran = “seberapa menyebar”: jangkauan, kuartil, ragam, simpangan baku.`,
+ steps:[r`Ukuran pemusatan menjawab: “data ini rata-rata sekitar angka berapa?”`,r`Yang termasuk: <b>Median (A)</b>, <b>Modus (C)</b>, <b>Rata-rata (E)</b>.`,r`Jangkauan (B) dan simpangan baku (D) mengukur <b>penyebaran</b>, bukan pemusatan.`]},
+{n:7,lv:1,tag:'Mengidentifikasi – Memilih diagram',t:'pg',q:r`Diagram yang paling tepat untuk menunjukkan <b>perubahan</b> suhu suatu kota setiap jam selama satu hari adalah ....`,o:['Diagram garis','Diagram lingkaran','Diagram batang tunggal','Diagram kotak garis','Tabel tanpa diagram'],a:0,
+ cepat:r`Kata kunci “<b>perubahan</b> dari waktu ke waktu” → <b>diagram garis</b>.`,
+ steps:[r`Cari kata kunci: “perubahan setiap jam” = data berubah menurut waktu.`,r`Diagram garis paling jelas menunjukkan naik-turun dari waktu ke waktu.`,r`Lingkaran untuk bagian dari keseluruhan; batang untuk membandingkan kategori. Jawaban: <b>A</b>.`]},
+{n:8,lv:1,tag:'Mengidentifikasi – Modus tabel',t:'pg',q:r`Perhatikan tabel nilai 30 siswa berikut. Modus data pada tabel adalah ....`+T(['Nilai',5,6,7,8,9],[['Frekuensi',3,7,9,6,5]]),o:['6','7','8','9','5'],a:1,
+ cepat:r`Cari frekuensi terbesar (9) lalu lihat <b>nilainya</b>: <b>7</b>.`,
+ steps:[r`Modus = nilai yang paling sering muncul.`,r`Frekuensi terbesar adalah 9.`,r`Frekuensi 9 itu berada pada nilai <b>7</b>. Jadi modus = 7 (bukan 9). Jawaban: <b>B</b>.`]},
+{n:9,lv:1,tag:'Menghitung – Kuartil data tunggal',t:'pg',q:r`Kuartil bawah (\(Q_1\)) dari data 2, 4, 5, 7, 8, 9, 10, 12 adalah ....`,o:['3,5','4','4,5','5','5,5'],a:2,
+ cepat:r`\(Q_1\) = median separuh bawah: 2, 4, 5, 7 → \(\dfrac{4+5}{2}=\mathbf{4{,}5}\).`,
+ steps:[r`Data sudah terurut, \(n=8\).`,r`Bagi dua: separuh bawah <b>2, 4, 5, 7</b> dan separuh atas 8, 9, 10, 12.`,r`\(Q_1\) = median separuh bawah (4 data → rata-rata dua tengah): \[ Q_1=\dfrac{4+5}{2}=\mathbf{4{,}5} \] Jawaban: <b>C</b>.`]},
+{n:10,lv:2,tag:'Memodelkan – Mean dan model cerita',t:'pg',q:r`Empat nilai ulangan Dina memiliki rata-rata 78. Agar rata-rata lima ulangannya menjadi 80, nilai ulangan kelima yang harus diperoleh Dina adalah ....`,o:['82','84','86','88','90'],a:3,
+ cepat:r`Setiap nilai lama harus “naik” 2 menuju 80: \(4\times2=8\). Nilai kelima \(=80+8=\mathbf{88}\).`,
+ steps:[r`Ubah rata-rata menjadi jumlah. Jumlah 4 nilai \(=4\times78=312\).`,r`Jumlah 5 nilai yang diinginkan \(=5\times80=400\).`,r`Nilai kelima \(=400-312=\mathbf{88}\). Jawaban: <b>D</b>.`]},
+{n:11,lv:2,tag:'Menerapkan – Mean gabungan',t:'pg',q:r`Kelas XII-A terdiri atas 25 siswa dengan rata-rata nilai 72, dan kelas XII-B terdiri atas 15 siswa dengan rata-rata 80. Rata-rata nilai gabungan kedua kelas adalah ....`,o:['74','75','76','76,5','77'],a:1,
+ cepat:r`Mulai dari 72, naik sebesar selisih (8) dikali bagian kelas B: \[ 72+8\times\dfrac{15}{40}=72+3=\mathbf{75} \]`,
+ steps:[r`Rumus: \[ \bar{x}_{\text{gab}}=\dfrac{n_1\bar{x}_1+n_2\bar{x}_2}{n_1+n_2} \]`,r`Jumlah nilai A \(=25\times72=1.800\); jumlah nilai B \(=15\times80=1.200\).`,r`Jumlah gabungan \(=3.000\); banyak siswa \(=25+15=40\).`,r`\[ \bar{x}_{\text{gab}}=\dfrac{3.000}{40}=\mathbf{75} \] Jawaban: <b>B</b>. Jebakan: \(\dfrac{72+80}{2}=76\) (salah, banyak siswa beda).`]},
+{n:12,lv:2,tag:'Menginterpretasikan – Diagram garis',t:'pg',fig:'s12',q:r`Berdasarkan diagram garis, kenaikan jumlah pengunjung terbesar dibandingkan bulan sebelumnya terjadi pada bulan ....`,o:['Februari','Maret','April','Mei','Juni'],a:3,
+ cepat:r`Hitung selisih tiap bulan: Feb +60, Apr +60, <b>Mei +80</b>. Terbesar = <b>Mei</b>.`,
+ steps:[r`Baca data: Jan 200, Feb 260, Mar 240, Apr 300, Mei 380, Jun 340.`,r`Hitung selisih dengan bulan sebelumnya: Feb \(260-200=+60\); Mar \(240-260=-20\); Apr \(300-240=+60\); Mei \(380-300=+80\); Jun \(340-380=-40\).`,r`Kenaikan terbesar \(+80\) terjadi pada <b>Mei</b>. Jawaban: <b>D</b>. (Februari dan April +60 adalah pengecoh.)`]},
+{n:13,lv:2,tag:'Menerapkan – Mean dari tabel',t:'pg',q:r`Tabel nilai 20 siswa berikut. Rata-rata nilai pada tabel adalah ....`+T(['Nilai',6,7,8,9,10],[['Frekuensi',3,5,7,3,2]]),o:['7,6','7,7','7,8','7,9','8,0'],a:2,
+ cepat:r`Pilih \(x_s=8\): \(d=-2,-1,0,1,2\); \(f\cdot d=-6,-5,0,3,4\) → \(\Sigma=-4\). \[ \bar{x}=8+\dfrac{-4}{20}=\mathbf{7{,}8} \]`,
+ steps:[r`Rumus: \[ \bar{x}=\dfrac{\Sigma(f\cdot x)}{\Sigma f} \]`,r`Hitung \(f\cdot x\): \(18,\ 35,\ 56,\ 27,\ 20\).`,r`Jumlahkan: \(\Sigma(f\cdot x)=156\); \(\Sigma f=20\).`,r`\[ \bar{x}=\dfrac{156}{20}=\mathbf{7{,}8} \] Jawaban: <b>C</b>.`]},
+{n:14,lv:2,tag:'Menginterpretasikan – Sudut diagram lingkaran',t:'pg',q:r`Pada diagram lingkaran pengeluaran bulanan suatu keluarga, sektor untuk pendidikan membentuk sudut \(90^\circ\). Jika total pengeluaran Rp8.000.000, pengeluaran pendidikan adalah ....`,o:['Rp1.500.000','Rp2.000.000','Rp2.400.000','Rp2.500.000','Rp3.000.000'],a:1,
+ cepat:r`\(90^\circ\) = seperempat bagian. \(8.000.000\div4=\mathbf{2.000.000}\).`,
+ steps:[r`Rumus: \[ \text{bagian}=\dfrac{\text{sudut}}{360^\circ}\times\text{total} \]`,r`Hitung perbandingan sudut: \(\dfrac{90^\circ}{360^\circ}=\dfrac14\).`,r`\[ \dfrac14\times 8.000.000=\mathbf{Rp2.000.000} \] Jawaban: <b>B</b>.`]},
+{n:15,lv:2,tag:'Menerapkan – Simpangan baku',t:'pg',q:r`Simpangan baku dari data 2, 4, 4, 4, 5, 5, 7, 9 adalah ....`,o:['1','1,5','2','3','4'],a:2,
+ cepat:r`Mean 5. Selisih: −3, −1, −1, −1, 0, 0, 2, 4. Kuadrat dijumlah \(=32\). \(\sqrt{32\div8}=\sqrt4=\mathbf{2}\).`,
+ steps:[r`Mean: \(\bar{x}=\dfrac{40}{8}=5\).`,r`Selisih terhadap mean \((x-\bar{x})\): \(-3,-1,-1,-1,0,0,2,4\).`,r`Kuadratkan: \(9,1,1,1,0,0,4,16\). Jumlah \(=32\).`,r`Ragam \(=\dfrac{32}{8}=4\).`,r`Simpangan baku \(=\sqrt{4}=\mathbf{2}\). Jawaban: <b>C</b>. (Pengecoh: 4 adalah ragam.)`]},
+{n:16,lv:2,tag:'Menerapkan – Modus data kelompok',t:'pg',fig:'sh',q:r`Histogram menunjukkan nilai ujian 40 siswa. Modus data tersebut adalah ....`,o:['81,5','82','82,5','83','83,5'],a:3,
+ cepat:r`Kelas modus 81–90 (<i>f</i> = 12 tertinggi). \(d_1=2,\ d_2=6\). \[ 80{,}5+\dfrac{2}{8}\times10=\mathbf{83} \]`,
+ steps:[r`Baca frekuensi dari histogram: 2, 2, 8, 10, 12, 6. Kelas modus = batang tertinggi = <b>81–90</b> (\(f=12\)).`,r`Tentukan: \(tb=80{,}5\); \(p=10\); \(d_1=12-10=2\); \(d_2=12-6=6\).`,r`Rumus: \[ \text{Modus}=tb+\dfrac{d_1}{d_1+d_2}\times p \]`,r`\[ 80{,}5+\dfrac{2}{2+6}\times10=80{,}5+2{,}5=\mathbf{83} \] Jawaban: <b>D</b>. Cek: 83 berada di dalam kelas 80,5–90,5 ✓.`]},
+{n:17,lv:2,tag:'Menerapkan – Median data kelompok',t:'pg',fig:'sh',q:r`Histogram berikut menunjukkan nilai ujian 40 siswa. Median data tersebut adalah ....`,o:['76,5','77,5','78','78,5','79,5'],a:3,
+ cepat:r`\(\tfrac12n=20\); <i>fk</i>: 2, 4, 12, <b>22</b> → kelas 71–80, \(F=12\). \[ 70{,}5+\dfrac{20-12}{10}\times10=\mathbf{78{,}5} \]`,
+ steps:[r`Frekuensi: 2, 2, 8, 10, 12, 6. Buat <i>fk</i>: 2, 4, 12, 22, 34, 40.`,r`Setengah data: \(\tfrac12 n=20\). Kelas median = kelas pertama dengan <i>fk</i> ≥ 20, yaitu <b>71–80</b> (<i>fk</i> = 22).`,r`Tentukan: \(tb=70{,}5\); \(F=12\) (fk <b>sebelum</b> kelas median); \(f=10\); \(p=10\).`,r`\[ \text{Median}=70{,}5+\dfrac{20-12}{10}\times10=70{,}5+8=\mathbf{78{,}5} \] Jawaban: <b>D</b>.`]},
+{n:18,lv:2,tag:'Menerapkan – Cara Cepat mean tabel',t:'pg',q:r`Tabel nilai 20 siswa berikut. Dengan rata-rata sementara 50, rata-rata nilai siswa adalah ....`+T(['Nilai',40,45,50,55,60],[['Frekuensi',2,5,8,3,2]]),o:['48,5','49','49,5','50','50,5'],a:2,
+ cepat:r`\(\Sigma(f\cdot d)=-10\) → \(50+\dfrac{-10}{20}=\mathbf{49{,}5}\).`,
+ steps:[r`Rumus Cara Cepat: \[ \bar{x}=x_s+\dfrac{\Sigma(f\cdot d)}{\Sigma f},\quad d=x-50 \]`,r`Hitung \(d\): \(-10,-5,0,5,10\).`,r`Hitung \(f\cdot d\): \(-20,-25,0,15,20\). Jumlah \(\Sigma(f\cdot d)=-10\).`,r`\[ \bar{x}=50+\dfrac{-10}{20}=50-0{,}5=\mathbf{49{,}5} \] Jawaban: <b>C</b>. Cek biasa: \(\dfrac{990}{20}=49{,}5\).`]},
+{n:19,lv:2,tag:'Menerapkan – Cara Cepat mean kelompok',t:'pg',q:r`Tabel distribusi frekuensi nilai 30 siswa berikut. Rata-rata data tersebut adalah ....`+T(['Nilai','41–50','51–60','61–70','71–80','81–90'],[['Frekuensi',2,6,10,8,4]]),o:['65,5','66,5','67','67,5','68,5'],a:3,
+ cepat:r`\(x_s=65{,}5\), \(u=-2,-1,0,1,2\); \(\Sigma(f\cdot u)=6\). \[ 65{,}5+10\times\dfrac{6}{30}=\mathbf{67{,}5} \]`,
+ steps:[r`Titik tengah: 45,5; 55,5; 65,5; 75,5; 85,5.`,r`Pilih kelas tengah (61–70) sebagai \(x_s=65{,}5\) dengan kode \(u=0\). Maka \(u=-2,-1,0,1,2\).`,r`\(f\cdot u=-4,-6,0,8,8\). Jumlah \(\Sigma(f\cdot u)=6\); \(\Sigma f=30\).`,r`\[ \bar{x}=65{,}5+10\times\dfrac{6}{30}=65{,}5+2=\mathbf{67{,}5} \] Jawaban: <b>D</b>.`]},
+{n:20,lv:2,tag:'Menginterpretasikan – Pengaruh pencilan',t:'pg',q:r`Pendapatan bulanan 6 pekerja (dalam juta rupiah): 4, 5, 5, 6, 6, 34. Pernyataan yang paling tepat tentang ukuran yang menggambarkan pendapatan <b>umumnya</b> adalah ....`,
+ o:['Rata-rata (10 juta) paling tepat karena memakai semua data','Median (5,5 juta) paling tepat karena tidak banyak terpengaruh nilai 34','Modus (5 juta) paling tepat karena nilainya paling kecil','Jangkauan (30 juta) paling tepat karena menunjukkan seluruh data','Rata-rata dan median sama sehingga keduanya tepat'],a:1,
+ cepat:r`Ada <b>pencilan</b> (34) → pakai <b>median</b>. Mean tertarik ke atas.`,
+ steps:[r`Cari pencilan: nilai 34 jauh dari lainnya (4–6).`,r`Mean \(=\dfrac{60}{6}=10\), tertarik oleh 34 (tidak mewakili).`,r`Median \(=\dfrac{5+6}{2}=5{,}5\), hampir tidak terpengaruh.`,r`Modus ada dua (5 dan 6); jangkauan adalah ukuran penyebaran. Jadi yang paling tepat: <b>median</b>. Jawaban: <b>B</b>.`]},
+{n:21,lv:3,tag:'Menganalisis – Mean dan perubahan data',t:'pg',q:r`Rata-rata 10 bilangan adalah 14. Jika bilangan 8 dan 12 dikeluarkan dari kelompok itu, rata-rata delapan bilangan sisanya adalah ....`,o:['14','14,5','15','15,5','16'],a:2,
+ cepat:r`Yang dibuang lebih kecil dari mean: “kelebihan” \((14-8)+(14-12)=8\), dibagi ke 8 bilangan → \(14+\dfrac88=\mathbf{15}\).`,
+ steps:[r`Jumlah awal \(=10\times14=140\).`,r`Setelah 8 dan 12 dikeluarkan: \(140-(8+12)=120\).`,r`Banyak bilangan sisa \(=8\).`,r`\[ \bar{x}=\dfrac{120}{8}=\mathbf{15} \] Jawaban: <b>C</b>.`]},
+{n:22,lv:3,tag:'Memecahkan masalah – Transformasi data',t:'pg',q:r`Sekelompok data memiliki rata-rata 10 dan simpangan baku 3. Setiap data dikalikan 2, kemudian ditambah 5. Rata-rata dan simpangan baku data yang baru berturut-turut adalah ....`,o:['20 dan 6','25 dan 6','25 dan 11','25 dan 9','30 dan 6'],a:1,
+ cepat:r`Mean ikut rumus (×2, +5) → \(2\times10+5=25\). Simpangan baku hanya ×2 → \(2\times3=6\).`,
+ steps:[r`Mean mengikuti <b>semua</b> operasi: \[ \bar{x}_{\text{baru}}=2\times10+5=\mathbf{25} \]`,r`Simpangan baku (sebaran): perkalian 2 melebarkan sebaran, penambahan 5 hanya menggeser.`,r`\[ s_{\text{baru}}=2\times3=\mathbf{6} \] Jawaban: <b>B</b>.`]},
+{n:23,lv:3,tag:'Mengevaluasi – Membandingkan sebaran (benar–salah)',t:'tf',q:r`Nilai ulangan Kelas A: rata-rata 75, simpangan baku 5. Kelas B: rata-rata 75, simpangan baku 12. Tentukan <b>Benar atau Salah</b> tiap pernyataan.`,
+ o:['Karena rata-ratanya sama, sebaran nilai kedua kelas sama.','Nilai siswa Kelas A cenderung lebih seragam daripada Kelas B.','Pasti ada siswa Kelas B yang nilainya lebih tinggi daripada nilai tertinggi Kelas A.',r`Ragam nilai Kelas B adalah 144.`],a:[false,true,false,true],
+ cepat:r`Sebaran dilihat dari <b>simpangan baku</b> (kecil = seragam). Ragam \(=s^2\): \(12^2=144\).`,
+ steps:[r`<b>(1) Salah.</b> Sebaran dilihat dari simpangan baku, bukan rata-rata. \(5\neq12\).`,r`<b>(2) Benar.</b> Simpangan baku A (5) lebih kecil, jadi nilainya lebih seragam.`,r`<b>(3) Salah.</b> Sebaran besar tidak menjamin ada nilai yang melebihi maksimum kelas A.`,r`<b>(4) Benar.</b> Ragam \(=s^2=12^2=144\).`]},
+{n:24,lv:3,tag:'Menyimpulkan – Distribusi frekuensi',t:'pg',fig:'sh',q:r`Berdasarkan histogram nilai ujian 40 siswa berikut, kesimpulan yang <b>benar</b> adalah ....`,
+ o:['Modus data berada pada kelas 71–80','Persentase siswa bernilai 60 ke bawah adalah 15%','Siswa bernilai 41–60 lebih banyak daripada siswa bernilai 91–100','Lebih dari 40% siswa mendapat nilai 81 ke atas','Median data berada pada kelas 81–90'],a:3,
+ cepat:r`Frekuensi: 2, 2, 8, 10, 12, 6. Nilai 81 ke atas: \(12+6=18\) → \(\dfrac{18}{40}=45\%>40\%\) ✓ (D).`,
+ steps:[r`Baca histogram: \(f=2,2,8,10,12,6\); <i>fk</i> = 2, 4, 12, 22, 34, 40.`,r`(A) Salah: batang tertinggi (12) ada di kelas 81–90.`,r`(B) Salah: nilai 60 ke bawah \(=2+2=4\); \(\dfrac{4}{40}=10\%\).`,r`(C) Salah: 41–60 ada 4 siswa, 91–100 ada 6 siswa.`,r`(D) <b>Benar</b>: \(12+6=18\); \(\dfrac{18}{40}\times100\%=45\%\), lebih dari 40%.`,r`(E) Salah: \(\tfrac12n=20\), <i>fk</i> pertama ≥ 20 adalah 22 → kelas 71–80. Jawaban: <b>D</b>.`]},
+{n:25,lv:3,tag:'Melakukan generalisasi – Sifat jika data diubah (pilih lebih dari satu jawaban)',t:'multi',q:r`Setiap data pada suatu kelompok data ditambah 4. Pilihlah <b>semua</b> pernyataan yang benar.`,o:['Rata-rata bertambah 4','Median bertambah 4','Jangkauan bertambah 4','Simpangan baku tidak berubah','Ragam bertambah 4'],a:[0,1,3],
+ cepat:r`<b>Ditambah</b> \(k\): ukuran <b>pusat</b> (mean, median, modus) ikut bertambah; ukuran <b>sebaran</b> (jangkauan, simpangan baku, ragam) <b>tetap</b>.`,
+ steps:[r`Menambah 4 ke semua data = menggeser seluruh data sejauh 4.`,r`Pusat data ikut bergeser: mean dan median <b>bertambah 4</b> (A, B benar).`,r`Jarak antar data tidak berubah, sehingga jangkauan, simpangan baku, dan ragam <b>tetap</b>. Jadi (C) salah, (D) benar, (E) salah.`,r`Jawaban: <b>A, B, D</b>.`]},
+{n:26,lv:3,tag:'Menjustifikasi – Contoh penyangkal',t:'pg',q:r`Andi menyatakan: “Rata-rata nilai 5 siswa adalah 80, sehingga tidak mungkin ada siswa yang nilainya di bawah 70.” Alasan yang tepat untuk menilai pernyataan Andi adalah ....`,
+ o:['Benar, karena rata-rata 80 berarti semua nilai mendekati 80','Salah, karena nilai 60, 85, 85, 85, 85 memiliki rata-rata 80 tetapi ada nilai di bawah 70','Benar, karena jumlah kelima nilai adalah 400','Salah, karena rata-rata harus sama dengan median','Benar, karena median pasti 80 jika rata-rata 80'],a:1,
+ cepat:r`Cari satu <b>contoh penyangkal</b>: \(60+85\times4=400\) → mean 80, tapi ada nilai 60. Pernyataan <b>salah</b>.`,
+ steps:[r`Untuk membuktikan pernyataan “tidak mungkin” salah, cukup satu contoh yang cocok.`,r`Coba nilai 60, 85, 85, 85, 85. Jumlah \(=60+340=400\).`,r`Mean \(=\dfrac{400}{5}=80\), tetapi ada nilai 60 (di bawah 70). Jadi pernyataan Andi <b>salah</b>.`,r`Rata-rata hanya menjaga <b>jumlah</b>, bukan batas bawah tiap nilai. Alasan (D) keliru: mean tidak harus sama dengan median. Jawaban: <b>B</b>.`]},
+{n:27,lv:3,tag:'Memecahkan masalah – Mencari data dari ciri-cirinya',t:'pg',q:r`Lima bilangan bulat terurut \(a\le b\le c\le d\le e\) memiliki rata-rata 6, median 7, modus 8 (satu-satunya modus), dan jangkauan 6. Nilai \(b\) adalah ....`,o:['3','4','5','6','7'],a:2,
+ cepat:r`\(c=7\); \(d=e=8\); \(a=8-6=2\). \(b=30-2-7-8-8=\mathbf{5}\).`,
+ steps:[r`Median data ke-3: \(c=7\).`,r`Modus 8 satu-satunya, jadi 8 muncul paling sedikit 2 kali. Karena \(a,b\le7\), maka \(d=e=8\).`,r`Jangkauan \(=e-a=6\) → \(a=8-6=2\).`,r`Jumlah 5 bilangan \(=5\times6=30\). Maka \[ b=30-2-7-8-8=\mathbf{5} \]`,r`Cek: 2, 5, 7, 8, 8 → mean 6, median 7, modus 8, jangkauan 6 ✓. Jawaban: <b>C</b>.`]},
+{n:28,lv:3,tag:'Mengevaluasi – Frekuensi kumulatif vs biasa (benar–salah)',t:'tf',q:r`Tabel berikut menunjukkan frekuensi <b>kumulatif</b> nilai ulangan 40 siswa. Tentukan <b>Benar atau Salah</b> tiap pernyataan.`+T(['Nilai','≤ 50','≤ 60','≤ 70','≤ 80','≤ 90'],[['Frekuensi kumulatif',4,10,22,34,40]]),
+ o:['Banyak siswa yang bernilai 60 ke bawah adalah 10.','Banyak siswa yang bernilai 71–80 adalah 34.','Banyak siswa yang bernilai lebih dari 70 adalah 18.','Banyak siswa yang bernilai 51–60 adalah 10.'],a:[true,false,true,false],
+ cepat:r`Kumulatif = “dari awal sampai batas”. Satu kelas: <b>kurangkan</b> dengan fk sebelumnya. “Lebih dari”: \(40-fk\).`,
+ steps:[r`<b>(1) Benar.</b> \(fk(\le60)=10\) memang banyak siswa bernilai 60 ke bawah.`,r`<b>(2) Salah.</b> 34 adalah kumulatif. Siswa 71–80 \(=34-22=12\).`,r`<b>(3) Benar.</b> Lebih dari 70 \(=40-22=18\).`,r`<b>(4) Salah.</b> Siswa 51–60 \(=10-4=6\); angka 10 adalah kumulatif.`]},
+{n:29,lv:3,tag:'Memecahkan masalah – Transformasi kode (coding)',t:'pg',q:r`Nilai \(x\) dikodekan menjadi \(u=\dfrac{x-60}{5}\). Data \(u\) memiliki rata-rata 2 dan simpangan baku 1,5. Rata-rata dan simpangan baku data \(x\) berturut-turut adalah ....`,o:['62 dan 1,5','62 dan 7,5','70 dan 1,5','70 dan 7,5','75 dan 7,5'],a:3,
+ cepat:r`Balik kode: \(x=5u+60\). Mean \(=5\times2+60=70\). Simpangan baku \(=5\times1{,}5=7{,}5\) (tambah 60 tidak berpengaruh).`,
+ steps:[r`Balik rumus kode: dari \(u=\dfrac{x-60}{5}\) diperoleh \(x=5u+60\).`,r`Mean: \(\bar{x}=5\times2+60=\mathbf{70}\).`,r`Simpangan baku: dikali 5 saja (penambahan 60 tidak mengubah sebaran): \(s_x=5\times1{,}5=\mathbf{7{,}5}\).`,r`Jawaban: <b>D</b>.`]}
+];
+/* ===== Mesin latihan, zoom, navigasi ===== */
+const MATH={delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false};
+function rm(el){if(window.renderMathInElement)renderMathInElement(el,MATH)}
+const L='ABCDE',st={};
+function soalHTML(s){
+ let h=`<div class="soal" id="q${s.n}"><div><span class="no">${s.n}</span><span class="meta" style="display:inline">[${s.tag}]</span></div><p>${s.q}</p>`;
+ if(s.fig)h+=`<figure class="fig">${figHTML(s.fig)}</figure>`;
+ if(s.t==='tf'){
+  h+=`<div class="scroll"><table class="bs"><tr><th class="l">Pernyataan</th><th>Benar</th><th>Salah</th></tr>`+s.o.map((o,i)=>`<tr><td class="l">${i+1}. ${o}</td><td class="c"><input type="radio" name="q${s.n}_${i}" value="1" aria-label="Benar"></td><td class="c"><input type="radio" name="q${s.n}_${i}" value="0" aria-label="Salah"></td></tr>`).join('')+`</table></div>`;
+ }else{
+  const ty=s.t==='multi'?'checkbox':'radio';
+  h+=s.o.map((o,i)=>`<label class="opt" data-i="${i}"><input type="${ty}" name="q${s.n}" value="${i}"><span><b>${L[i]}.</b> ${o}</span></label>`).join('');
+ }
+ h+=`<div class="sub"><button class="btn chk">✔ Periksa Jawaban</button><button class="btn rst" style="background:#e5e7eb">↺ Ulangi</button></div><div class="hasil"></div></div>`;
+ return h}
+function build(){
+ let out='',last=0;
+ SOAL.forEach(s=>{if(s.lv!==last){out+=`<div class="lv"><b>${LV[s.lv]}</b></div>`;last=s.lv}out+=soalHTML(s)});
+ document.getElementById('soalBox').innerHTML=out;
+ SOAL.forEach(s=>{const el=document.getElementById('q'+s.n);
+  el.querySelector('.chk').onclick=()=>cek(s,el);el.querySelector('.rst').onclick=()=>reset(s,el)})}
+function reset(s,el){st[s.n]=0;el.classList.remove('done');el.querySelectorAll('input').forEach(i=>{i.checked=false;i.disabled=false});
+ el.querySelectorAll('.opt').forEach(o=>o.classList.remove('ok','bad','miss'));el.querySelectorAll('td.c').forEach(c=>c.classList.remove('ok','bad'));
+ el.querySelector('.hasil').innerHTML='';skor()}
+function cek(s,el){
+ let benar=false,ada=false;
+ if(s.t==='pg'){const c=el.querySelector('input:checked');if(c){ada=true;const v=+c.value;benar=v===s.a;
+   el.querySelectorAll('.opt').forEach(o=>{const i=+o.dataset.i;if(i===s.a)o.classList.add(v===s.a?'ok':'miss');if(i===v&&v!==s.a)o.classList.add('bad')})}}
+ else if(s.t==='multi'){const sel=[...el.querySelectorAll('input:checked')].map(i=>+i.value);if(sel.length){ada=true;benar=sel.length===s.a.length&&s.a.every(x=>sel.includes(x));
+   el.querySelectorAll('.opt').forEach(o=>{const i=+o.dataset.i,pk=sel.includes(i),bn=s.a.includes(i);if(pk&&bn)o.classList.add('ok');else if(pk&&!bn)o.classList.add('bad');else if(!pk&&bn)o.classList.add('miss')})}}
+ else{const ans=s.o.map((_,i)=>{const c=el.querySelector(`input[name="q${s.n}_${i}"]:checked`);return c?c.value==='1':null});
+  if(ans.every(x=>x!==null)){ada=true;benar=ans.every((x,i)=>x===s.a[i]);
+   s.o.forEach((_,i)=>{const row=el.querySelectorAll('table.bs tr')[i+1],cells=row.querySelectorAll('td.c'),ok=ans[i]===s.a[i];cells[ans[i]?0:1].classList.add(ok?'ok':'bad');if(!ok)cells[s.a[i]?0:1].classList.add('ok')})}}
+ if(!ada){el.querySelector('.hasil').innerHTML=`<div class="st bad">Pilih jawaban dulu${s.t==='tf'?' untuk semua pernyataan':''} ya.</div>`;return}
+ el.classList.add('done');el.querySelectorAll('input').forEach(i=>i.disabled=true);st[s.n]=benar?1:-1;
+ const kunci=s.t==='pg'?L[s.a]:s.t==='multi'?s.a.map(i=>L[i]).join(', '):s.a.map(x=>x?'Benar':'Salah').join(', ');
+ el.querySelector('.hasil').innerHTML=`<div class="st ${benar?'ok':'bad'}">${benar?'✅ Benar! Jawaban: ':'❌ Belum tepat. Jawaban yang benar: '}${kunci}</div>
+ <div class="cepat"><h5>⚡ Cara Cepat</h5>${s.cepat}</div>
+ <div class="lengkap"><h5>📘 Cara Lengkap (langkah demi langkah)</h5><ol class="step">${s.steps.map(x=>`<li>${x}</li>`).join('')}</ol></div>`;
+ rm(el.querySelector('.hasil'));skor()}
+function skor(){const v=Object.values(st),d=v.filter(x=>x!==0).length,b=v.filter(x=>x===1).length;
+ document.getElementById('skorTxt').textContent=`Terjawab ${d} dari ${SOAL.length} soal • Benar ${b}`+(d?` • Skor ${Math.round(b/SOAL.length*100)}`:'')}
+build();skor();
+document.getElementById('resetAll').onclick=()=>SOAL.forEach(s=>reset(s,document.getElementById('q'+s.n)));
+/* zoom huruf */
+let z=+(localStorage.getItem('vmz')||100);
+function setZ(v){z=Math.max(80,Math.min(180,v));document.documentElement.style.fontSize=z+'%';try{localStorage.setItem('vmz',z)}catch(e){}}
+setZ(z);document.getElementById('zp').onclick=()=>setZ(z+10);document.getElementById('zm').onclick=()=>setZ(z-10);
+/* chip aktif */
+const chips=[...document.querySelectorAll('nav.chips a')],secs=chips.map(a=>document.querySelector(a.getAttribute('href')));
+addEventListener('scroll',()=>{let k=0;secs.forEach((s,i)=>{if(s&&s.getBoundingClientRect().top<160)k=i});chips.forEach((c,i)=>c.classList.toggle('on',i===k))},{passive:true});
+addEventListener('load',()=>rm(document.body));
+</script></body></html>
