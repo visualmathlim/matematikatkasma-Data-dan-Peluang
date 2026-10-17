@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peluang – VisualMath.Lim TKA Matematika Wajib SMA</title>
+<style>
+:root{--navy:#022050;--cy:#00d6d8;--yl:#ffd300;--bg:#f2f7fc;--card:#fff;--tx:#14233f;--mu:#5a6a85;--bd:#d5e0ee;--ok:#12a150;--no:#d93a3a}
+@media(prefers-color-scheme:dark){:root{--bg:#0a1730;--card:#10244a;--tx:#e8f0ff;--mu:#9fb3d6;--bd:#27407a}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--tx);line-height:1.7;font-size:17px}
+header{background:var(--navy);color:#fff;border-bottom:4px solid var(--yl);position:sticky;top:0;z-index:20}
+.hd{max-width:1100px;margin:auto;padding:8px 14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.hd img{height:52px;width:52px;border-radius:50%;background:#022050}
+.hd h1{flex:1;margin:0;font-size:clamp(.95rem,2.6vw,1.3rem);line-height:1.25;min-width:180px}
+.hd h1 b{color:var(--cy)}
+.home{background:var(--cy);color:var(--navy);font-weight:700;text-decoration:none;padding:8px 16px;border-radius:99px}
+.home:hover{background:var(--yl)}
+nav{background:#03317a;overflow-x:auto;white-space:nowrap}
+nav a{display:inline-block;color:#fff;text-decoration:none;padding:9px 14px;font-size:.9rem}
+nav a:hover{color:var(--yl)}
+main{max-width:1100px;margin:auto;padding:14px}
+.hero{background:linear-gradient(135deg,var(--navy),#05449b);color:#fff;border-radius:16px;padding:22px;margin:10px 0}
+.hero h2{margin:0 0 6px;color:var(--yl);font-size:clamp(1.4rem,4vw,2rem)}
+section{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:16px 18px;margin:16px 0}
+h2.b{color:var(--navy);background:var(--cy);margin:-16px -18px 14px;padding:10px 18px;border-radius:13px 13px 0 0;font-size:1.25rem}
+h3{color:#05449b;margin:18px 0 6px;border-left:5px solid var(--yl);padding-left:9px}
+@media(prefers-color-scheme:dark){h3{color:var(--cy)}}
+.box{border-radius:10px;padding:10px 14px;margin:10px 0;border-left:6px solid}
+.rum{background:#e6fbfb;border-color:var(--cy);color:#022050;text-align:center;font-size:1.1rem}
+.cth{background:#fff8d6;border-color:var(--yl);color:#3a3000}
+.awas{background:#ffe9e9;border-color:var(--no);color:#5a1010}
+.cpt{background:#e3ffe9;border-color:var(--ok);color:#0b3d1d}
+.box b{color:inherit}
+table{border-collapse:collapse;margin:8px 0;max-width:100%;display:block;overflow-x:auto}
+td,th{border:1px solid var(--bd);padding:5px 10px;text-align:center}th{background:var(--navy);color:#fff}
+.f{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 5px;line-height:1.3;font-size:1.05em;white-space:nowrap}
+.f>span:first-child{border-bottom:2px solid currentColor;padding:0 7px 1px}.f>span:last-child{padding:1px 7px 0}
+.rum .f,.cth .f{font-size:1.12em}
+.dm{margin:6px 0;overflow-x:auto}.eq{display:table;margin:4px auto;border-collapse:collapse}.eq td{border:0;padding:3px 4px;text-align:left;font-size:1.08em;white-space:nowrap}.eq td:first-child{text-align:right}.eq td.c{text-align:center}
+.ex ol{list-style:none;counter-reset:st;padding:0;margin:6px 0}
+.ex li{counter-increment:st;position:relative;margin:10px 0;padding:8px 10px 8px 46px;background:rgba(255,255,255,.55);border-radius:10px;color:inherit}
+.ex li::before{content:counter(st);position:absolute;left:10px;top:9px;width:26px;height:26px;border-radius:50%;background:var(--navy);color:var(--yl);font-weight:700;text-align:center;line-height:26px;font-size:.9rem}
+.dm{background:#fff;color:#022050;border:1px solid #bcd3ee;border-left:5px solid var(--cy);border-radius:8px;padding:6px 10px;margin:8px 0}
+.cth .dm,.rum .dm{background:#fffdf0}
+.eq td{font-family:Cambria,'Times New Roman',serif;font-size:1.15em}
+.nc sub{font-size:.75em;vertical-align:sub;line-height:0}.nc{white-space:nowrap}
+.leg{background:#eef4ff;border:2px dashed var(--cy);color:#022050;border-radius:10px;padding:10px 14px;margin:10px 0}
+.fig{text-align:center;margin:12px 0;overflow-x:auto}.fig svg{max-width:100%;height:auto}.fig i{display:block;color:var(--mu);font-size:.85rem}
+.dice td{width:38px;height:34px;font-size:.8rem;padding:0}.dice .h{background:var(--yl);color:#000;font-weight:700}.dice th{width:38px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.ad{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.ad div{padding:14px;border-radius:12px;text-align:center;font-weight:700}
+details{margin:8px 0}summary{cursor:pointer;color:#05449b;font-weight:700}
+.lv{background:var(--navy);color:var(--yl);padding:8px 14px;border-radius:10px;margin:22px 0 8px;font-weight:700}
+.q{border:1px solid var(--bd);border-radius:12px;padding:12px 14px;margin:12px 0}
+.q .tg{font-size:.8rem;color:var(--mu)}
+.op{display:flex;align-items:center;gap:8px;width:100%;text-align:left;font:inherit;color:inherit;background:var(--bg);border:2px solid var(--bd);border-radius:10px;padding:7px 12px;margin:5px 0;cursor:pointer}
+.op:hover:not(:disabled){border-color:var(--cy)}.op b{min-width:1.4em}
+.op.ok{border-color:var(--ok);background:#d9f7e4;color:#0b3d1d}.op.no{border-color:var(--no);background:#ffdede;color:#5a1010}
+.op:disabled{cursor:default}
+.btn{background:var(--navy);color:#fff;border:0;border-radius:99px;padding:8px 18px;font:inherit;cursor:pointer;margin-top:6px}.btn:hover{background:#05449b}
+.ex{display:none;margin-top:10px}.ex.on{display:block}
+.ex ol{margin:4px 0;padding-left:22px}.ex li{margin:4px 0}
+.sc{position:static;background:var(--yl);color:#000;font-weight:700;border-radius:99px;padding:4px 14px;display:inline-block;z-index:5}
+footer{background:var(--navy);color:#fff;text-align:center;padding:16px;margin-top:20px;border-top:4px solid var(--yl);font-size:.9rem}
+</style>
+</head>
+<body>
+<header>
+<div class="hd"><img src="logo.png" alt="Logo VisualMath.Lim"><h1><b>VisualMath.Lim</b> - TKA Matematika Wajib SMA</h1><a class="home" href="index.html">🏠 Home</a></div>
+<nav><a href="#b0">Bab 0 Prasyarat</a><a href="#b1">Bab 1 Peluang Sederhana</a><a href="#b2">Bab 2 Peluang Majemuk</a><a href="#b3">Bab 3 Jebakan &amp; Rumus</a><a href="#soal">Latihan &amp; Prediksi TKA</a></nav>
+</header>
+<main>
+<div class="hero"><h2>Peluang</h2>Kejadian Sederhana • Frekuensi Harapan • Kejadian Majemuk<br>TKA Matematika Kelas 12 — Elemen: Data dan Peluang
+<br><small>Peluang = [banyak cara yang diinginkan|banyak semua cara]. Level 1 Pengetahuan, Level 2 Aplikasi, Level 3 Penalaran.</small></div>
+
+<section id="b0"><h2 class="b">Bab 0 — Prasyarat: Bekal Dasar</h2>
+<h3>0.1 Pecahan dan persen</h3><div class="leg"><b>📖 Cara membaca pecahan (agar tidak bingung):</b><br>Garis pecahan artinya <b>dibagi</b>. Angka <b>atas</b> = pembilang, angka <b>bawah</b> = penyebut.<br>[3|4] dibaca “3 per 4” = 3 ÷ 4. &nbsp; [6|8] = [3|4] (atas dan bawah sama-sama dibagi 2).<br>Pada soal peluang: <b>atas = yang diinginkan</b>, <b>bawah = semua kemungkinan</b>.</div>
+<table><tr><th>Pecahan</th><td>[1|2]</td><td>[1|3]</td><td>[1|4]</td><td>[1|5]</td><td>[1|6]</td><td>[1|10]</td></tr><tr><th>Desimal</th><td>0,5</td><td>0,33</td><td>0,25</td><td>0,2</td><td>0,17</td><td>0,1</td></tr><tr><th>Persen</th><td>50%</td><td>33%</td><td>25%</td><td>20%</td><td>17%</td><td>10%</td></tr></table>
+<ul><li>Sederhanakan: bagi pembilang dan penyebut dengan angka yang sama → [8|36]=[2|9].</li><li>Kali pecahan: <b>atas × atas, bawah × bawah</b> → [5|8]×[3|7]=[15|56].</li><li>Jumlah pecahan: penyebut harus sama → [4|52]+[13|52]=[17|52].</li></ul>
+<h3>0.2 Himpunan: gabungan dan irisan</h3>
+<p><b>A ∪ B</b> = anggota A <b>atau</b> B. <b>A ∩ B</b> = anggota A <b>dan</b> B (yang sama-sama dimiliki).</p>
+<div class="box rum">n(A ∪ B) = n(A) + n(B) − n(A ∩ B)</div>
+<h3>0.3 Kombinasi nCr (dari Kaidah Pencacahan)</h3>
+<div class="box rum">nCr = (r faktor turun dari n) ÷ r!<br>₈C₂ = [8×7|2] = 28 &nbsp;&nbsp; ₅C₂ = [5×4|2] = 10</div>
+<details><summary>Latihan prasyarat (klik untuk kunci)</summary><p>1) Sederhanakan [12|36] 2) [2|3]×[3|5] 3) [4|52]+[13|52]−[1|52] 4) n(A)=22, n(B)=18, n(A∩B)=8 → n(A∪B)? 5) ₆C₂</p><p><b>Kunci:</b> 1) [1|3] 2) [6|15]=[2|5] 3) [16|52]=[4|13] 4) 32 5) 15</p></details></section>
+
+<section id="b1"><h2 class="b">Bab 1 — Peluang Kejadian Sederhana &amp; Frekuensi Harapan</h2>
+<h3>1.1 Istilah dan rumus dasar</h3>
+<table><tr><th>Istilah</th><th>Arti</th><th>Contoh (1 dadu)</th></tr><tr><td>Percobaan</td><td>Kegiatan dengan hasil acak</td><td>Melempar dadu</td></tr><tr><td>Ruang sampel S</td><td>Himpunan <b>semua</b> hasil</td><td>S={1,2,3,4,5,6}, n(S)=6</td></tr><tr><td>Kejadian A</td><td>Hasil yang <b>diinginkan</b></td><td>Genap={2,4,6}, n(A)=3</td></tr></table>
+<div class="box rum"><b>P(A) = [n(A)|n(S)]</b><br>0 ≤ P(A) ≤ 1 (0 = mustahil, 1 = pasti)<br><b>Komplemen: P(A′) = 1 − P(A)</b></div>
+<div class="box cth"><b>Contoh 1.1</b> Satu dadu dilempar. Peluang mata lebih dari 4 dan peluang tidak lebih dari 4.<br>Langkah 1: mata lebih dari 4 → A = {5, 6}, jadi n(A) = 2 dan n(S) = 6.{{P(A) = [n(A)|n(S)] ;; = [2|6] ;; = [1|3]}}Langkah 2: “tidak lebih dari 4” adalah komplemen.{{P(A′) = 1 − P(A) ;; = 1 − [1|3] ;; = [2|3]}}</div>
+<h3>1.2 Koin</h3>
+<table><tr><th>Banyak koin</th><td>1</td><td>2</td><td>3</td><td>4</td><td>n</td></tr><tr><th>n(S)</th><td>2</td><td>4</td><td>8</td><td>16</td><td>2^n</td></tr></table>
+<div class="box cth"><b>Contoh 1.2</b> Dua koin: S={AA, AG, GA, GG}. Satu angka satu gambar = {AG, GA} → P=[2|4]=<b>[1|2]</b>. Tiga koin tepat dua angka: AAG, AGA, GAA → <b>[3|8]</b>.</div>
+<div class="box awas"><b>Awas!</b> AG dan GA adalah <b>dua hasil berbeda</b>. Jangan dihitung satu.</div>
+<h3>1.3 Dadu</h3>
+<p>Satu dadu: n(S)=6. Dua dadu: n(S)=6×6=<b>36</b>.</p>
+<div class="fig"><table class="dice" id="dice"></table><i>Gambar 1. Ruang sampel dua dadu (36 pasangan); jumlah 7 diberi warna kuning</i></div>
+<table><tr><th>Jumlah</th><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td></tr><tr><th>Pasangan</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td></tr></table>
+<div class="box cpt"><b>⚡ Tips:</b> pola jumlah dua dadu <b>1,2,3,4,5,6,5,4,3,2,1</b>. Hafalkan, tidak perlu menggambar 36 kotak.</div>
+<div class="box cth"><b>Contoh 1.3</b> Dua dadu, n(S) = 36.{{P(jumlah 8) = [5|36]}}{{P(kedua mata sama) = [6|36] ;; = [1|6]}}Jumlah lebih dari 10 → jumlah 11 (2 pasangan) dan jumlah 12 (1 pasangan).{{P = [2 + 1|36] ;; = [3|36] ;; = [1|12]}}</div>
+<h3>1.4 Kartu bridge (52 kartu)</h3>
+<table><tr><th>Jenis</th><th>Warna</th><th>Banyak</th></tr><tr><td>Sekop</td><td>Hitam</td><td>13</td></tr><tr><td>Keriting</td><td>Hitam</td><td>13</td></tr><tr><td>Hati</td><td>Merah</td><td>13</td></tr><tr><td>Wajik</td><td>Merah</td><td>13</td></tr></table>
+<p>Isi tiap jenis: As, 2–10, J, Q, K. Merah = 26, hitam = 26. Tiap angka/huruf ada 4. Kartu gambar (J,Q,K) = 3×4 = <b>12</b>.</p>
+<div class="box cth"><b>Contoh 1.4</b> P(As)=[4|52]=<b>[1|13]</b>; P(merah)=[26|52]=<b>[1|2]</b>; P(gambar)=[12|52]=<b>[3|13]</b>.</div>
+<h3>1.5 Peluang dengan kombinasi (ambil sekaligus)</h3>
+<p>Urutan tidak penting → n(S) dan n(A) memakai <b>kombinasi</b>.</p>
+<div class="box cth"><b>Contoh 1.5</b> 5 bola merah dan 3 bola biru, diambil 2 sekaligus.{{n(S) = ₈C₂ ;; = [8 × 7|2 × 1] ;; = 28}}Keduanya merah:{{n(A) = ₅C₂ ;; = [5 × 4|2 × 1] ;; = 10}}{{P = [10|28] ;; = [5|14]}}Satu merah satu biru:{{n(B) = ₅C₁ × ₃C₁ ;; = 5 × 3 ;; = 15}}{{P = [15|28]}}</div>
+<div class="box cpt"><b>⚡ Cara Cepat:</b> cek total: MM(10)+MB(15)+BB(3)=28 dari 28. Untuk “ambil sekaligus”, cukup nCr di atas dan di bawah.</div>
+<h3>1.6 Frekuensi harapan</h3>
+<div class="box rum"><b>Fh = P(A) × N</b> &nbsp;(N = banyak percobaan)</div>
+<div class="box cth"><b>Contoh 1.6</b> a) Dadu dilempar 120 kali, harapan mata 6:{{Fh = [1|6] × 120 ;; = 20 kali}}b) Peluang terlambat 0,05, dari 400 siswa:{{Fh = 0,05 × 400 ;; = 20 siswa}}c) Dua koin dilempar 200 kali, harapan dua gambar:{{Fh = [1|4] × 200 ;; = 50 kali}}</div>
+<p><b>Teoritis</b>: dari rumus (mata 3 = [1|6]). <b>Empirik</b>: dari percobaan (12 dari 50 = 0,24). Makin banyak percobaan, empirik makin mendekati teoritis. Lemparan berikutnya tidak “menyeimbangkan” hasil sebelumnya.</p>
+<div class="box awas"><b>Awas!</b> 1) Peluang tidak pernah &gt;1 atau negatif. 2) Dua dadu: n(S)=<b>36</b>, bukan 12. 3) Frekuensi harapan = banyak kejadian, bisa lebih dari 1.</div>
+<details><summary>Latihan Bab 1 (klik untuk kunci)</summary><p>1) Satu dadu, mata &lt;3? 2) Dua koin, paling sedikit satu angka? 3) Kartu hati bernomor 2–10? 4) 5 pria 3 wanita, pilih 2 sekaligus, keduanya wanita? 5) P(hujan)=0,2, 30 hari?</p><p><b>Kunci:</b> 1) [1|3] 2) 1−[1|4]=[3|4] 3) [9|52] 4) [₃C₂|₈C₂]=[3|28] 5) 6 hari</p></details></section>
+
+<section id="b2"><h2 class="b">Bab 2 — Peluang Kejadian Majemuk</h2>
+<p>Kuncinya satu keputusan: <b>ATAU → tambah, DAN → kali</b>.</p>
+<div class="fig"><div class="ad"><div style="background:var(--cy);color:#022050">ATAU<br>➕ TAMBAH</div><div style="background:var(--yl);color:#000">DAN<br>✖️ KALI</div></div><i>Gambar 2. Kata kunci: ATAU ditambah, DAN dikali</i></div>
+<h3>2.1 Saling lepas &amp; tidak saling lepas (ATAU)</h3>
+<div class="fig"><svg viewBox="0 0 520 150" width="520"><g fill-opacity=".55" stroke="#022050" stroke-width="2"><circle cx="85" cy="70" r="45" fill="#00d6d8"/><circle cx="175" cy="70" r="45" fill="#ffd300"/><circle cx="350" cy="70" r="45" fill="#00d6d8"/><circle cx="410" cy="70" r="45" fill="#ffd300"/></g><g font-size="14" fill="#022050" text-anchor="middle"><text x="65" y="75">A</text><text x="195" y="75">B</text><text x="130" y="70" font-size="11">A∩B</text><text x="125" y="140">Saling lepas: tidak beririsan</text><text x="335" y="75">A</text><text x="425" y="75">B</text><text x="380" y="70" font-size="11">A∩B</text><text x="380" y="140">Tidak saling lepas: beririsan</text></g></svg><i>Gambar 3. Saling lepas dan tidak saling lepas</i></div>
+<div class="box rum">Saling lepas: <b>P(A ∪ B) = P(A) + P(B)</b><br>Tidak saling lepas: <b>P(A ∪ B) = P(A) + P(B) − P(A ∩ B)</b></div>
+<div class="box cth"><b>Contoh 2.1a (saling lepas)</b> Satu dadu: peluang mata 2 atau mata 5. Tidak ada irisan, jadi dijumlah.{{P = [1|6] + [1|6] ;; = [2|6] ;; = [1|3]}}<b>Contoh 2.1b (tidak saling lepas)</b> Satu kartu: peluang As atau hati. As hati terhitung dua kali, jadi dikurangi satu kali.{{P(As) = [4|52] ;; P(hati) = [13|52] ;; P(As ∩ hati) = [1|52]}}{{P = [4|52] + [13|52] − [1|52] ;; = [16|52] ;; = [4|13]}}</div>
+<div class="box awas"><b>Awas!</b> Lupa mengurangi irisan → [17|52] (salah). “Saling lepas” ≠ “saling bebas”. Saling lepas = tidak bisa terjadi bersamaan.</div>
+<h3>2.2 Saling bebas (DAN)</h3>
+<p>Terjadinya satu kejadian tidak memengaruhi yang lain (koin dengan dadu, atau pengambilan <b>dengan pengembalian</b>).</p>
+<div class="box rum"><b>P(A ∩ B) = P(A) × P(B)</b></div>
+<div class="box cth"><b>Contoh 2.2</b> a) Koin dan dadu: gambar dan mata lebih dari 4 (kata “dan” → dikali).{{P = [1|2] × [2|6] ;; = [2|12] ;; = [1|6]}}b) Andi lulus 0,8 dan Budi lulus 0,7 (saling bebas), keduanya lulus:{{P = 0,8 × 0,7 ;; = 0,56}}</div>
+<h3>2.3 “Paling sedikit satu”: pakai komplemen</h3>
+<div class="box cth"><b>Contoh 2.3</b> Andi lulus 0,8 dan Budi 0,7 (saling bebas). Peluang paling sedikit satu lulus:{{P(tidak ada yang lulus) = 0,2 × 0,3 ;; = 0,06}}{{P(paling sedikit satu) = 1 − 0,06 ;; = 0,94}}</div>
+<div class="box cpt"><b>⚡ Cara Cepat:</b> “paling sedikit satu” → <b>1 − P(tidak ada sama sekali)</b>. Contoh: 3 koin, paling sedikit satu angka = 1−[1|8]=[7|8].</div>
+<h3>2.4 Peluang bersyarat: tanpa pengembalian</h3>
+<p>Isi kotak berubah, jadi peluang pengambilan kedua <b>bergantung</b> pada yang pertama. Tiap cabang pohon <b>dikalikan</b>.</p>
+<div class="fig"><svg viewBox="0 0 560 260" width="560"><g stroke="#05449b" stroke-width="2" fill="none"><path d="M60 130L190 62M60 130L190 198M190 62L370 28M190 62L370 100M190 198L370 160M190 198L370 232"/></g><g fill="currentColor"><foreignObject x="8" y="112" width="50" height="46"><div style="font-size:14px;line-height:1.2">Awal</div></foreignObject><foreignObject x="95" y="60" width="90" height="46"><div style="font-size:14px;line-height:1.2">M [5|8]</div></foreignObject><foreignObject x="95" y="170" width="90" height="46"><div style="font-size:14px;line-height:1.2">B [3|8]</div></foreignObject><foreignObject x="262" y="8" width="90" height="46"><div style="font-size:14px;line-height:1.2">M [4|7]</div></foreignObject><foreignObject x="262" y="76" width="90" height="46"><div style="font-size:14px;line-height:1.2">B [3|7]</div></foreignObject><foreignObject x="262" y="142" width="90" height="46"><div style="font-size:14px;line-height:1.2">M [5|7]</div></foreignObject><foreignObject x="262" y="210" width="90" height="46"><div style="font-size:14px;line-height:1.2">B [2|7]</div></foreignObject><foreignObject x="380" y="8" width="175" height="46"><div style="font-size:14px;line-height:1.2;font-weight:700">MM = [5|8]×[4|7] = [20|56]</div></foreignObject><foreignObject x="380" y="76" width="175" height="46"><div style="font-size:14px;line-height:1.2;font-weight:700">MB = [5|8]×[3|7] = [15|56]</div></foreignObject><foreignObject x="380" y="142" width="175" height="46"><div style="font-size:14px;line-height:1.2;font-weight:700">BM = [3|8]×[5|7] = [15|56]</div></foreignObject><foreignObject x="380" y="210" width="175" height="46"><div style="font-size:14px;line-height:1.2;font-weight:700">BB = [3|8]×[2|7] = [6|56]</div></foreignObject></g></svg><i>Gambar 4. Diagram pohon 2 bola tanpa pengembalian (5 merah, 3 biru)</i></div>
+<div class="box rum"><b>P(A ∩ B) = P(A) × P(B | A)</b><br><b>P(B | A) = [P(A ∩ B)|P(A)]</b> (peluang B jika A sudah terjadi)</div>
+<div class="box cth"><b>Contoh 2.4</b> Dari pohon, bola pertama merah lalu kedua biru:{{P(MB) = [5|8] × [3|7] ;; = [15|56]}}Dua bola sama warna = MM atau BB (saling lepas, dijumlah):{{P = [20|56] + [6|56] ;; = [26|56] ;; = [13|28]}}Cara cepat dengan kombinasi:{{P = [₅C₂ + ₃C₂|₈C₂] ;; = [10 + 3|28] ;; = [13|28]}}</div>
+<div class="box cth"><b>Contoh 2.5 (tabel dua arah)</b> 100 siswa: putra suka basket 20, putra tidak 40, putri suka 15, putri tidak 25. Diketahui siswa suka basket, peluang putra: ruang sampel menyempit menjadi yang suka basket saja.{{n(S) = 20 + 15 = 35 ;; P = [20|35] ;; = [4|7]}}</div>
+<div class="box cpt"><b>⚡ Tips:</b> kata “<b>diketahui</b>” atau “<b>jika</b>” → ruang sampel <b>menyempit</b>; pembaginya hanya yang memenuhi syarat.</div>
+<details><summary>Latihan Bab 2 (klik untuk kunci)</summary><p>1) Dadu: genap atau prima? 2) Kartu: As atau Raja? 3) Dua koin: keduanya gambar jika diketahui paling sedikit satu gambar? 4) 3 merah 2 biru, ambil 2 satu per satu tanpa pengembalian, keduanya biru?</p><p><b>Kunci:</b> 1) [3+3−1|6]=[5|6] 2) [8|52]=[2|13] 3) dari {AG,GA,GG} → [1|3] 4) [2|5]×[1|4]=[1|10]</p></details></section>
+
+<section id="b3"><h2 class="b">Bab 3 — Jebakan Umum &amp; Rangkuman Rumus</h2>
+<ol><li>Ruang sampel dua dadu ditulis 12 (seharusnya 36).</li><li>AG dan GA dihitung satu hasil.</li><li>Angka 1 dianggap prima.</li><li>Irisan tidak dikurangi pada kejadian tidak saling lepas.</li><li>Saling lepas dikira saling bebas.</li><li>“ATAU” dikali atau “DAN” dijumlah.</li><li>Tanpa pengembalian, penyebut tidak dikurangi satu.</li><li>Peluang bersyarat dibagi total, bukan yang memenuhi syarat.</li><li>Frekuensi harapan dikira peluang (harus dikali N).</li><li>Hasil peluang &gt;1 atau negatif tidak diperiksa.</li></ol>
+<table><tr><th>Konsep</th><th>Rumus</th></tr><tr><td>Peluang kejadian</td><td>P(A)=[n(A)|n(S)]</td></tr><tr><td>Komplemen</td><td>P(A′)=1−P(A)</td></tr><tr><td>Frekuensi harapan</td><td>Fh=P(A)×N</td></tr><tr><td>Saling lepas (ATAU)</td><td>P(A∪B)=P(A)+P(B)</td></tr><tr><td>Tidak saling lepas</td><td>P(A∪B)=P(A)+P(B)−P(A∩B)</td></tr><tr><td>Saling bebas (DAN)</td><td>P(A∩B)=P(A)×P(B)</td></tr><tr><td>Bersyarat</td><td>P(A∩B)=P(A)×P(B|A); P(B|A)=[P(A∩B)|P(A)]</td></tr><tr><td>⚡ Paling sedikit satu</td><td>1 − P(tidak ada sama sekali)</td></tr><tr><td>⚡ Ambil sekaligus</td><td>[nCr kejadian|nCr semua]</td></tr><tr><td>Titik sampel</td><td>Koin 2^n; dadu 6^n; kartu 52</td></tr></table></section>
+
+<section id="soal"><h2 class="b">Latihan &amp; Prediksi TKA: Peluang (27 Soal)</h2>
+<p>Jawab dulu, lalu klik untuk melihat penjelasan <b>Cara Cepat</b> dan <b>Cara Lengkap</b>. Target: Level 1 benar semua, Level 2 minimal 70%, Level 3 dikerjakan terakhir.</p>
+<div class="sc" id="sc">Benar: 0 / 0</div><div id="qs"></div></section>
+</main>
+<footer>VisualMath.Lim • SEE • THINK • SOLVE | Modul Peluang<br><small>Soal prediksi bukan soal asli TKA; cocokkan dengan kisi-kisi resmi terbaru.</small></footer>
+<script>
+const eq=t=>'<div class="dm"><table class="eq">'+t.split(' ;; ').map(r=>{r=r.trim();if(r[0]=='=')return '<tr><td></td><td>'+r+'</td></tr>';const k=r.indexOf(' = ');return k<0?'<tr><td colspan=2 class="c">'+r+'</td></tr>':'<tr><td>'+r.slice(0,k)+'</td><td>= '+r.slice(k+3)+'</td></tr>'}).join('')+'</table></div>';
+const fx=s=>{s=s.replace(/\{\{([\s\S]+?)\}\}/g,(m,t)=>eq(t));let p;do{p=s;s=s.replace(/\[([^\[\]|]+)\|([^\[\]|]+)\]/g,'<span class="f"><span>$1</span><span>$2</span></span>')}while(p!==s);const D=c=>'₀₁₂₃₄₅₆₇₈₉'.indexOf(c);return s.replace(/\^(\w)/g,'<sup>$1</sup>').replace(/([₀-₉]+)C([₀-₉]+)/g,(m,a,b)=>'<span class="nc"><sub>'+[...a].map(D).join('')+'</sub>C<sub>'+[...b].map(D).join('')+'</sub></span>')};
+// ruang sampel dua dadu
+let d='<tr><th></th>';for(let j=1;j<=6;j++)d+='<th>'+j+'</th>';d+='</tr>';
+for(let i=1;i<=6;i++){d+='<tr><th>'+i+'</th>';for(let j=1;j<=6;j++)d+='<td'+(i+j==7?' class="h"':'')+'>'+i+','+j+'</td>';d+='</tr>'}
+dice.innerHTML=d;
+// [level, tag, soal, opsi, kunci, cara cepat, langkah]
+const L='ABCDE';
+const Q=[
+[1,'Menghitung – Peluang dadu','Sebuah dadu dilempar satu kali. Peluang muncul mata dadu bilangan prima adalah ....',['[1|6]','[1|3]','[1|2]','[2|3]','[5|6]'],'C','Prima pada dadu: 2, 3, 5 (ada 3 dari 6 mata). {{P = [3|6] ;; = [1|2]}}',[['Tulis semua hasil yang mungkin (ruang sampel).','S = {1, 2, 3, 4, 5, 6} ;; n(S) = 6'],['Cari mata prima. Ingat: angka 1 bukan prima.','A = {2, 3, 5} ;; n(A) = 3'],['Masukkan ke rumus peluang.','P(A) = [n(A)|n(S)] ;; = [3|6] ;; = [1|2]']]],
+[1,'Mengidentifikasi – Ruang sampel koin','Tiga koin dilempar bersama-sama satu kali. Banyak anggota ruang sampelnya adalah ....',['6','8','9','12','16'],'B','Rumus koin: 2^n. {{n(S) = 2^3 ;; = 8}}',[['Tiap koin punya 2 hasil: Angka (A) atau Gambar (G).',''],['Kalikan hasil ketiga koin (aturan perkalian).','n(S) = 2 × 2 × 2 ;; = 2^3 ;; = 8']]],
+[1,'Menghitung – Peluang kartu','Dari satu set kartu bridge (52 kartu) diambil satu kartu secara acak. Peluang terambil kartu As adalah ....',['[1|52]','[1|26]','[1|13]','[1|4]','[4|13]'],'C','Ada 4 As dari 52 kartu. {{P = [4|52] ;; = [1|13]}}',[['Banyak semua kartu.','n(S) = 52'],['Kartu As ada 4 (sekop, keriting, hati, wajik).','n(A) = 4'],['Hitung peluang lalu sederhanakan (bagi 4).','P(A) = [4|52] ;; = [1|13]'],['Pengecoh [1|4] adalah peluang terambil satu jenis kartu, bukan As.','']]],
+[1,'Memahami informasi – Tabel dua dadu','Tabel berikut menunjukkan banyak pasangan mata dadu pada pelemparan dua dadu menurut jumlah matanya. Peluang munculnya jumlah mata 9 adalah ....',['[1|12]','[1|9]','[5|36]','[1|6]','[1|4]'],'B','Jumlah 9 punya 4 pasangan dari 36. {{P = [4|36] ;; = [1|9]}}',[['Banyak semua pasangan dua dadu.','n(S) = 6 × 6 = 36'],['Dari tabel, jumlah 9 ada 4 pasangan: (3,6), (4,5), (5,4), (6,3).','n(A) = 4'],['Hitung peluang lalu sederhanakan (bagi 4).','P(9) = [4|36] ;; = [1|9]']],'<table><tr><th>Jumlah</th><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td></tr><tr><th>Banyak pasangan</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td></tr></table>'],
+[1,'Menghitung – Komplemen','Peluang hari esok hujan adalah 0,35. Peluang hari esok tidak hujan adalah ....',['0,35','0,45','0,55','0,65','0,75'],'D','Tidak hujan = 1 dikurangi hujan. {{P(H′) = 1 − 0,35 ;; = 0,65}}',[['“Tidak hujan” adalah komplemen dari “hujan”. Rumusnya: P(A′) = 1 − P(A).',''],['Masukkan angkanya.','P(H′) = 1 − P(H) ;; = 1 − 0,35 ;; = 0,65']]],
+[1,'Menghitung – Frekuensi harapan','Sebuah dadu dilempar 120 kali. Frekuensi harapan muncul mata 6 adalah ....',['10','20','30','40','60'],'B','{{Fh = [1|6] × 120 ;; = 20}}',[['Rumus frekuensi harapan: Fh = P(A) × N.',''],['Peluang mata 6 dan banyak lemparan.','P(6) = [1|6] ;; N = 120'],['Kalikan.','Fh = [1|6] × 120 ;; = [120|6] ;; = 20']]],
+[1,'Mengelompokkan – Nilai peluang (pilih lebih dari satu)','Pilihlah <b>semua</b> nilai yang <b>mungkin</b> menjadi nilai peluang suatu kejadian.',['0','[3|4]','1,2','−0,3','100%'],'ABE','Nilai peluang harus antara 0 dan 1. {{0 ≤ P ≤ 1}}',[['Syarat nilai peluang:','0 ≤ P ≤ 1'],['Periksa tiap pilihan.','A: 0 → mungkin ;; B: [3|4] = 0,75 → mungkin ;; C: 1,2 lebih dari 1 → tidak mungkin ;; D: −0,3 kurang dari 0 → tidak mungkin ;; E: 100% = 1 → mungkin']]],
+[1,'Mengidentifikasi – Saling lepas','Pada pelemparan sebuah dadu, pasangan kejadian yang <b>saling lepas</b> adalah ....',['Mata genap dan mata prima','Mata ganjil dan mata genap','Mata prima dan mata ganjil','Mata lebih dari 3 dan mata genap','Mata kurang dari 3 dan mata prima'],'B','Saling lepas = tidak ada anggota yang sama. Ganjil dan genap tidak mungkin sama.',[['Saling lepas artinya kedua kejadian tidak punya anggota yang sama (irisan kosong).',''],['Tulis himpunan tiap pilihan.','A: {2, 4, 6} dan {2, 3, 5} → sama: 2 ;; B: {1, 3, 5} dan {2, 4, 6} → tidak ada yang sama ;; C: {2, 3, 5} dan {1, 3, 5} → sama: 3, 5 ;; D: {4, 5, 6} dan {2, 4, 6} → sama: 4, 6 ;; E: {1, 2} dan {2, 3, 5} → sama: 2'],['Hanya pilihan B yang tidak beririsan.','']]],
+[2,'Menerapkan – Saling lepas (atau)','Dua dadu dilempar bersamaan. Peluang muncul jumlah mata 7 <b>atau</b> 11 adalah ....',['[1|6]','[2|9]','[1|4]','[5|18]','[1|3]'],'B','Jumlah 7 ada 6 pasangan, jumlah 11 ada 2 pasangan. {{P = [6+2|36] ;; = [8|36] ;; = [2|9]}}',[['Banyak semua pasangan.','n(S) = 6 × 6 = 36'],['Pasangan jumlah 7 ada 6, jumlah 11 ada 2: (5,6) dan (6,5).','n(7) = 6 ;; n(11) = 2'],['“ATAU” dan tidak mungkin bersamaan (saling lepas) → dijumlah.','P(7 atau 11) = P(7) + P(11) ;; = [6|36] + [2|36] ;; = [8|36] ;; = [2|9]']]],
+[2,'Menerapkan – Peluang dengan kombinasi','Dalam kotak ada 5 bola merah dan 3 bola biru. Diambil 2 bola sekaligus secara acak. Peluang terambil kedua bola merah adalah ....',['[5|28]','[5|14]','[3|7]','[15|28]','[5|8]'],'B','{{P = [₅C₂|₈C₂] ;; = [10|28] ;; = [5|14]}}',[['“Sekaligus” artinya urutan tidak penting, jadi pakai kombinasi.',''],['Semua cara mengambil 2 dari 8 bola.','n(S) = ₈C₂ ;; = [8 × 7|2 × 1] ;; = 28'],['Cara mengambil 2 merah dari 5 merah.','n(A) = ₅C₂ ;; = [5 × 4|2 × 1] ;; = 10'],['Hitung peluang lalu sederhanakan (bagi 2).','P(A) = [10|28] ;; = [5|14]']]],
+[2,'Menerapkan – Tidak saling lepas','Dari satu set kartu bridge diambil satu kartu. Peluang terambil kartu As <b>atau</b> kartu hati adalah ....',['[1|4]','[17|52]','[4|13]','[5|13]','[1|2]'],'C','As hati terhitung dua kali, jadi dikurangi sekali. {{P = [4 + 13 − 1|52] ;; = [16|52] ;; = [4|13]}}',[['Ada kartu yang termasuk keduanya, yaitu As hati. Berarti tidak saling lepas, irisan harus dikurangi.','P(A ∪ B) = P(A) + P(B) − P(A ∩ B)'],['Cari tiap peluang.','P(As) = [4|52] ;; P(hati) = [13|52] ;; P(As ∩ hati) = [1|52]'],['Masukkan ke rumus.','P(As ∪ hati) = [4|52] + [13|52] − [1|52] ;; = [16|52] ;; = [4|13]']]],
+[2,'Menerapkan – Saling bebas (dan)','Sebuah koin dan sebuah dadu dilempar bersamaan. Peluang muncul gambar pada koin <b>dan</b> mata dadu lebih dari 4 adalah ....',['[1|12]','[1|6]','[1|4]','[1|3]','[5|12]'],'B','“DAN” → dikali. {{P = [1|2] × [1|3] ;; = [1|6]}}',[['Koin dan dadu tidak saling memengaruhi (saling bebas). Kata “dan” berarti dikali.','P(A ∩ B) = P(A) × P(B)'],['Peluang masing-masing.','P(gambar) = [1|2] ;; mata lebih dari 4 = {5, 6} ;; P(&gt;4) = [2|6] = [1|3]'],['Kalikan.','P = [1|2] × [1|3] ;; = [1|6]']]],
+[2,'Memodelkan – Frekuensi harapan','Peluang seorang siswa terlambat ke sekolah adalah 0,05. Dari 400 siswa, banyak siswa yang diperkirakan terlambat adalah ....',['5','10','20','40','80'],'C','{{Fh = 0,05 × 400 ;; = 20}}',[['Rumus frekuensi harapan: Fh = P × N.',''],['Masukkan angkanya.','P = 0,05 ;; N = 400'],['Hitung.','Fh = 0,05 × 400 ;; = 20 siswa']]],
+[2,'Menerapkan – Tanpa pengembalian','Dalam kotak ada 5 bola merah dan 3 bola biru. Dua bola diambil satu per satu <b>tanpa pengembalian</b>. Peluang bola pertama merah dan bola kedua biru adalah ....',['[15|64]','[15|56]','[5|14]','[3|7]','[25|56]'],'B','Penyebut kedua berkurang 1. {{P = [5|8] × [3|7] ;; = [15|56]}}',[['Pengambilan pertama (8 bola, 5 merah).','P(M) = [5|8]'],['Setelah 1 bola merah diambil, sisa 7 bola dan biru tetap 3.','P(B | M) = [3|7]'],['“DAN” → dikali.','P(M lalu B) = [5|8] × [3|7] ;; = [15|56]'],['Pengecoh [15|64] lupa mengurangi penyebut.','']]],
+[2,'Menerapkan – Kombinasi orang','Dari 4 siswa putra dan 3 siswa putri dipilih 3 orang secara acak. Peluang terpilih 2 putra dan 1 putri adalah ....',['[9|35]','[12|35]','[18|35]','[20|35]','[21|35]'],'C','{{P = [₄C₂ × ₃C₁|₇C₃] ;; = [6 × 3|35] ;; = [18|35]}}',[['Semua cara memilih 3 dari 7 orang.','n(S) = ₇C₃ ;; = [7 × 6 × 5|3 × 2 × 1] ;; = 35'],['Pilih 2 putra dari 4, lalu 1 putri dari 3.','₄C₂ = [4 × 3|2 × 1] = 6 ;; ₃C₁ = 3'],['Kalikan kedua pilihan (aturan perkalian).','n(A) = 6 × 3 = 18'],['Hitung peluang.','P(A) = [18|35]']]],
+[2,'Menginterpretasikan – Peluang empirik vs teoritis','Sebuah dadu dilempar 50 kali dan mata 3 muncul 12 kali. Pernyataan yang paling tepat adalah ....',['Dadu pasti curang karena [12|50] ≠ [1|6]','Peluang empirik 0,24 lebih besar dari teoritis [1|6]; selisih ini wajar dan cenderung mengecil jika percobaan diperbanyak','Peluang teoritis mata 3 menjadi 0,24','Peluang mata 3 pada lemparan berikutnya pasti lebih kecil agar seimbang','Frekuensi harapan mata 3 pada 50 lemparan adalah 12'],'B','Empirik [12|50] = 0,24; teoritis [1|6] ≈ 0,17. Percobaan sedikit, selisih wajar.',[['Hitung peluang empirik (dari percobaan) dan teoritis (dari rumus).','Empirik = [12|50] = 0,24 ;; Teoritis = [1|6] ≈ 0,17'],['Percobaan hanya 50 kali, selisih wajar. Makin banyak percobaan, empirik makin mendekati teoritis (B benar).',''],['Lemparan tidak “mengingat” hasil sebelumnya, jadi D salah.',''],['Cek E: Fh = [1|6] × 50 ≈ 8,3 (bukan 12).','']]],
+[2,'Menerapkan – Komplemen dua dadu','Dua dadu dilempar bersamaan. Peluang jumlah mata <b>tidak</b> sama dengan 7 adalah ....',['[1|6]','[5|36]','[25|36]','[5|6]','[31|36]'],'D','Pakai komplemen. {{P(bukan 7) = 1 − [1|6] ;; = [5|6]}}',[['Jumlah 7 ada 6 pasangan dari 36.','P(7) = [6|36] = [1|6]'],['“Tidak” berarti komplemen.','P(bukan 7) = 1 − P(7) ;; = 1 − [1|6] ;; = [6|6] − [1|6] ;; = [5|6]']]],
+[2,'Menerapkan – Saling bebas','Peluang Andi lulus ujian adalah 0,8 dan peluang Budi lulus ujian adalah 0,7. Jika keduanya saling bebas, peluang <b>keduanya</b> lulus adalah ....',['0,15','0,56','0,75','0,94','1,5'],'B','“Keduanya” = DAN → dikali. {{P = 0,8 × 0,7 ;; = 0,56}}',[['“Keduanya lulus” berarti Andi DAN Budi lulus, maka dikali.','P(A ∩ B) = P(A) × P(B)'],['Hitung: 8 × 7 = 56, ada 2 angka di belakang koma.','P = 0,8 × 0,7 ;; = 0,56']]],
+[3,'Menganalisis – Tidak saling lepas (data)','Dari 40 siswa, 22 siswa suka IPA, 18 siswa suka IPS, dan 8 siswa suka keduanya. Jika satu siswa dipilih acak, peluang siswa tersebut suka IPA <b>atau</b> IPS adalah ....',['[7|10]','[3|4]','[4|5]','[9|10]','1'],'C','{{n(IPA ∪ IPS) = 22 + 18 − 8 = 32 ;; P = [32|40] = [4|5]}}',[['Ada siswa yang suka keduanya, jadi irisan harus dikurangi.','n(A ∪ B) = n(A) + n(B) − n(A ∩ B)'],['Hitung banyak siswa yang suka IPA atau IPS.','n(A ∪ B) = 22 + 18 − 8 ;; = 32'],['Hitung peluang lalu sederhanakan (bagi 8).','P = [32|40] ;; = [4|5]'],['Jika irisan tidak dikurangi, hasilnya [40|40] = 1 (salah).','']]],
+[3,'Memecahkan masalah – Paling sedikit satu','Peluang Andi lulus ujian 0,8 dan peluang Budi lulus ujian 0,7, saling bebas. Peluang <b>paling sedikit satu</b> dari mereka lulus adalah ....',['0,56','0,75','0,86','0,94','0,98'],'D','Paling sedikit satu = 1 − (tidak ada yang lulus). {{P = 1 − (0,2 × 0,3) ;; = 0,94}}',[['“Paling sedikit satu” dihitung lewat komplemen: 1 − P(tidak ada sama sekali).',''],['Peluang tidak lulus tiap orang.','P(Andi tidak lulus) = 1 − 0,8 = 0,2 ;; P(Budi tidak lulus) = 1 − 0,7 = 0,3'],['Keduanya tidak lulus (DAN → dikali).','P = 0,2 × 0,3 ;; = 0,06'],['Kurangkan dari 1.','P(paling sedikit satu lulus) = 1 − 0,06 ;; = 0,94']]],
+[3,'Memecahkan masalah – Kombinasi dua warna','Kotak berisi 5 bola merah dan 3 bola biru. Dua bola diambil sekaligus secara acak. Peluang kedua bola berwarna <b>sama</b> adalah ....',['[3|28]','[5|14]','[13|28]','[15|28]','[9|14]'],'C','{{P = [₅C₂ + ₃C₂|₈C₂] ;; = [10 + 3|28] ;; = [13|28]}}',[['Semua cara mengambil 2 dari 8 bola.','n(S) = ₈C₂ = [8 × 7|2 × 1] = 28'],['Sama-sama merah ATAU sama-sama biru.','Merah: ₅C₂ = [5 × 4|2 × 1] = 10 ;; Biru: ₃C₂ = [3 × 2|2 × 1] = 3'],['Keduanya tidak bisa bersamaan (saling lepas) → dijumlah.','n(A) = 10 + 3 = 13'],['Hitung peluang.','P(A) = [13|28]']]],
+[3,'Mengevaluasi – Pernyataan majemuk (Benar–Salah)',['Jika A dan B saling lepas, maka P(A ∪ B) = P(A) + P(B).','Dua kejadian yang saling lepas dan masing-masing berpeluang lebih dari 0 pasti saling bebas.','Pada pengambilan tanpa pengembalian, peluang pengambilan kedua dipengaruhi hasil pengambilan pertama.','Jika P(A) = 0,3, maka frekuensi harapan A dalam 200 percobaan adalah 140.'],[],'BSBS','Pernyataan 2 salah (lepas ≠ bebas). Pernyataan 4 salah: 0,3 × 200 = 60.',[['Pernyataan 1 BENAR: itu rumus kejadian saling lepas.',''],['Pernyataan 2 SALAH. Saling lepas → P(A ∩ B) = 0, sedangkan saling bebas → P(A ∩ B) = P(A) × P(B) &gt; 0.',''],['Pernyataan 3 BENAR: sisa bola dan komposisinya berubah setelah pengambilan pertama.',''],['Pernyataan 4 SALAH.','Fh = 0,3 × 200 ;; = 60 (bukan 140)']]],
+[3,'Menyimpulkan – Peluang bersyarat dari tabel','Tabel menunjukkan 100 siswa menurut jenis kelamin dan kesukaan basket. Jika diketahui siswa yang dipilih acak <b>suka basket</b>, peluang siswa tersebut putra adalah ....',['[1|5]','[3|7]','[4|7]','[3|5]','[2|3]'],'C','Kata “diketahui” → ruang sampel menyempit. {{P = [20|20 + 15] ;; = [20|35] ;; = [4|7]}}',[['Kata “diketahui suka basket” membuat ruang sampel menyempit: hanya yang suka basket.','n(S) = 20 + 15 = 35'],['Di antara mereka, yang putra ada 20.','n(A) = 20'],['Hitung peluang lalu sederhanakan (bagi 5).','P = [20|35] ;; = [4|7]'],['Pengecoh [3|5] = [60|100] adalah peluang putra tanpa syarat.','']],'<table><tr><th></th><th>Suka basket</th><th>Tidak suka basket</th></tr><tr><th>Putra</th><td>20</td><td>40</td></tr><tr><th>Putri</th><td>15</td><td>25</td></tr></table>'],
+[3,'Melakukan generalisasi – Sifat peluang (pilih lebih dari satu)','Pilihlah <b>semua</b> pernyataan yang benar.',['0 ≤ P(A) ≤ 1','P(A) + P(A′) = 1','Jika A dan B saling lepas, maka P(A ∩ B) = 0','P(A ∪ B) = P(A) + P(B) berlaku untuk semua kejadian A dan B','Jika A dan B saling bebas, maka P(A ∩ B) = P(A) + P(B)'],'ABC','A, B, C benar. D hanya untuk saling lepas. E salah: saling bebas dikali.',[['A BENAR: nilai peluang antara 0 dan 1.',''],['B BENAR: kejadian dan komplemennya berjumlah 1.',''],['C BENAR: saling lepas berarti tidak ada irisan, jadi P(A ∩ B) = 0.',''],['D SALAH: kalau tidak saling lepas, harus dikurangi irisan.','P(A ∪ B) = P(A) + P(B) − P(A ∩ B)'],['E SALAH: saling bebas memakai perkalian.','P(A ∩ B) = P(A) × P(B)']]],
+[3,'Menjustifikasi – Menilai alasan','Rina menyatakan: “Dua koin dilempar bersamaan. Peluang muncul satu angka dan satu gambar adalah [1|3] karena hasilnya ada tiga: AA, AG, dan GG.” Penilaian yang tepat adalah ....',['Benar, karena hasil yang mungkin hanya tiga','Salah, karena AG dan GA adalah dua hasil berbeda sehingga n(S) = 4 dan peluangnya [2|4] = [1|2]','Salah, karena peluangnya [1|4]','Benar, karena AG dan GA dihitung satu hasil','Salah, karena peluangnya [3|4]'],'B','n(S) = 4, bukan 3. {{P = [2|4] ;; = [1|2]}}',[['Tulis ruang sampel lengkap. Koin 1 dan koin 2 dibedakan.','S = {AA, AG, GA, GG} ;; n(S) = 4'],['Satu angka satu gambar: AG dan GA.','n(A) = 2'],['Hitung peluang.','P(A) = [2|4] ;; = [1|2]'],['Rina keliru karena menganggap AG dan GA sama.','']]],
+[3,'Memecahkan masalah – Frekuensi harapan dua dadu','Dua dadu dilempar bersamaan sebanyak 180 kali. Frekuensi harapan muncul jumlah mata 5 <b>atau</b> 9 adalah ....',['20','30','40','50','60'],'C','{{Fh = [8|36] × 180 ;; = [2|9] × 180 ;; = 40}}',[['Banyak pasangan tiap jumlah.','Jumlah 5: 4 pasangan ;; Jumlah 9: 4 pasangan'],['Saling lepas → dijumlah.','n(A) = 4 + 4 = 8 ;; P = [8|36] = [2|9]'],['Kalikan dengan banyak percobaan.','Fh = [2|9] × 180 ;; = [360|9] ;; = 40']]],
+[3,'Menganalisis – Dengan vs tanpa pengembalian','Kotak berisi 4 bola merah dan 6 bola hijau. Dua bola diambil satu per satu. Selisih peluang terambil <b>keduanya merah</b> jika pengambilan <b>dengan pengembalian</b> dan jika <b>tanpa pengembalian</b> adalah ....',['[1|25]','[2|75]','[2|25]','[4|75]','[1|15]'],'B','{{[4|25] − [2|15] ;; = [12|75] − [10|75] ;; = [2|75]}}',[['Dengan pengembalian: isi kotak tetap 10 bola.','P1 = [4|10] × [4|10] ;; = [16|100] ;; = [4|25]'],['Tanpa pengembalian: setelah 1 merah diambil, sisa 9 bola dengan 3 merah.','P2 = [4|10] × [3|9] ;; = [12|90] ;; = [2|15]'],['Samakan penyebut (KPK 25 dan 15 adalah 75).','P1 = [4 × 3|25 × 3] = [12|75] ;; P2 = [2 × 5|15 × 5] = [10|75]'],['Kurangkan.','P1 − P2 = [12|75] − [10|75] ;; = [2|75]']]]
+];
+let ben=0,tot=0;
+const upd=()=>sc.textContent='Benar: '+ben+' / '+tot;
+const exp=q=>'<div class="ex"><div class="box cpt"><b>⚡ Cara Cepat:</b> '+fx(q[5])+'</div><div class="box cth"><b>📋 Cara Lengkap:</b><ol>'+q[6].map(s=>'<li>'+fx(s[0])+(s[1]?fx('{{'+s[1]+'}}'):'')+'</li>').join('')+'</ol></div></div>';
+let h='',cur=0;
+Q.forEach((q,i)=>{
+ if(q[0]!=cur){cur=q[0];h+='<div class="lv">LEVEL '+cur+' — '+['','Pengetahuan &amp; Pemahaman','Aplikasi','Penalaran'][cur]+'</div>'}
+ const n=i+1,bs=n==22,mu=q[4].length>1&&!bs;
+ h+='<div class="q" data-i="'+i+'"><div class="tg">'+q[1]+'</div><p><b>'+n+'.</b> '+(bs?'Tentukan Benar atau Salah tiap pernyataan.':fx(q[2]))+'</p>'+(q[7]||'');
+ if(bs){h+='<table style="display:table;width:100%;text-align:left">'+q[2].map((s,k)=>'<tr><td style="text-align:left">'+(k+1)+'. '+s+'</td><td><label><input type="radio" name="b'+k+'" value="B"> Benar</label></td><td><label><input type="radio" name="b'+k+'" value="S"> Salah</label></td></tr>').join('')+'</table><button class="btn" data-c>Periksa</button>'}
+ else if(mu){h+=q[3].map((o,k)=>'<label class="op"><input type="checkbox" value="'+L[k]+'"><b>'+L[k]+'.</b> <span>'+fx(o)+'</span></label>').join('')+'<button class="btn" data-c>Periksa</button>'}
+ else h+=q[3].map((o,k)=>'<button class="op" data-v="'+L[k]+'"><b>'+L[k]+'.</b> <span>'+fx(o)+'</span></button>').join('');
+ h+='<div class="res"></div>'+exp(q)+'</div>';
+});
+qs.innerHTML=h;
+const fin=(el,ok,q)=>{tot++;if(ok)ben++;upd();el.querySelector('.res').innerHTML='<p><b style="color:var(--'+(ok?'ok':'no')+')">'+(ok?'✅ Benar!':'❌ Belum tepat. Kunci: '+(q[4].length>1?q[4].split('').join(', ').replace(/B/g,i=>i):q[4]))+'</b></p>';el.querySelector('.ex').classList.add('on')};
+qs.addEventListener('click',e=>{
+ const el=e.target.closest('.q');if(!el)return;const q=Q[el.dataset.i];
+ const o=e.target.closest('.op[data-v]');
+ if(o&&!o.disabled){const bt=el.querySelectorAll('.op');bt.forEach(b=>{b.disabled=true;if(b.dataset.v==q[4])b.classList.add('ok')});if(o.dataset.v!=q[4])o.classList.add('no');fin(el,o.dataset.v==q[4],q)}
+ if(e.target.dataset.c!==undefined&&!e.target.disabled){
+  e.target.disabled=true;let ok;
+  if(el.dataset.i==21){const k=[0,1,2,3].map(x=>(el.querySelector('input[name=b'+x+']:checked')||{}).value||'-').join('');ok=k==q[4];const bsx=['Benar','Salah','Benar','Salah'];el.querySelector('.res').dataset.k=k}
+  else{const s=[...el.querySelectorAll('input:checked')].map(x=>x.value).join('');ok=s==q[4];el.querySelectorAll('.op').forEach(x=>{const v=x.querySelector('input').value;x.classList.add(q[4].includes(v)?'ok':(x.querySelector('input').checked?'no':''));x.querySelector('input').disabled=true})}
+  fin(el,ok,q);if(el.dataset.i==21)el.querySelector('.res b').innerHTML=ok?'✅ Benar!':'❌ Kunci: Benar, Salah, Benar, Salah'}
+});
+document.querySelectorAll('main section:not(#soal)').forEach(s=>s.innerHTML=fx(s.innerHTML));
+upd();
+</script>
+</body>
+</html>
