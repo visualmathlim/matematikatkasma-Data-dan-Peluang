@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kaidah Pencacahan - VisualMath.Lim | TKA Matematika Wajib SMA</title>
+<meta name="description" content="Modul 2 Kaidah Pencacahan: aturan perkalian, permutasi, kombinasi, cara cepat, dan latihan prediksi TKA Matematika Kelas 12.">
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<style>
+:root{
+  --navy:#022050; --navy2:#0a3175; --cyan:#00d6d8; --cyan-d:#00a9ab; --yellow:#ffd300;
+  --bg:#f3f8fc; --card:#ffffff; --ink:#14233f; --muted:#5a6b85; --line:#dbe6f1;
+  --ok:#14a05a; --bad:#e5484d; --coral:#ef6c4a;
+  --fs:17px;
+}
+*{box-sizing:border-box}
+html{font-size:var(--fs);scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Nunito',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;line-height:1.7}
+h1,h2,h3,h4{font-family:'Poppins','Nunito',sans-serif;line-height:1.3;margin:0}
+a{color:var(--navy2)}
+
+/* ===== HEADER ===== */
+.site-header{position:sticky;top:0;z-index:50;background:var(--navy);color:#fff;border-bottom:4px solid var(--yellow);box-shadow:0 4px 18px rgba(2,32,80,.35)}
+.hdr{max-width:1280px;margin:0 auto;padding:8px 16px;display:flex;align-items:center;gap:12px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;min-width:0;flex:1}
+.brand img{width:52px;height:52px;border-radius:50%;background:var(--navy);flex:none;object-fit:contain;box-shadow:0 0 0 2px var(--cyan)}
+.brand .t1{font-family:'Poppins',sans-serif;font-weight:800;font-size:1.12rem;letter-spacing:.2px;line-height:1.2}
+.brand .t1 b{color:var(--cyan)}
+.brand .t2{font-size:.82rem;color:#c7d8f5;font-weight:600;line-height:1.25}
+.hdr-actions{display:flex;align-items:center;gap:8px;flex:none}
+.btn-home{display:inline-flex;align-items:center;gap:6px;background:var(--cyan);color:var(--navy);font-weight:800;text-decoration:none;padding:8px 16px;border-radius:999px;font-size:.92rem;transition:.2s;border:2px solid var(--cyan)}
+.btn-home:hover,.btn-home:focus-visible{background:var(--yellow);border-color:var(--yellow);transform:translateY(-1px)}
+.zoom{display:flex;align-items:center;background:rgba(255,255,255,.1);border-radius:999px;padding:2px}
+.zoom button{border:0;background:transparent;color:#fff;font-weight:800;font-size:.9rem;min-width:36px;height:34px;border-radius:999px;cursor:pointer;font-family:inherit}
+.zoom button:hover,.zoom button:focus-visible{background:var(--cyan);color:var(--navy)}
+.nav-toggle{display:none;border:2px solid var(--cyan);background:transparent;color:var(--cyan);font-weight:800;border-radius:10px;height:38px;padding:0 12px;cursor:pointer;font-family:inherit}
+
+/* ===== LAYOUT ===== */
+.wrap{max-width:1280px;margin:0 auto;padding:20px 16px 60px;display:grid;grid-template-columns:260px minmax(0,1fr);gap:26px}
+.toc{position:sticky;top:96px;align-self:start;max-height:calc(100vh - 116px);overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px}
+.toc h4{font-size:.8rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin:2px 8px 8px}
+.toc a{display:block;padding:8px 12px;border-radius:10px;text-decoration:none;color:var(--ink);font-weight:700;font-size:.9rem;line-height:1.35;border-left:4px solid transparent}
+.toc a:hover{background:#e8fbfb}
+.toc a.on{background:var(--navy);color:#fff;border-left-color:var(--yellow)}
+main{min-width:0}
+
+/* ===== HERO ===== */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);color:#fff;border-radius:22px;padding:30px 28px;position:relative;overflow:hidden}
+.hero:after{content:"n!  ·  P  ·  C";position:absolute;right:-10px;bottom:-26px;font:800 6rem 'Poppins',sans-serif;color:rgba(0,214,216,.1);white-space:nowrap}
+.pill{display:inline-block;background:var(--yellow);color:var(--navy);font-weight:800;font-size:.78rem;padding:3px 12px;border-radius:999px;letter-spacing:.5px}
+.hero h1{font-size:clamp(1.6rem,4.4vw,2.4rem);margin:10px 0 6px}
+.hero h1 span{color:var(--cyan)}
+.hero p{margin:4px 0;color:#d5e3fb;max-width:720px}
+.roadmap{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-top:20px;position:relative;z-index:1}
+.road{background:rgba(255,255,255,.09);border:1px solid rgba(0,214,216,.4);border-radius:14px;padding:12px 14px}
+.road>b{display:block;color:var(--yellow);font-family:'Poppins',sans-serif;font-size:.95rem}
+.road>span{font-size:.86rem;color:#e5eefc;line-height:1.45;display:block}
+
+/* ===== SECTIONS ===== */
+section.bab{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px 26px 30px;margin-top:22px;box-shadow:0 2px 0 rgba(2,32,80,.04)}
+.bab-head{display:flex;gap:14px;align-items:center;margin-bottom:12px;padding-bottom:14px;border-bottom:3px solid var(--cyan)}
+.bab-no{flex:none;background:var(--navy);color:var(--yellow);font:800 1rem 'Poppins',sans-serif;border-radius:14px;padding:10px 14px;min-width:60px;text-align:center}
+.bab-head h2{font-size:clamp(1.2rem,3.2vw,1.65rem);color:var(--navy)}
+.bab-head small{display:block;color:var(--muted);font-weight:700;font-family:'Nunito',sans-serif;font-size:.85rem}
+h3.sub{font-size:1.15rem;color:var(--navy);margin:28px 0 10px;padding-left:12px;border-left:6px solid var(--cyan)}
+h4{font-size:1rem;color:var(--navy);margin:16px 0 6px}
+p{margin:.55em 0}
+.lead{font-size:1.04rem}
+
+/* ===== BOXES ===== */
+.box{border-radius:14px;padding:14px 18px;margin:16px 0;border:2px solid;position:relative}
+.box>.bt{display:inline-flex;align-items:center;gap:8px;font:800 .95rem 'Poppins',sans-serif;margin-bottom:6px}
+.box>:last-child{margin-bottom:0}
+.rumus{background:#e9fbfc;border-color:var(--cyan)}
+.rumus>.bt{color:var(--cyan-d)}
+.contoh{background:#f5f9ff;border-color:#b9cff0}
+.contoh>.bt{color:var(--navy2)}
+.ingat{background:#fff9dc;border-color:var(--yellow)}
+.ingat>.bt{color:#8a6d00}
+.awas{background:#fff0ee;border-color:#f3a79a}
+.awas>.bt{color:#c0392b}
+.tips{background:#eaf8ef;border-color:#8bd6a8}
+.tips>.bt{color:#12823f}
+.cepatbox{background:linear-gradient(135deg,#fff7c7,#ffeb85);border-color:var(--yellow)}
+.cepatbox>.bt{color:var(--navy)}
+.box ul{margin:.3em 0;padding-left:1.3em}
+
+/* Cara Cepat & Cara Lengkap */
+.solve{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;margin:12px 0}
+.way,.box,.mini-q,ol.steps>li,details.kunci>div{min-width:0}
+.way{border-radius:12px;padding:12px 16px;border:2px solid}
+.way>.wt{font:800 .88rem 'Poppins',sans-serif;display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.way.cepat{background:#fffbe0;border-color:var(--yellow)}
+.way.cepat>.wt{color:#7a5f00}
+.way.lengkap{background:#effdfd;border-color:var(--cyan)}
+.way.lengkap>.wt{color:#007f81}
+ol.steps{list-style:none;counter-reset:s;margin:6px 0 0;padding:0}
+ol.steps>li{counter-increment:s;position:relative;padding:6px 0 6px 44px;margin:0;border-left:0}
+ol.steps>li:before{content:counter(s);position:absolute;left:0;top:7px;width:30px;height:30px;border-radius:50%;background:var(--navy);color:var(--yellow);font:800 .85rem 'Poppins',sans-serif;display:grid;place-items:center}
+ol.steps>li:not(:last-child):after{content:"";position:absolute;left:14px;top:38px;bottom:-4px;width:2px;background:var(--cyan);opacity:.5}
+.ans{display:inline-block;background:var(--navy);color:#fff;border-radius:10px;padding:2px 12px;font-weight:800;margin:2px 0}
+.ans .katex{color:#fff}
+
+/* Math: tampil vertikal */
+.katex-display{margin:.7em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0}
+.katex{font-size:1.1em}
+.katex-display>.katex{font-size:1.18em}
+
+/* ===== TABLES ===== */
+.tw{overflow-x:auto;margin:14px 0;border-radius:12px;border:1px solid var(--line);-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;min-width:380px;font-size:.95rem}
+th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-family:'Poppins',sans-serif;font-size:.85rem}
+td{padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+tr:nth-child(even) td{background:#f7fbfe}
+td.c,th.c{text-align:center}
+
+/* ===== FIGURES ===== */
+figure.fig{margin:18px 0;background:#fbfdff;border:2px dashed #b8cfe8;border-radius:16px;padding:14px 10px 10px;text-align:center}
+figure.fig svg{width:100%;height:auto;display:block}
+.svgw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+@media (max-width:640px){figure.fig svg{min-width:500px}}
+figure.fig figcaption{font-size:.88rem;color:var(--muted);font-style:italic;margin-top:8px;font-weight:600}
+.slots{display:flex;align-items:flex-end;justify-content:center;flex-wrap:wrap;gap:6px;padding:8px 0}
+.slot{text-align:center;min-width:92px;flex:1;max-width:170px}
+.slot .lbl{font-weight:800;color:var(--navy);font-size:.95rem}
+.slot .bx{position:relative;border:4px solid var(--cyan-d);border-radius:14px;height:84px;display:grid;place-items:center;font:800 2.2rem 'Poppins',sans-serif;color:var(--cyan-d);background:#fff;margin:14px 0 4px}
+.slot .bx i{position:absolute;left:-12px;top:-14px;width:28px;height:28px;border-radius:50%;background:var(--cyan-d);color:#fff;font:800 .85rem 'Poppins',sans-serif;display:grid;place-items:center;font-style:normal}
+.slot.first .bx{border-color:var(--coral);color:var(--coral)}
+.slot.first .bx i{background:var(--coral)}
+.slot .nt{font-size:.78rem;color:var(--muted);line-height:1.3;font-weight:600}
+.times{font:800 1.6rem 'Poppins',sans-serif;color:var(--navy);padding-bottom:42px}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.compare h5{font:800 .95rem 'Poppins',sans-serif;margin:0 0 8px;text-align:center}
+.compare .p h5{color:var(--navy2)}.compare .k h5{color:#238a57}
+.chips{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.chips div{padding:9px 6px;border-radius:8px;font:800 1.1rem 'Poppins',sans-serif;border:3px solid}
+.p .chips div{background:#e0e9f6;border-color:var(--navy2);color:var(--navy)}
+.k .chips{grid-template-columns:1fr}.k .chips div{background:#e2f5ea;border-color:#2e9c63;color:#14502d}
+.flow{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.fb{border-radius:12px;padding:12px 14px;font-weight:800;text-align:center}
+.fb.s{background:var(--navy);color:#fff}.fb.q{background:var(--yellow);color:var(--navy);max-width:220px}
+.fb.p{background:var(--coral);color:#fff}.fb.k{background:#1f9d8b;color:#fff}
+.fb small{display:block;font-weight:600;opacity:.92;font-size:.78rem;margin-top:2px}
+.arrow{font-size:1.6rem;color:#4a5568;font-weight:800}
+.branch{display:flex;flex-direction:column;gap:10px}
+.branch .row{display:flex;align-items:center;gap:8px}
+.branch .tag{font:800 .95rem 'Poppins',sans-serif}
+.tag.y{color:var(--coral)}.tag.t{color:#1f9d8b}
+
+/* ===== PRACTICE (small) ===== */
+details.kunci{margin:10px 0;border:2px solid var(--cyan);border-radius:12px;background:#f0fdfd}
+details.kunci>summary{cursor:pointer;font-weight:800;padding:10px 14px;color:#007f81;list-style:none}
+details.kunci>summary:before{content:"▶ ";font-size:.8em}
+details.kunci[open]>summary:before{content:"▼ "}
+details.kunci>div{padding:0 16px 12px}
+.mini-q{background:#fafcff;border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:10px 0}
+.mini-q>.qt{font-weight:700}
+.mini-q .num{display:inline-block;background:var(--navy);color:var(--yellow);border-radius:8px;padding:0 9px;margin-right:6px;font:800 .85rem 'Poppins',sans-serif}
+
+/* ===== QUIZ ===== */
+.scorebar{position:sticky;top:84px;z-index:20;background:var(--navy);color:#fff;border-radius:14px;padding:10px 16px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:14px 0;border:2px solid var(--cyan)}
+.scorebar .pg{flex:1;min-width:140px;height:10px;border-radius:99px;background:rgba(255,255,255,.2);overflow:hidden}
+.scorebar .pg>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--yellow));transition:.4s}
+.scorebar button{border:0;background:var(--yellow);color:var(--navy);font-weight:800;border-radius:999px;padding:6px 14px;cursor:pointer;font-family:inherit}
+.lvhead{margin:30px 0 10px;border-radius:14px;padding:12px 16px;color:#fff;font:800 1rem 'Poppins',sans-serif}
+.lv1{background:linear-gradient(90deg,#1b9c85,#1fb8a0)}.lv2{background:linear-gradient(90deg,#1c5fc4,#2b7be4)}.lv3{background:linear-gradient(90deg,#8a2be2,#c04bd8)}
+.lvhead small{display:block;font:600 .82rem 'Nunito',sans-serif;opacity:.95}
+.q{background:#fff;border:2px solid var(--line);border-radius:16px;padding:16px 18px;margin:14px 0}
+.q.done.right{border-color:var(--ok)}.q.done.wrong{border-color:var(--bad)}
+.q-top{display:flex;gap:10px;align-items:flex-start}
+.q-no{flex:none;background:var(--navy);color:var(--yellow);border-radius:10px;min-width:38px;height:38px;display:grid;place-items:center;font:800 1rem 'Poppins',sans-serif}
+.q-tag{display:inline-block;font-size:.76rem;font-weight:800;background:#e7f0fb;color:var(--navy2);padding:1px 10px;border-radius:99px;margin-bottom:4px}
+.q-text{font-weight:600}
+.opts{display:grid;gap:8px;margin:12px 0}
+.opt{display:flex;gap:10px;align-items:flex-start;text-align:left;width:100%;background:#f7fafe;border:2px solid var(--line);border-radius:12px;padding:10px 12px;font:inherit;color:inherit;cursor:pointer;transition:.15s}
+.opt:hover:not(:disabled){border-color:var(--cyan);background:#e9fbfc}
+.opt .k{flex:none;width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;font:800 .82rem 'Poppins',sans-serif;display:grid;place-items:center}
+.opt.sel{border-color:var(--navy2);background:#e8efff}
+.opt.right{border-color:var(--ok);background:#e5f7ec}.opt.right .k{background:var(--ok)}
+.opt.wrong{border-color:var(--bad);background:#fdeceb}.opt.wrong .k{background:var(--bad)}
+.opt:disabled{cursor:default}
+.check-btn{background:var(--navy);color:#fff;border:0;border-radius:999px;padding:9px 22px;font:800 .95rem 'Nunito',sans-serif;cursor:pointer}
+.check-btn:hover{background:var(--cyan-d)}
+.check-btn:disabled{opacity:.45;cursor:not-allowed}
+.bs-row{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;padding:8px 0;border-top:1px dashed var(--line)}
+.bs-row:first-child{border-top:0}
+.bs-row label{display:inline-flex;align-items:center;gap:6px;border:2px solid var(--line);border-radius:999px;padding:4px 12px;cursor:pointer;font-weight:800;font-size:.88rem;background:#f7fafe}
+.bs-row input{accent-color:var(--navy2)}
+.bs-row.ok{background:#e5f7ec}.bs-row.no{background:#fdeceb}
+.bs-row .ks{grid-column:1/-1;font-size:.86rem;font-weight:800}
+.verdict{margin-top:10px;padding:10px 14px;border-radius:12px;font-weight:800}
+.verdict.ok{background:#e5f7ec;color:#0d6b3a}.verdict.no{background:#fdeceb;color:#a8262b}
+.explain{margin-top:10px}
+.pun{background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin-top:8px;font-size:.92rem;color:#7a4a00;background:#fff7e8}
+
+.final{display:none;margin-top:20px;background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border-radius:18px;padding:20px;text-align:center}
+.final.show{display:block}
+.final .big{font:800 2.4rem 'Poppins',sans-serif;color:var(--yellow)}
+
+footer.site-foot{background:var(--navy);color:#c7d8f5;text-align:center;padding:22px 16px;border-top:4px solid var(--yellow);font-size:.9rem}
+footer.site-foot b{color:var(--cyan)}
+.totop{position:fixed;right:14px;bottom:14px;z-index:40;background:var(--yellow);color:var(--navy);border:0;font-weight:800;width:46px;height:46px;border-radius:50%;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.3);font-size:1.2rem}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:960px){
+  .wrap{grid-template-columns:1fr;padding-top:14px}
+  .nav-toggle{display:inline-block}
+  .toc{display:none;position:fixed;left:10px;right:10px;top:78px;z-index:60;max-height:70vh;box-shadow:0 12px 40px rgba(0,0,0,.35)}
+  .toc.open{display:block}
+}
+@media (max-width:640px){
+  .hdr{flex-wrap:wrap;padding:8px 12px;gap:8px}
+  .brand{flex:1 1 100%}
+  .brand img{width:44px;height:44px}
+  .brand .t1{font-size:.98rem}.brand .t2{font-size:.74rem}
+  .hdr-actions{width:100%;justify-content:space-between}
+  .btn-home{padding:6px 14px}
+  section.bab{padding:18px 14px 22px;border-radius:16px}
+  .hero{padding:22px 16px}
+  .compare{grid-template-columns:1fr}
+  .times{display:none}
+  .bs-row{grid-template-columns:1fr 1fr}.bs-row .st{grid-column:1/-1}
+  .scorebar{top:126px;padding:6px 12px;gap:8px;font-size:.9rem;margin:10px 0}
+  html{scroll-padding-top:150px}
+  table{min-width:300px;font-size:.9rem}th,td{padding:8px}
+  .slot{min-width:84px}
+}
+@media print{.site-header,.toc,.scorebar,.totop{display:none}.wrap{display:block}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="hdr">
+    <a class="brand" href="index.html" aria-label="VisualMath.Lim - ke beranda">
+      <img src="logo.png" alt="Logo VisualMath.Lim Bimbingan Belajar">
+      <div>
+        <div class="t1"><b>VisualMath.Lim</b> - TKA Matematika Wajib SMA</div>
+        <div class="t2">Modul 2 · Kaidah Pencacahan · Kelas 12</div>
+      </div>
+    </a>
+    <div class="hdr-actions">
+      <a class="btn-home" href="index.html">🏠 Home</a>
+      <div class="zoom" role="group" aria-label="Ukuran tulisan">
+        <button type="button" id="zOut" aria-label="Perkecil tulisan">A−</button>
+        <button type="button" id="zRes" aria-label="Ukuran normal">A</button>
+        <button type="button" id="zIn" aria-label="Perbesar tulisan">A+</button>
+      </div>
+      <button type="button" class="nav-toggle" id="navBtn" aria-expanded="false">☰ Daftar Isi</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+<nav class="toc" id="toc" aria-label="Daftar isi">
+  <h4>Daftar Isi</h4>
+  <a href="#pengantar">Pengantar &amp; Peta Belajar</a>
+  <a href="#bab0">Bab 0 · Prasyarat</a>
+  <a href="#bab1">Bab 1 · Aturan Penjumlahan &amp; Perkalian</a>
+  <a href="#bab2">Bab 2 · Faktorial &amp; Permutasi</a>
+  <a href="#bab3">Bab 3 · Kombinasi</a>
+  <a href="#bab4">Bab 4 · Permutasi atau Kombinasi? Cara Cepat</a>
+  <a href="#bab5">Bab 5 · Jebakan &amp; Rangkuman Rumus</a>
+  <a href="#bab6">Bab 6 · Latihan &amp; Prediksi TKA (27 soal)</a>
+</nav>
+<main>
+
+<!-- ================= PENGANTAR ================= -->
+<div class="hero" id="pengantar">
+  <span class="pill">MODUL PERSIAPAN TKA MATEMATIKA · MODUL 2</span>
+  <h1>Kaidah <span>Pencacahan</span></h1>
+  <p><b>Aturan Perkalian • Permutasi • Kombinasi</b></p>
+  <p>SMA Kelas 12 · Elemen: Data dan Peluang</p>
+  <div class="roadmap">
+    <div class="road"><b>Tahap 1</b><span>Aturan penjumlahan dan perkalian, pengisian tempat (<i>filling slots</i>), diagram pohon, kotak bersyarat</span></div>
+    <div class="road"><b>Tahap 2</b><span>Faktorial dan <b>Permutasi</b> (urutan penting): jabatan, password, unsur sama, siklis, berdampingan</span></div>
+    <div class="road"><b>Tahap 3</b><span><b>Kombinasi</b> (urutan tidak penting), dibandingkan langsung dengan permutasi, plus <b>Cara Cepat</b></span></div>
+    <div class="road"><b>Latihan</b><span>27 soal prediksi TKA Level 1–3, jawab dulu lalu lihat pembahasan cara cepat dan cara lengkap</span></div>
+  </div>
+</div>
+
+<section class="bab" style="margin-top:22px">
+  <div class="box ingat" style="margin-top:0">
+    <div class="bt">💡 Kunci seluruh bab: satu pertanyaan</div>
+    <p style="font-size:1.1rem;font-weight:800;color:var(--navy);margin:4px 0">“Apakah urutan penting?”</p>
+    <p>Ucapkan pertanyaan ini <b>sebelum</b> menulis rumus. Jika urutan penting → <b>permutasi</b>. Jika tidak → <b>kombinasi</b>. Semua rumus di modul ini diturunkan dari satu ide: <b>aturan perkalian</b>, jadi tidak perlu menghafal buta.</p>
+  </div>
+  <p>Modul ini disusun mengikuti Muatan TKA Matematika (Kurikulum 2013 dan Kurikulum Merdeka) dan matriks asesmen:</p>
+  <div class="tw"><table>
+    <tr><th>Level</th><th>Artinya</th></tr>
+    <tr><td><b>Level 1</b></td><td>Pengetahuan &amp; Pemahaman: menghitung, mengidentifikasi, mengelompokkan</td></tr>
+    <tr><td><b>Level 2</b></td><td>Aplikasi: menerapkan, memodelkan, menginterpretasikan</td></tr>
+    <tr><td><b>Level 3</b></td><td>Penalaran: menganalisis, memecahkan masalah, mengevaluasi, menggeneralisasi, menjustifikasi, menyimpulkan</td></tr>
+  </table></div>
+  <p>Setiap contoh dan soal di modul ini punya dua jalur: <b>⚡ Cara Cepat</b> (jalan pintas untuk menghemat waktu saat TKA) dan <b>📝 Cara Lengkap</b> (langkah demi langkah, supaya pemahaman dasar dan penulisan simbolnya benar).</p>
+
+  <h3 class="sub">Peta Kompetensi: Kaidah Pencacahan</h3>
+  <p>Matriks asesmen pada sub-elemen ini diawali kata “Aturan”, yang dibaca sebagai <b>aturan pencacahan</b> (penjumlahan, perkalian, permutasi, kombinasi). Tabel berikut memetakan tiga level TKA ke nomor soal di Bab 6.</p>
+  <div class="tw"><table>
+    <tr><th>Level</th><th>Proses berpikir</th><th>Contoh pada sub-elemen</th><th class="c">Soal</th></tr>
+    <tr><td rowspan="3"><b>Level 1</b><br>Pengetahuan &amp; Pemahaman</td><td>Menghitung</td><td>Faktorial; nilai 0! dan faktorial kecil; aturan perkalian; aturan penjumlahan; permutasi nPr; kombinasi nCr</td><td class="c">1, 2, 3, 4, 5, 6</td></tr>
+    <tr><td>Mengidentifikasi</td><td>Permutasi atau kombinasi</td><td class="c">7</td></tr>
+    <tr><td>Mengelompokkan</td><td>Kelompok kombinasi</td><td class="c">8</td></tr>
+    <tr><td rowspan="3"><b>Level 2</b><br>Aplikasi</td><td>Menerapkan</td><td>Pengisian tempat (bilangan genap); kombinasi bersyarat; permutasi unsur sama; bilangan ganjil dengan angka 0; kombinasi (jabat tangan); permutasi siklis; susunan berdampingan</td><td class="c">9, 11, 12, 14, 15, 17, 18</td></tr>
+    <tr><td>Memodelkan</td><td>Permutasi (jabatan); password (angka boleh berulang)</td><td class="c">10, 13</td></tr>
+    <tr><td>Menginterpretasikan</td><td>Tim vs jabatan</td><td class="c">16</td></tr>
+    <tr><td rowspan="6"><b>Level 3</b><br>Penalaran</td><td>Menganalisis</td><td>Siklis berdampingan; tidak berdampingan</td><td class="c">19, 24</td></tr>
+    <tr><td>Memecahkan masalah</td><td>Pengisian tempat dengan angka 0; kombinasi “paling sedikit”; pergi-pulang dengan syarat</td><td class="c">20, 23, 25</td></tr>
+    <tr><td>Mengevaluasi</td><td>Pernyataan pencacahan</td><td class="c">21</td></tr>
+    <tr><td>Melakukan generalisasi</td><td>Sifat kombinasi</td><td class="c">22</td></tr>
+    <tr><td>Menjustifikasi</td><td>Menilai alasan</td><td class="c">26</td></tr>
+    <tr><td>Menyimpulkan</td><td>Perbandingan boleh berulang vs tidak</td><td class="c">27</td></tr>
+  </table></div>
+</section>
+
+<!-- ================= BAB 0 ================= -->
+<section class="bab" id="bab0">
+  <div class="bab-head"><div class="bab-no">Bab 0</div><div><h2>Prasyarat: Bekal Dasar Sebelum Pencacahan</h2></div></div>
+  <p class="lead">Salah hitung di pencacahan biasanya bukan karena konsepnya, tetapi karena <b>perkalian panjang</b> dan <b>salah membaca kata kunci</b>. Bagian ini membereskan dua hal itu.</p>
+
+  <h3 class="sub">0.1 Kata kunci: “dan” dikali, “atau” dijumlah</h3>
+  <div class="tw"><table>
+    <tr><th>Kata di soal</th><th>Artinya</th><th class="c">Operasi</th><th>Contoh</th></tr>
+    <tr><td><b>dan</b>, kemudian, tahap demi tahap</td><td>Semua tahap harus dilakukan</td><td class="c"><b>×</b></td><td>3 kemeja <b>dan</b> 2 celana → $3 \times 2$</td></tr>
+    <tr><td><b>atau</b>, salah satu</td><td>Cukup satu pilihan</td><td class="c"><b>+</b></td><td>3 bus <b>atau</b> 2 kereta → $3 + 2$</td></tr>
+  </table></div>
+
+  <h3 class="sub">0.2 Perkalian dan pembagian cepat</h3>
+  <ul>
+    <li>Perkalian berantai dari kiri:
+    $$5 \times 4 \times 3 = 20 \times 3 = 60$$</li>
+    <li>Pecahan disederhanakan <b>sebelum</b> dikali:
+    $$\frac{6 \times 5}{2} = \frac{30}{2} = 15$$</li>
+    <li>Hafalkan: $2! = 2$, $\;3! = 6$, $\;4! = 24$, $\;5! = 120$, $\;6! = 720$.</li>
+  </ul>
+
+  <h3 class="sub">0.3 Bilangan genap, ganjil, dan angka satuan</h3>
+  <p>Bilangan <b>genap</b> berakhir $0, 2, 4, 6, 8$. Bilangan <b>ganjil</b> berakhir $1, 3, 5, 7, 9$. Bilangan tiga angka <b>tidak boleh diawali 0</b> ($052$ bukan bilangan tiga angka).</p>
+
+  <h3 class="sub">0.4 Mendaftar secara sistematis</h3>
+  <p>Untuk jumlah kecil, mendaftar membantu memeriksa hasil. Daftar urut abjad atau angka agar tidak ada yang terlewat atau dobel. Contoh susunan 2 huruf dari $\{A, B, C\}$: <b>AB, AC, BA, BC, CA, CB</b> (6 susunan).</p>
+
+  <h3 class="sub">Latihan Prasyarat</h3>
+  <div class="mini-q"><span class="num">1</span><span class="qt">Hitung $5 \times 4 \times 3$.</span>
+    <details class="kunci"><summary>Lihat kunci &amp; langkah</summary><div>
+      <ol class="steps"><li>Kalikan dua angka pertama: $5 \times 4 = 20$.</li><li>Kalikan hasilnya dengan angka berikutnya: $20 \times 3 = 60$.</li></ol>
+      <span class="ans">Jawaban: 60</span></div></details></div>
+  <div class="mini-q"><span class="num">2</span><span class="qt">Hitung $\dfrac{7 \times 6}{2}$.</span>
+    <details class="kunci"><summary>Lihat kunci &amp; langkah</summary><div>
+      <ol class="steps"><li>Hitung pembilang: $7 \times 6 = 42$.</li><li>Bagi dengan penyebut:
+      $$\frac{42}{2} = 21$$</li></ol>
+      <p>⚡ <b>Cepat:</b> $6 \div 2 = 3$ dulu, lalu $7 \times 3 = 21$.</p>
+      <span class="ans">Jawaban: 21</span></div></details></div>
+  <div class="mini-q"><span class="num">3</span><span class="qt">Dari kalimat “memilih celana <b>dan</b> sepatu”, operasi apa yang dipakai?</span>
+    <details class="kunci"><summary>Lihat kunci &amp; langkah</summary><div>
+      <p>Kata “<b>dan</b>” berarti kedua pilihan harus dilakukan, maka kita <b>mengalikan</b>.</p>
+      <span class="ans">Jawaban: perkalian</span></div></details></div>
+  <div class="mini-q"><span class="num">4</span><span class="qt">Sebutkan angka satuan yang membuat bilangan menjadi genap.</span>
+    <details class="kunci"><summary>Lihat kunci &amp; langkah</summary><div>
+      <p>Bilangan genap habis dibagi 2, jadi angka satuannya genap.</p>
+      <span class="ans">Jawaban: 0, 2, 4, 6, 8</span></div></details></div>
+  <div class="mini-q"><span class="num">5</span><span class="qt">Daftar semua susunan 2 huruf berbeda dari $\{P, Q, R\}$.</span>
+    <details class="kunci"><summary>Lihat kunci &amp; langkah</summary><div>
+      <ol class="steps"><li>Awali dengan P: PQ, PR.</li><li>Awali dengan Q: QP, QR.</li><li>Awali dengan R: RP, RQ.</li></ol>
+      <span class="ans">Jawaban: PQ, PR, QP, QR, RP, RQ</span></div></details></div>
+</section>
+
+<!-- ================= BAB 1 ================= -->
+<section class="bab" id="bab1">
+  <div class="bab-head"><div class="bab-no">Bab 1</div><div><h2>Aturan Penjumlahan dan Perkalian</h2><small>Tahap 1</small></div></div>
+  <p class="lead"><b>Tujuan:</b> menghitung banyaknya cara dengan aturan penjumlahan, aturan perkalian, dan pengisian tempat. Ini adalah <b>fondasi mutlak</b>: jika bab ini sudah paham, permutasi dan kombinasi hanya “jalan pintas”.</p>
+
+  <h3 class="sub">1.1 Aturan penjumlahan dan perkalian</h3>
+  <div class="tw"><table>
+    <tr><th>Aturan</th><th>Kata kunci</th><th>Cara menghitung</th></tr>
+    <tr><td><b>Perkalian</b></td><td><b>dan</b>, kemudian, tahap demi tahap</td><td>Kalikan banyak cara tiap tahap</td></tr>
+    <tr><td><b>Penjumlahan</b></td><td><b>atau</b>, salah satu</td><td>Jumlahkan banyak cara tiap pilihan</td></tr>
+  </table></div>
+
+  <figure class="fig">
+    <div class="svgw"><svg viewBox="0 0 560 330" role="img" aria-label="Diagram pohon memilih kemeja dan celana" font-family="Nunito,sans-serif">
+      <text x="215" y="22" font-size="15" fill="#7b8a99" font-weight="700" text-anchor="middle">Pilih kemeja (2 cara)</text>
+      <text x="400" y="22" font-size="15" fill="#7b8a99" font-weight="700">Pilih celana (3 cara)</text>
+      <g stroke="#7f8c8d" stroke-width="3" fill="none" stroke-linecap="round">
+        <path d="M70 165 L170 85"/><path d="M70 165 L170 245"/>
+        <path d="M262 85 L335 45"/><path d="M262 85 L335 85"/><path d="M262 85 L335 125"/>
+        <path d="M262 245 L335 205"/><path d="M262 245 L335 245"/><path d="M262 245 L335 285"/>
+      </g>
+      <rect x="6" y="143" width="72" height="44" rx="10" fill="#dce6f4" stroke="#022050" stroke-width="2.5"/>
+      <text x="42" y="171" font-size="17" font-weight="800" text-anchor="middle" fill="#022050">Mulai</text>
+      <rect x="168" y="60" width="96" height="50" rx="10" fill="#fff" stroke="#c0392b" stroke-width="2.5"/>
+      <text x="216" y="82" font-size="14" font-weight="800" text-anchor="middle" fill="#14233f">Kemeja</text><text x="216" y="100" font-size="14" font-weight="800" text-anchor="middle" fill="#c0392b">merah</text>
+      <rect x="168" y="220" width="96" height="50" rx="10" fill="#fff" stroke="#022050" stroke-width="2.5"/>
+      <text x="216" y="242" font-size="14" font-weight="800" text-anchor="middle" fill="#14233f">Kemeja</text><text x="216" y="260" font-size="14" font-weight="800" text-anchor="middle" fill="#022050">biru</text>
+      <g font-size="15" font-weight="700" fill="#14233f">
+        <text x="345" y="50">Celana hitam</text><text x="345" y="90">Celana abu-abu</text><text x="345" y="130">Celana coklat</text>
+        <text x="345" y="210">Celana hitam</text><text x="345" y="250">Celana abu-abu</text><text x="345" y="290">Celana coklat</text>
+      </g>
+      <g font-size="15" font-weight="800" fill="#e67e22" text-anchor="end">
+        <text x="545" y="50">(1)</text><text x="545" y="90">(2)</text><text x="545" y="130">(3)</text><text x="545" y="210">(4)</text><text x="545" y="250">(5)</text><text x="545" y="290">(6)</text>
+      </g>
+      <text x="280" y="322" font-size="16" font-weight="800" text-anchor="middle" fill="#e67e22">Banyak pasangan = 2 × 3 = 6 cara (aturan perkalian)</text>
+    </svg></div>
+    <figcaption>Gambar 1. Diagram pohon memilih kemeja dan celana</figcaption>
+  </figure>
+
+  <div class="box contoh"><div class="bt">📘 Contoh 1.1</div>
+    <h4>a) 2 kemeja dan 3 celana. Berapa pasang pakaian?</h4>
+    <div class="solve">
+      <div class="way cepat"><div class="wt">⚡ Cara Cepat</div>“kemeja <b>dan</b> celana” → kalikan: $2 \times 3 = \mathbf{6}$ pasang.</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>Ada dua tahap: memilih kemeja, <b>dan</b> memilih celana.</li>
+        <li>Banyak cara tahap 1 (kemeja) $= 2$. Banyak cara tahap 2 (celana) $= 3$.</li>
+        <li>Karena kata “dan” → aturan perkalian:
+        $$2 \times 3 = 6$$</li></ol><span class="ans">6 pasang</span></div>
+    </div>
+    <h4>b) Ke kota B bisa naik 3 jenis bus <u>atau</u> 2 jenis kereta. Berapa cara?</h4>
+    <div class="solve">
+      <div class="way cepat"><div class="wt">⚡ Cara Cepat</div>“bus <b>atau</b> kereta” → jumlahkan: $3 + 2 = \mathbf{5}$ cara.</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>Orang itu hanya memilih <b>salah satu</b> kendaraan (bus <i>atau</i> kereta), tidak keduanya.</li>
+        <li>Banyak cara naik bus $= 3$, banyak cara naik kereta $= 2$.</li>
+        <li>Kata “atau” → aturan penjumlahan:
+        $$3 + 2 = 5$$</li></ol><span class="ans">5 cara</span></div>
+    </div>
+    <h4>c) Menu: 4 makanan, 3 minuman, 2 es krim. Berapa paket (makanan <u>dan</u> minuman <u>dan</u> es krim)?</h4>
+    <div class="solve">
+      <div class="way cepat"><div class="wt">⚡ Cara Cepat</div>Tiga “dan” → kalikan semua: $4 \times 3 \times 2 = \mathbf{24}$ paket.</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>Ada 3 tahap: pilih makanan (4 cara), pilih minuman (3 cara), pilih es krim (2 cara).</li>
+        <li>Semua tahap harus dilakukan (kata “dan”), maka kalikan:
+        $$4 \times 3 \times 2 = 12 \times 2 = 24$$</li></ol><span class="ans">24 paket</span></div>
+    </div>
+  </div>
+
+  <h3 class="sub">1.2 Pengisian tempat (<i>filling slots</i>)</h3>
+  <p>Gambar kotak sebanyak tempat yang harus diisi. Tulis banyak pilihan di tiap kotak, lalu <b>kalikan</b>.</p>
+  <div class="box ingat"><div class="bt">📌 Ingat!</div>
+    <ol class="steps">
+      <li>Gambar <b>kotak</b> sebanyak posisi.</li>
+      <li><b>Isi dulu kotak yang bersyarat</b> (satuan genap, angka pertama bukan 0, dan sejenisnya).</li>
+      <li>Kotak lain diisi dari sisa pilihan.</li>
+      <li><b>Kalikan</b> semua kotak.</li>
+    </ol>
+  </div>
+
+  <figure class="fig">
+    <p style="margin:0 0 4px;color:var(--navy);font-weight:700">Bilangan genap 3 angka berbeda dari 1, 2, 3, 4, 5: isi kotak <b>BERSYARAT</b> dulu (nomor 1)</p>
+    <div class="slots">
+      <div class="slot"><div class="lbl">Ratusan</div><div class="bx"><i>2</i>4</div><div class="nt">(bukan angka satuan)</div></div>
+      <div class="times">×</div>
+      <div class="slot"><div class="lbl">Puluhan</div><div class="bx"><i>3</i>3</div><div class="nt">(sisa angka)</div></div>
+      <div class="times">×</div>
+      <div class="slot first"><div class="lbl">Satuan</div><div class="bx"><i>1</i>2</div><div class="nt">{2, 4} genap</div></div>
+    </div>
+    <p style="margin:6px 0 0;font-weight:800;color:var(--navy)">4 × 3 × 2 = 24 bilangan</p>
+    <figcaption>Gambar 2. Metode kotak untuk bilangan genap tiga angka berbeda dari 1, 2, 3, 4, 5</figcaption>
+  </figure>
+
+  <div class="box contoh"><div class="bt">📘 Contoh 1.2a — boleh berulang vs tidak</div>
+    <p>Kode 3 angka dari 0–9. Hitung jika <b>boleh berulang</b> dan jika <b>tidak boleh berulang</b>.</p>
+    <div class="solve">
+      <div class="way cepat"><div class="wt">⚡ Cara Cepat</div>
+        Boleh berulang: $10 \times 10 \times 10 = \mathbf{1.000}$.<br>
+        Tidak boleh berulang: $10 \times 9 \times 8 = \mathbf{720}$ (tiap kotak berkurang 1).</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>Gambar 3 kotak: ▭ ▭ ▭. Angka yang tersedia ada 10 ($0, 1, \dots, 9$).</li>
+        <li><b>Boleh berulang</b>: setiap kotak bebas memakai 10 angka:
+        $$10 \times 10 \times 10 = 1.000$$</li>
+        <li><b>Tidak boleh berulang</b>: kotak 1 ada 10 pilihan; kotak 2 tinggal 9 (satu angka sudah dipakai); kotak 3 tinggal 8:
+        $$10 \times 9 \times 8 = 720$$</li></ol><span class="ans">1.000 dan 720</span></div>
+    </div>
+  </div>
+
+  <div class="box contoh"><div class="bt">📘 Contoh 1.2b — bilangan dengan angka 0</div>
+    <p>Bilangan 3 angka berbeda dari $0, 1, 2, 3, 4$ yang <b>lebih dari 200</b>.</p>
+    <div class="solve">
+      <div class="way cepat"><div class="wt">⚡ Cara Cepat</div>Ratusan $\in \{2,3,4\}$ → 3 pilihan, lalu 4 pilihan, lalu 3 pilihan: $3 \times 4 \times 3 = \mathbf{36}$.</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>Gambar 3 kotak: Ratusan, Puluhan, Satuan.</li>
+        <li><b>Ratusan</b> (bersyarat, harus lebih dari 200) hanya boleh $2, 3,$ atau $4$ → <b>3 pilihan</b>.</li>
+        <li><b>Puluhan</b>: sisa 4 angka dari 5 angka awal (angka 0 boleh di sini) → <b>4 pilihan</b>.</li>
+        <li><b>Satuan</b>: sisa 3 angka → <b>3 pilihan</b>.</li>
+        <li>Kalikan:
+        $$3 \times 4 \times 3 = 36$$</li></ol><span class="ans">36 bilangan</span></div>
+    </div>
+  </div>
+
+  <div class="box awas"><div class="bt">⚠️ Awas, Jebakan!</div>
+    <ul>
+      <li>Pada bilangan, angka <b>0 tidak boleh</b> di posisi pertama.</li>
+      <li>Jika ada syarat, <b>isi kotak bersyarat dulu</b>; jika dibalik, jumlah pilihan kotak lain bisa salah hitung.</li>
+      <li>Baca “<b>boleh berulang</b>” atau “<b>berbeda</b>”. Keduanya menghasilkan angka yang sangat berbeda.</li>
+    </ul>
+  </div>
+
+  <h3 class="sub">Latihan Bab 1</h3>
+  <div class="mini-q"><span class="num">1</span><span class="qt">Berapa bilangan genap dua angka berbeda dari $1, 2, 3, 4$?</span>
+    <details class="kunci"><summary>Lihat kunci &amp; langkah</summary><div>
+      <div class="solve"><div class="way cepat"><div class="wt">⚡ Cara Cepat</div>Satuan genap $\{2,4\}$: 2 pilihan. Puluhan: 3 pilihan. $2 \times 3 = 6$.</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>Gambar 2 kotak: Puluhan, Satuan.</li>
+        <li>Isi yang bersyarat dulu: Satuan harus genap, yaitu $2$ atau $4$ → 2 pilihan.</li>
+        <li>Puluhan: sisa 3 angka (satu angka dipakai di satuan) → 3 pilihan.</li>
+        <li>$$2 \times 3 = 6$$</li></ol></div></div>
+      <span class="ans">Jawaban: 6</span></div></details></div>
+  <div class="mini-q"><span class="num">2</span><span class="qt">Plat nomor terdiri atas 1 huruf (dari 5 huruf) dilanjutkan 2 angka (0–9, boleh berulang). Berapa banyak plat?</span>
+    <details class="kunci"><summary>Lihat kunci &amp; langkah</summary><div>
+      <div class="solve"><div class="way cepat"><div class="wt">⚡ Cara Cepat</div>$5 \times 10 \times 10 = 500$.</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>Ada 3 kotak: huruf, angka 1, angka 2.</li>
+        <li>Huruf: 5 pilihan. Angka pertama: 10 pilihan. Angka kedua: 10 pilihan (boleh berulang).</li>
+        <li>$$5 \times 10 \times 10 = 500$$</li></ol></div></div>
+      <span class="ans">Jawaban: 500</span></div></details></div>
+  <div class="mini-q"><span class="num">3</span><span class="qt">Dari kota P ke Q ada 4 jalan, dari Q ke R ada 3 jalan. Berapa cara dari P ke R melalui Q?</span>
+    <details class="kunci"><summary>Lihat kunci &amp; langkah</summary><div>
+      <div class="solve"><div class="way cepat"><div class="wt">⚡ Cara Cepat</div>Berurutan (P→Q <b>dan</b> Q→R) → $4 \times 3 = 12$.</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>Tahap 1: P ke Q, ada 4 jalan.</li>
+        <li>Tahap 2: Q ke R, ada 3 jalan.</li>
+        <li>Kedua tahap dilalui berurutan → kalikan: $$4 \times 3 = 12$$</li></ol></div></div>
+      <span class="ans">Jawaban: 12</span></div></details></div>
+</section>
+
+<!-- ================= BAB 2 ================= -->
+<section class="bab" id="bab2">
+  <div class="bab-head"><div class="bab-no">Bab 2</div><div><h2>Faktorial dan Permutasi</h2><small>Tahap 2</small></div></div>
+  <p class="lead"><b>Tujuan:</b> menghitung susunan yang <b>urutannya penting</b>. Permutasi hanyalah pengisian tempat tanpa pengulangan dengan rumus ringkas.</p>
+
+  <h3 class="sub">2.1 Faktorial</h3>
+  <div class="box rumus"><div class="bt">📐 Rumus</div>
+    $$n! = n \times (n-1) \times (n-2) \times \cdots \times 2 \times 1$$
+    $$0! = 1 \qquad \text{dan} \qquad 1! = 1$$
+  </div>
+  <div class="tw"><table>
+    <tr><th class="c">$n$</th><th class="c">0</th><th class="c">1</th><th class="c">2</th><th class="c">3</th><th class="c">4</th><th class="c">5</th><th class="c">6</th></tr>
+    <tr><td class="c"><b>$n!$</b></td><td class="c">1</td><td class="c">1</td><td class="c">2</td><td class="c">6</td><td class="c">24</td><td class="c">120</td><td class="c">720</td></tr>
+  </table></div>
+
+  <div class="box contoh"><div class="bt">📘 Contoh 2.1</div>
+    <h4>a) Hitung $\dfrac{5!}{3!}$</h4>
+    <div class="solve">
+      <div class="way cepat"><div class="wt">⚡ Cara Cepat</div>Coret $3!$ yang sama: $5 \times 4 = \mathbf{20}$.</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>Uraikan $5!$ sampai muncul $3!$:
+        $$5! = 5 \times 4 \times 3!$$</li>
+        <li>Substitusikan, lalu coret $3!$ di atas dan bawah:
+        $$\frac{5!}{3!} = \frac{5 \times 4 \times 3!}{3!} = 5 \times 4$$</li>
+        <li>Hitung: $5 \times 4 = 20$.</li></ol><span class="ans">20</span></div>
+    </div>
+    <h4>b) Hitung $\dfrac{6!}{4! \times 2!}$</h4>
+    <div class="solve">
+      <div class="way cepat"><div class="wt">⚡ Cara Cepat</div>Coret $4!$: $\dfrac{6 \times 5}{2} = \dfrac{30}{2} = \mathbf{15}$.</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>Uraikan $6! = 6 \times 5 \times 4!$ dan $2! = 2 \times 1 = 2$.</li>
+        <li>Substitusikan, lalu coret $4!$:
+        $$\frac{6!}{4! \times 2!} = \frac{6 \times 5 \times 4!}{4! \times 2} = \frac{6 \times 5}{2}$$</li>
+        <li>Hitung:
+        $$\frac{30}{2} = 15$$</li></ol><span class="ans">15</span></div>
+    </div>
+  </div>
+  <div class="box tips"><div class="bt">🚀 Tips &amp; Trik</div>Jangan dihitung penuh. <b>Coret faktorial yang sama</b> dari atas dan bawah.</div>
+
+  <h3 class="sub">2.2 Permutasi (urutan penting)</h3>
+  <p>Permutasi dipakai jika pertukaran urutan menghasilkan sesuatu yang <b>berbeda</b>: jabatan, juara, nomor, password, susunan huruf, antrean.</p>
+  <div class="box rumus"><div class="bt">📐 Rumus</div>
+    <p>Permutasi $r$ dari $n$ unsur:</p>
+    $$\P{n}{r} = \frac{n!}{(n-r)!}$$
+    <p><b>Cara ringkas:</b> $\P{n}{r} = n \times (n-1) \times \cdots$ sebanyak $r$ faktor.</p>
+    <p>Menyusun semua $n$ unsur: $\;n!$</p>
+  </div>
+
+  <div class="box contoh"><div class="bt">📘 Contoh 2.2</div>
+    <h4>a) Ketua, sekretaris, bendahara dari 5 calon</h4>
+    <div class="solve">
+      <div class="way cepat"><div class="wt">⚡ Cara Cepat</div>3 jabatan → 3 faktor turun dari 5: $5 \times 4 \times 3 = \mathbf{60}$ cara.</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>Ada jabatan, sehingga urutan penting → <b>permutasi</b>. Dipilih $r = 3$ dari $n = 5$.</li>
+        <li>Tulis rumus:
+        $$\P{5}{3} = \frac{5!}{(5-3)!} = \frac{5!}{2!}$$</li>
+        <li>Uraikan dan coret $2!$:
+        $$\frac{5 \times 4 \times 3 \times 2!}{2!} = 5 \times 4 \times 3 = 60$$</li></ol><span class="ans">60 cara</span></div>
+    </div>
+    <h4>b) 4 orang berdiri berjajar</h4>
+    <div class="solve">
+      <div class="way cepat"><div class="wt">⚡ Cara Cepat</div>$4! = 4 \times 3 \times 2 \times 1 = \mathbf{24}$ cara.</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>Semua 4 orang disusun → $n!$ dengan $n = 4$.</li>
+        <li>Posisi pertama 4 pilihan, kedua 3, ketiga 2, keempat 1:
+        $$4! = 4 \times 3 \times 2 \times 1 = 24$$</li></ol><span class="ans">24 cara</span></div>
+    </div>
+    <h4>c) Bilangan 3 angka berbeda dari 1, 2, 3, 4, 5</h4>
+    <div class="solve">
+      <div class="way cepat"><div class="wt">⚡ Cara Cepat</div>$\P{5}{3} = 5 \times 4 \times 3 = \mathbf{60}$ bilangan.</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>Angka berbeda dan urutan menentukan bilangan (123 ≠ 321) → permutasi, $r = 3$, $n = 5$.</li>
+        <li>$$\P{5}{3} = \frac{5!}{2!} = 5 \times 4 \times 3 = 60$$</li></ol><span class="ans">60 bilangan</span></div>
+    </div>
+    <h4>d) Password 4 angka berbeda dari 0–9</h4>
+    <div class="solve">
+      <div class="way cepat"><div class="wt">⚡ Cara Cepat</div>4 faktor turun dari 10: $10 \times 9 \times 8 \times 7 = \mathbf{5.040}$.</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>Password: urutan angka menentukan, angka berbeda → $\P{10}{4}$.</li>
+        <li>$$\P{10}{4} = \frac{10!}{6!} = 10 \times 9 \times 8 \times 7$$</li>
+        <li>$10 \times 9 = 90$; $\;90 \times 8 = 720$; $\;720 \times 7 = 5.040$.</li></ol><span class="ans">5.040</span></div>
+    </div>
+  </div>
+
+  <div class="box contoh"><div class="bt">🎯 Visual: kenapa urutan penting?</div>
+    <p>Calon A, B, C untuk ketua dan sekretaris. Pasangan “A ketua, B sekretaris” <b>berbeda</b> dengan “B ketua, A sekretaris”. Ada $\P{3}{2} = 3 \times 2 = \mathbf{6}$ susunan: <b>AB, AC, BA, BC, CA, CB</b>.</p>
+  </div>
+
+  <h3 class="sub">2.3 Permutasi dengan unsur yang sama</h3>
+  <div class="box rumus"><div class="bt">📐 Rumus</div>
+    $$\text{Banyak susunan} = \frac{n!}{k_1! \times k_2! \times \cdots}$$
+    <p>$k$ = banyak unsur yang sama.</p>
+  </div>
+  <div class="box contoh"><div class="bt">📘 Contoh 2.3</div>
+    <h4>KAKAK (K ada 3, A ada 2)</h4>
+    <div class="solve">
+      <div class="way cepat"><div class="wt">⚡ Cara Cepat</div>$\dfrac{5!}{3! \times 2!} = \dfrac{5 \times 4}{2} = \mathbf{10}$ susunan.</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>Hitung huruf: K = 3 buah, A = 2 buah, total $n = 5$.</li>
+        <li>$$\frac{5!}{3! \times 2!} = \frac{120}{6 \times 2} = \frac{120}{12} = 10$$</li></ol><span class="ans">10 susunan</span></div>
+    </div>
+    <h4>MATEMATIKA (M 2, A 3, T 2; total 10 huruf)</h4>
+    <div class="solve">
+      <div class="way cepat"><div class="wt">⚡ Cara Cepat</div>Penyebut $2! \times 3! \times 2! = 2 \times 6 \times 2 = 24$. Hasil $\dfrac{3.628.800}{24} = \mathbf{151.200}$.</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>Huruf yang berulang: M (2 kali), A (3 kali), T (2 kali); huruf lain muncul sekali. Total 10 huruf.</li>
+        <li>$$\frac{10!}{2! \times 3! \times 2!} = \frac{3.628.800}{2 \times 6 \times 2} = \frac{3.628.800}{24}$$</li>
+        <li>$$= 151.200$$</li></ol><span class="ans">151.200</span></div>
+    </div>
+    <h4>JAKARTA (A ada 3; total 7 huruf)</h4>
+    <div class="solve">
+      <div class="way cepat"><div class="wt">⚡ Cara Cepat</div>$\dfrac{7!}{3!} = 7 \times 6 \times 5 \times 4 = \mathbf{840}$.</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>J-A-K-A-R-T-A: hanya huruf A yang berulang (3 kali), $n = 7$.</li>
+        <li>$$\frac{7!}{3!} = \frac{7 \times 6 \times 5 \times 4 \times 3!}{3!} = 840$$</li></ol><span class="ans">840</span></div>
+    </div>
+  </div>
+
+  <h3 class="sub">2.4 Permutasi siklis (duduk melingkar)</h3>
+  <div class="box rumus"><div class="bt">📐 Rumus</div>
+    $$\text{Siklis } n \text{ unsur} = (n-1)!$$
+  </div>
+  <figure class="fig">
+    <div class="svgw"><svg viewBox="0 0 640 300" role="img" aria-label="Duduk melingkar" font-family="Nunito,sans-serif">
+      <defs><g id="tbl"><circle r="46" fill="#f2f5fa" stroke="#999" stroke-width="3"/><text y="6" font-size="15" text-anchor="middle" fill="#666" font-weight="700">meja</text></g></defs>
+      <!-- kiri -->
+      <g transform="translate(150,135)"><use href="#tbl"/>
+        <g font-weight="800" font-size="19" fill="#fff" text-anchor="middle">
+          <circle cx="0" cy="-92" r="22" fill="#ef6c4a"/><text x="0" y="-85">A</text>
+          <circle cx="87" cy="-28" r="22" fill="#2a9d8f"/><text x="87" y="-21">B</text>
+          <circle cx="54" cy="74" r="22" fill="#2a9d8f"/><text x="54" y="81">C</text>
+          <circle cx="-54" cy="74" r="22" fill="#2a9d8f"/><text x="-54" y="81">D</text>
+          <circle cx="-87" cy="-28" r="22" fill="#2a9d8f"/><text x="-87" y="-21">E</text>
+        </g></g>
+      <text x="320" y="152" font-size="52" font-weight="800" fill="#ef6c4a" text-anchor="middle">=</text>
+      <!-- kanan -->
+      <g transform="translate(490,135)"><use href="#tbl"/>
+        <g font-weight="800" font-size="19" fill="#fff" text-anchor="middle">
+          <circle cx="0" cy="-92" r="22" fill="#2a9d8f"/><text x="0" y="-85">B</text>
+          <circle cx="87" cy="-28" r="22" fill="#2a9d8f"/><text x="87" y="-21">C</text>
+          <circle cx="54" cy="74" r="22" fill="#2a9d8f"/><text x="54" y="81">D</text>
+          <circle cx="-54" cy="74" r="22" fill="#2a9d8f"/><text x="-54" y="81">E</text>
+          <circle cx="-87" cy="-28" r="22" fill="#ef6c4a"/><text x="-87" y="-21">A</text>
+        </g></g>
+      <g font-size="14.5" font-weight="700" fill="#1e3a5f" text-anchor="middle">
+        <text x="150" y="262">Susunan 1: A di atas, searah jarum jam</text><text x="150" y="282">A – B – C – D – E</text>
+        <text x="490" y="262">Susunan 2: meja DIPUTAR saja</text><text x="490" y="282">B – C – D – E – A (urutan sama, hitung SATU)</text>
+      </g>
+    </svg></div>
+    <figcaption>Gambar 3. Putaran meja tidak menghasilkan susunan baru, sehingga satu orang dijadikan patokan</figcaption>
+  </figure>
+  <div class="box contoh"><div class="bt">📘 Contoh 2.4</div>
+    <p>5 orang duduk mengelilingi meja bundar.</p>
+    <div class="solve">
+      <div class="way cepat"><div class="wt">⚡ Cara Cepat</div>$(5-1)! = 4! = \mathbf{24}$ cara.</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>Duduk melingkar: kalau semua orang bergeser satu kursi, susunannya dianggap <b>sama</b>.</li>
+        <li>Jadikan satu orang sebagai patokan (posisinya tetap). Sisa 4 orang diatur di 4 kursi lainnya.</li>
+        <li>$$(5-1)! = 4! = 4 \times 3 \times 2 \times 1 = 24$$</li></ol><span class="ans">24 cara</span></div>
+    </div>
+  </div>
+
+  <h3 class="sub">2.5 Susunan berdampingan dan tidak berdampingan</h3>
+  <div class="box contoh"><div class="bt">📘 Contoh 2.5a — berdampingan</div>
+    <p>5 orang berjajar, A dan B harus berdampingan.</p>
+    <div class="solve">
+      <div class="way cepat"><div class="wt">⚡ Cara Cepat</div>Paket A–B dianggap 1 → ada 4 unit: $4! \times 2! = 24 \times 2 = \mathbf{48}$.</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>Anggap A dan B satu paket. Maka unit yang disusun: [AB], C, D, E = <b>4 unit</b>.</li>
+        <li>Susun 4 unit: $4! = 24$.</li>
+        <li>Di dalam paket, A dan B bisa bertukar tempat (AB atau BA): $2! = 2$.</li>
+        <li>Kalikan:
+        $$4! \times 2! = 24 \times 2 = 48$$</li></ol><span class="ans">48</span></div>
+    </div>
+  </div>
+  <div class="box contoh"><div class="bt">📘 Contoh 2.5b — tidak berdampingan</div>
+    <p>5 orang berjajar, A dan B <b>tidak</b> berdampingan.</p>
+    <div class="solve">
+      <div class="way cepat"><div class="wt">⚡ Cara Cepat</div>Semua − berdampingan $= 120 - 48 = \mathbf{72}$.</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>Semua susunan tanpa syarat: $5! = 120$.</li>
+        <li>Susunan A–B berdampingan (dari Contoh 2.5a): $48$.</li>
+        <li>Tidak berdampingan = semua − berdampingan:
+        $$120 - 48 = 72$$</li></ol><span class="ans">72</span></div>
+    </div>
+  </div>
+  <div class="box awas"><div class="bt">⚠️ Awas, Jebakan!</div>
+    <ul>
+      <li>Kata “<b>tidak</b>” hampir selalu berarti: hitung <b>semua</b>, lalu <b>kurangi</b> yang dilarang.</li>
+      <li>Siklis berdampingan: paket dihitung sebagai satu unit lalu pakai $(\text{unit} - 1)!$, kemudian kalikan tukar tempat di dalam paket. Contoh: 5 orang melingkar, 2 orang berdampingan:
+      $$(4-1)! \times 2 = 6 \times 2 = 12$$</li>
+    </ul>
+  </div>
+
+  <h3 class="sub">Latihan Bab 2</h3>
+  <div class="mini-q"><span class="num">1</span><span class="qt">Hitung $\dfrac{7!}{5!}$.</span>
+    <details class="kunci"><summary>Lihat kunci &amp; langkah</summary><div>
+      <div class="solve"><div class="way cepat"><div class="wt">⚡ Cara Cepat</div>$7 \times 6 = 42$.</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>Uraikan $7! = 7 \times 6 \times 5!$.</li>
+        <li>$$\frac{7!}{5!} = \frac{7 \times 6 \times 5!}{5!} = 7 \times 6 = 42$$</li></ol></div></div>
+      <span class="ans">Jawaban: 42</span></div></details></div>
+  <div class="mini-q"><span class="num">2</span><span class="qt">Berapa cara memilih ketua, wakil, bendahara dari 6 calon?</span>
+    <details class="kunci"><summary>Lihat kunci &amp; langkah</summary><div>
+      <div class="solve"><div class="way cepat"><div class="wt">⚡ Cara Cepat</div>$\P{6}{3} = 6 \times 5 \times 4 = 120$.</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>Ada jabatan → urutan penting → permutasi, $n=6$, $r=3$.</li>
+        <li>$$\P{6}{3} = \frac{6!}{3!} = 6 \times 5 \times 4 = 120$$</li></ol></div></div>
+      <span class="ans">Jawaban: 120</span></div></details></div>
+  <div class="mini-q"><span class="num">3</span><span class="qt">Berapa susunan huruf kata PAPA?</span>
+    <details class="kunci"><summary>Lihat kunci &amp; langkah</summary><div>
+      <div class="solve"><div class="way cepat"><div class="wt">⚡ Cara Cepat</div>P ada 2, A ada 2: $\dfrac{4 \times 3}{2} = 6$.</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>Total huruf $n = 4$; P berulang 2 kali, A berulang 2 kali.</li>
+        <li>$$\frac{4!}{2! \times 2!} = \frac{24}{4} = 6$$</li></ol></div></div>
+      <span class="ans">Jawaban: 6</span></div></details></div>
+  <div class="mini-q"><span class="num">4</span><span class="qt">Berapa cara 6 orang duduk melingkar?</span>
+    <details class="kunci"><summary>Lihat kunci &amp; langkah</summary><div>
+      <div class="solve"><div class="way cepat"><div class="wt">⚡ Cara Cepat</div>$(6-1)! = 5! = 120$.</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>Siklis: satu orang jadi patokan, 5 orang lain diatur.</li>
+        <li>$$(6-1)! = 5! = 5 \times 4 \times 3 \times 2 \times 1 = 120$$</li></ol></div></div>
+      <span class="ans">Jawaban: 120</span></div></details></div>
+</section>
+
+<!-- ================= BAB 3 ================= -->
+<section class="bab" id="bab3">
+  <div class="bab-head"><div class="bab-no">Bab 3</div><div><h2>Kombinasi</h2><small>Tahap 3</small></div></div>
+  <p class="lead"><b>Tujuan:</b> menghitung banyak cara <b>memilih kelompok</b> ketika urutan <b>tidak penting</b>: tim, panitia tanpa jabatan, mengambil sekaligus.</p>
+
+  <h3 class="sub">3.1 Dari permutasi ke kombinasi</h3>
+  <p>Dari 3 orang A, B, C pilih 2. Sebagai jabatan (permutasi) ada 6 susunan. Tetapi sebagai tim, AB dan BA adalah <b>tim yang sama</b>. Tiap tim dihitung ganda sebanyak $2!$ kali, sehingga banyak tim:
+  $$\frac{6}{2} = 3$$</p>
+  <div class="box rumus"><div class="bt">📐 Rumus</div>
+    $$\C{n}{r} = \frac{n!}{r! \times (n-r)!} = \frac{\P{n}{r}}{r!}$$
+    $$\C{n}{r} = \C{n}{n-r}$$
+    $$\P{n}{r} = \C{n}{r} \times r!$$
+  </div>
+
+  <figure class="fig">
+    <div class="compare">
+      <div class="p"><h5>PERMUTASI (urutan penting)<br>$\P{3}{2} = 6$</h5>
+        <div class="chips"><div>AB</div><div>BA</div><div>AC</div><div>CA</div><div>BC</div><div>CB</div></div></div>
+      <div class="k"><h5>KOMBINASI (urutan tidak penting)<br>$\C{3}{2} = 3$</h5>
+        <div class="chips"><div>{A, B}</div><div>{A, C}</div><div>{B, C}</div></div></div>
+    </div>
+    <figcaption>Gambar 4. Memilih 2 dari 3 orang (A, B, C): AB dan BA dihitung berbeda pada permutasi, tetapi sama pada kombinasi.</figcaption>
+  </figure>
+
+  <div class="tw"><table>
+    <tr><th>$\C{5}{r}$</th><th class="c">r = 0</th><th class="c">r = 1</th><th class="c">r = 2</th><th class="c">r = 3</th><th class="c">r = 4</th><th class="c">r = 5</th></tr>
+    <tr><td><b>Nilai</b></td><td class="c">1</td><td class="c">5</td><td class="c">10</td><td class="c">10</td><td class="c">5</td><td class="c">1</td></tr>
+  </table></div>
+
+  <div class="box contoh"><div class="bt">📘 Contoh 3.1</div>
+    <h4>a) Memilih 3 dari 5 siswa</h4>
+    <div class="solve">
+      <div class="way cepat"><div class="wt">⚡ Cara Cepat</div>3 faktor turun dari 5 di atas, $3!$ di bawah: $\dfrac{5 \times 4 \times 3}{3 \times 2 \times 1} = \dfrac{60}{6} = \mathbf{10}$.</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>Memilih tim → urutan tidak penting → <b>kombinasi</b>, $n=5$, $r=3$.</li>
+        <li>$$\C{5}{3} = \frac{5!}{3! \times 2!}$$</li>
+        <li>Uraikan $5! = 5 \times 4 \times 3!$ lalu coret $3!$:
+        $$\frac{5 \times 4}{2 \times 1} = \frac{20}{2} = 10$$</li></ol><span class="ans">10 cara</span></div>
+    </div>
+    <h4>b) Hitung $\C{10}{8}$</h4>
+    <div class="solve">
+      <div class="way cepat"><div class="wt">⚡ Cara Cepat</div>Pilih yang kecil: $\C{10}{8} = \C{10}{2} = \dfrac{10 \times 9}{2} = \mathbf{45}$.</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>Gunakan sifat simetri $\C{n}{r} = \C{n}{n-r}$ agar hitungan ringan:
+        $$\C{10}{8} = \C{10}{10-8} = \C{10}{2}$$</li>
+        <li>$$\C{10}{2} = \frac{10 \times 9}{2 \times 1} = \frac{90}{2} = 45$$</li></ol><span class="ans">45</span></div>
+    </div>
+    <h4>c) 8 orang saling berjabat tangan satu kali</h4>
+    <div class="solve">
+      <div class="way cepat"><div class="wt">⚡ Cara Cepat</div>$\dfrac{n(n-1)}{2} = \dfrac{8 \times 7}{2} = \mathbf{28}$.</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>Satu jabat tangan melibatkan 2 orang, dan A–B sama dengan B–A → urutan tidak penting → kombinasi $\C{8}{2}$.</li>
+        <li>$$\C{8}{2} = \frac{8 \times 7}{2 \times 1} = \frac{56}{2} = 28$$</li></ol><span class="ans">28 jabat tangan</span></div>
+    </div>
+  </div>
+
+  <h3 class="sub">3.2 Kombinasi bersyarat</h3>
+  <div class="box contoh"><div class="bt">📘 Contoh 3.2</div>
+    <p>Panitia 4 orang dari 6 putra dan 4 putri, terdiri atas 2 putra <b>dan</b> 2 putri.</p>
+    <div class="solve">
+      <div class="way cepat"><div class="wt">⚡ Cara Cepat</div>$\C{6}{2} \times \C{4}{2} = 15 \times 6 = \mathbf{90}$.</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>Pisahkan kelompok: pilih 2 dari 6 putra, <b>dan</b> pilih 2 dari 4 putri.</li>
+        <li>Putra: $$\C{6}{2} = \frac{6 \times 5}{2} = 15$$</li>
+        <li>Putri: $$\C{4}{2} = \frac{4 \times 3}{2} = 6$$</li>
+        <li>Kata “dan” → kalikan: $15 \times 6 = 90$.</li></ol><span class="ans">90 cara</span></div>
+    </div>
+  </div>
+  <div class="box ingat"><div class="bt">📌 Ingat!</div>Kata “<b>dan</b>” antar kelompok pilihan → <b>dikali</b>. Kata “<b>atau</b>” (pilihan terpisah) → <b>dijumlah</b>.</div>
+
+  <h3 class="sub">3.3 “Paling sedikit” dengan komplemen</h3>
+  <div class="box contoh"><div class="bt">📘 Contoh 3.3</div>
+    <p>Dari 5 putra dan 4 putri dipilih tim 3 orang, <b>paling sedikit satu putri</b>.</p>
+    <div class="solve">
+      <div class="way cepat"><div class="wt">⚡ Cara Cepat</div>Semua − tanpa putri $= \C{9}{3} - \C{5}{3} = 84 - 10 = \mathbf{74}$.</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>“Paling sedikit satu putri” berarti 1, 2, atau 3 putri. Lebih singkat hitung <b>kebalikannya</b>: tim tanpa putri sama sekali.</li>
+        <li>Semua tim (9 orang, pilih 3):
+        $$\C{9}{3} = \frac{9 \times 8 \times 7}{3 \times 2 \times 1} = 84$$</li>
+        <li>Tim tanpa putri (semua putra, pilih 3 dari 5):
+        $$\C{5}{3} = \frac{5 \times 4 \times 3}{3 \times 2 \times 1} = 10$$</li>
+        <li>Kurangkan: $84 - 10 = 74$.</li></ol><span class="ans">74 cara</span></div>
+    </div>
+  </div>
+  <div class="box tips"><div class="bt">🚀 Tips &amp; Trik</div>“Paling sedikit satu” → hitung <b>kebalikannya (tidak ada sama sekali)</b>, lalu kurangkan dari semua kemungkinan. Jauh lebih singkat daripada menghitung 1, 2, dan 3 putri satu per satu.</div>
+
+  <h3 class="sub">Latihan Bab 3</h3>
+  <div class="mini-q"><span class="num">1</span><span class="qt">Hitung $\C{7}{2}$.</span>
+    <details class="kunci"><summary>Lihat kunci &amp; langkah</summary><div>
+      <div class="solve"><div class="way cepat"><div class="wt">⚡ Cara Cepat</div>$\dfrac{7 \times 6}{2} = 21$.</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>$$\C{7}{2} = \frac{7!}{2! \times 5!} = \frac{7 \times 6 \times 5!}{2 \times 5!}$$</li>
+        <li>$$= \frac{42}{2} = 21$$</li></ol></div></div>
+      <span class="ans">Jawaban: 21</span></div></details></div>
+  <div class="mini-q"><span class="num">2</span><span class="qt">Berapa cara memilih 2 pemain dari 8 untuk berpasangan ganda (tanpa peran)?</span>
+    <details class="kunci"><summary>Lihat kunci &amp; langkah</summary><div>
+      <div class="solve"><div class="way cepat"><div class="wt">⚡ Cara Cepat</div>$\dfrac{8 \times 7}{2} = 28$.</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>Tanpa peran → urutan tidak penting → kombinasi.</li>
+        <li>$$\C{8}{2} = \frac{8 \times 7}{2 \times 1} = 28$$</li></ol></div></div>
+      <span class="ans">Jawaban: 28</span></div></details></div>
+  <div class="mini-q"><span class="num">3</span><span class="qt">Dari 4 putra dan 5 putri dipilih 3 orang, terdiri atas 1 putra dan 2 putri. Berapa cara?</span>
+    <details class="kunci"><summary>Lihat kunci &amp; langkah</summary><div>
+      <div class="solve"><div class="way cepat"><div class="wt">⚡ Cara Cepat</div>$4 \times \dfrac{5 \times 4}{2} = 4 \times 10 = 40$.</div>
+      <div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">
+        <li>1 putra dari 4: $\C{4}{1} = 4$.</li>
+        <li>2 putri dari 5: $\C{5}{2} = \dfrac{5 \times 4}{2} = 10$.</li>
+        <li>“dan” → kalikan: $4 \times 10 = 40$.</li></ol></div></div>
+      <span class="ans">Jawaban: 40</span></div></details></div>
+  <div class="mini-q"><span class="num">4</span><span class="qt">Hitung $\C{6}{3}$ langsung, lalu buktikan hasilnya sama dengan $\dfrac{\P{6}{3}}{3!}$.</span>
+    <details class="kunci"><summary>Lihat kunci &amp; langkah</summary><div>
+      <ol class="steps">
+        <li>Langsung:
+        $$\C{6}{3} = \frac{6 \times 5 \times 4}{3 \times 2 \times 1} = \frac{120}{6} = 20$$</li>
+        <li>Permutasi: $\P{6}{3} = 6 \times 5 \times 4 = 120$.</li>
+        <li>Bagi dengan $3!$:
+        $$\frac{\P{6}{3}}{3!} = \frac{120}{6} = 20$$</li>
+        <li>Hasilnya sama, yaitu 20.</li></ol>
+      <span class="ans">Jawaban: 20 (sama)</span></div></details></div>
+</section>
+
+<!-- ================= BAB 4 ================= -->
+<section class="bab" id="bab4">
+  <div class="bab-head"><div class="bab-no">Bab 4</div><div><h2>Permutasi atau Kombinasi? Cara Cepat</h2><small>Tahap 3</small></div></div>
+
+  <h3 class="sub">4.1 Uji dengan satu pertanyaan</h3>
+  <figure class="fig">
+    <div class="svgw"><svg viewBox="0 0 640 250" role="img" aria-label="Bagan memilih permutasi atau kombinasi" font-family="Nunito,sans-serif">
+      <defs><marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#555"/></marker></defs>
+      <rect x="6" y="85" width="140" height="80" rx="10" fill="#1d3a5f"/>
+      <text x="76" y="119" font-size="16" font-weight="800" fill="#fff" text-anchor="middle">Soal minta</text><text x="76" y="141" font-size="16" font-weight="800" fill="#fff" text-anchor="middle">“banyak cara”</text>
+      <path d="M150 125 L200 125" stroke="#555" stroke-width="3" marker-end="url(#ah)"/>
+      <rect x="205" y="70" width="190" height="110" rx="10" fill="#ffd300"/>
+      <g font-size="16" font-weight="800" fill="#022050" text-anchor="middle"><text x="300" y="105">Kalau dua orang</text><text x="300" y="127">TUKAR POSISI,</text><text x="300" y="149">hasilnya BERBEDA?</text></g>
+      <path d="M398 100 L470 55" stroke="#555" stroke-width="3" marker-end="url(#ah)"/>
+      <path d="M398 150 L470 195" stroke="#555" stroke-width="3" marker-end="url(#ah)"/>
+      <text x="418" y="68" font-size="17" font-weight="800" fill="#ef6c4a">YA</text>
+      <text x="402" y="222" font-size="17" font-weight="800" fill="#1f9d8b">TIDAK</text>
+      <rect x="475" y="18" width="160" height="62" rx="10" fill="#ef6c4a"/>
+      <text x="555" y="45" font-size="15" font-weight="800" fill="#fff" text-anchor="middle">PERMUTASI</text><text x="555" y="65" font-size="15" font-weight="800" fill="#fff" text-anchor="middle">nPr</text>
+      <rect x="475" y="170" width="160" height="62" rx="10" fill="#1f9d8b"/>
+      <text x="555" y="197" font-size="15" font-weight="800" fill="#fff" text-anchor="middle">KOMBINASI</text><text x="555" y="217" font-size="15" font-weight="800" fill="#fff" text-anchor="middle">nCr</text>
+      <text x="555" y="102" font-size="11.5" fill="#555" text-anchor="middle" font-weight="700">ketua, juara, nomor,</text><text x="555" y="116" font-size="11.5" fill="#555" text-anchor="middle" font-weight="700">password, antrean</text>
+      <text x="555" y="136" font-size="11.5" fill="#555" text-anchor="middle" font-weight="700">tim, panitia, wakil lomba,</text><text x="555" y="150" font-size="11.5" fill="#555" text-anchor="middle" font-weight="700">ambil sekaligus</text>
+    </svg></div>
+    <figcaption>Gambar 5. Bagan memilih permutasi atau kombinasi</figcaption>
+  </figure>
+
+  <div class="tw"><table>
+    <tr><th>Situasi (3 orang dari 10)</th><th>Tukar posisi berbeda?</th><th>Rumus</th><th class="c">Hasil</th></tr>
+    <tr><td>Ketua, wakil, sekretaris</td><td>Ya</td><td>$\P{10}{3}$</td><td class="c">720</td></tr>
+    <tr><td>Anggota tim tanpa jabatan</td><td>Tidak</td><td>$\C{10}{3}$</td><td class="c">120</td></tr>
+  </table></div>
+
+  <div class="box awas"><div class="bt">⚠️ Awas, Jebakan!</div>
+    <p>Bilangannya sama-sama “3 orang dari 10”, tetapi hasilnya berbeda (720 vs 120). Hubungannya:
+    $$720 = 120 \times 3!$$
+    karena tiap tim dapat diurutkan $3! = 6$ cara.</p>
+    <p>Pada bilangan, angka <b>0 tidak boleh</b> di posisi pertama.</p>
+  </div>
+
+  <h3 class="sub">4.2 ⚡ CARA CEPAT menghitung $\P{n}{r}$ dan $\C{n}{r}$</h3>
+  <div class="box cepatbox"><div class="bt">⚡ Cara Cepat</div>
+    <h4>nPr: tulis r faktor turun dari n</h4>
+    $$\P{8}{3} = 8 \times 7 \times 6 = 336$$
+    <h4>nCr: r faktor turun di atas, r! di bawah, lalu coret</h4>
+    $$\C{10}{3} = \frac{10 \times 9 \times 8}{3 \times 2 \times 1} = \frac{720}{6} = 120$$
+    <h4>Pilih yang kecil</h4>
+    $$\C{12}{10} = \C{12}{2} = \frac{12 \times 11}{2} = 66$$
+    <h4>Jabat tangan / pasangan: n orang</h4>
+    $$\frac{n(n-1)}{2} \qquad \text{contoh } 8 \text{ orang: } \frac{8 \times 7}{2} = 28$$
+    <h4>“Tidak”, “paling sedikit”</h4>
+    <p><b>semua − yang dilarang</b></p>
+  </div>
+  <div class="box tips"><div class="bt">✅ Pemeriksaan cepat</div>Hasil kombinasi <b>tidak mungkin lebih besar</b> dari permutasi dengan $n$ dan $r$ yang sama ($\C{n}{r} = \P{n}{r} \div r!$). Jika $\C{n}{r} > \P{n}{r}$, ada yang salah.</div>
+</section>
+
+<!-- ================= BAB 5 ================= -->
+<section class="bab" id="bab5">
+  <div class="bab-head"><div class="bab-no">Bab 5</div><div><h2>Jebakan Umum dan Rangkuman Rumus</h2></div></div>
+
+  <h3 class="sub">5.1 Sepuluh jebakan yang paling sering</h3>
+  <ol class="steps">
+    <li>Memakai permutasi untuk <b>tim</b> (atau kombinasi untuk jabatan).</li>
+    <li>Lupa bahwa angka <b>0 tidak boleh</b> di posisi pertama.</li>
+    <li>Salah membaca “boleh berulang” dan “berbeda”.</li>
+    <li>Mengisi kotak yang tidak bersyarat lebih dulu sehingga jumlah pilihan salah.</li>
+    <li>Lupa membagi unsur yang sama (KAKAK, JAKARTA).</li>
+    <li>Siklis ditulis $n!$ padahal seharusnya $(n-1)!$.</li>
+    <li>Berdampingan: lupa mengalikan $2!$ (tukar tempat di dalam paket).</li>
+    <li>Tidak berdampingan: lupa mengurangi dari semua susunan.</li>
+    <li>“Dan” dijumlah atau “atau” dikali.</li>
+    <li>Menghitung $5!$ penuh padahal bisa dicoret (salah hitung perkalian panjang).</li>
+  </ol>
+
+  <h3 class="sub">5.2 Rangkuman rumus</h3>
+  <div class="tw"><table>
+    <tr><th>Konsep</th><th>Rumus</th></tr>
+    <tr><td>Aturan perkalian (dan)</td><td>$n_1 \times n_2 \times \cdots$</td></tr>
+    <tr><td>Aturan penjumlahan (atau)</td><td>$n_1 + n_2 + \cdots$</td></tr>
+    <tr><td>Faktorial</td><td>$n! = n \times (n-1) \times \cdots \times 1$; $\;0! = 1$</td></tr>
+    <tr><td>Permutasi</td><td>$\displaystyle \P{n}{r} = \frac{n!}{(n-r)!}$</td></tr>
+    <tr><td>Permutasi semua unsur</td><td>$n!$</td></tr>
+    <tr><td>Permutasi unsur sama</td><td>$\displaystyle \frac{n!}{k_1! \times k_2! \times \cdots}$</td></tr>
+    <tr><td>Permutasi siklis</td><td>$(n-1)!$</td></tr>
+    <tr><td>Kombinasi</td><td>$\displaystyle \C{n}{r} = \frac{n!}{r!\,(n-r)!}$</td></tr>
+    <tr><td>Simetri kombinasi</td><td>$\C{n}{r} = \C{n}{n-r}$</td></tr>
+    <tr><td>Hubungan</td><td>$\P{n}{r} = \C{n}{r} \times r!$</td></tr>
+    <tr><td>Berdampingan</td><td>paket sebagai satu unit × tukar di dalam paket</td></tr>
+    <tr><td>Tidak berdampingan / paling sedikit</td><td>semua − yang dilarang</td></tr>
+  </table></div>
+</section>
+
+<!-- ================= BAB 6 ================= -->
+<section class="bab" id="bab6">
+  <div class="bab-head"><div class="bab-no">Bab 6</div><div><h2>Prediksi Soal TKA: Kaidah Pencacahan</h2><small>27 soal · Level 1–3</small></div></div>
+  <p class="lead">Soal berikut dibuat sebagai <b>latihan prediksi</b> berdasarkan kisi-kisi; tiap level mengikuti proses berpikir pada matriks. <b>Jawab dulu</b>, lalu pembahasan <b>⚡ Cara Cepat</b> dan <b>📝 Cara Lengkap</b> akan muncul. Cocokkan juga dengan kisi-kisi resmi TKA terbaru.</p>
+  <div class="tw"><table>
+    <tr><th>Level</th><th>Waktu saran</th><th>Target</th></tr>
+    <tr><td><b>Level 1</b> Pengetahuan &amp; Pemahaman</td><td>1–2 menit/soal</td><td>Harus benar semua</td></tr>
+    <tr><td><b>Level 2</b> Aplikasi</td><td>2–3 menit/soal</td><td>Target minimal 70% benar</td></tr>
+    <tr><td><b>Level 3</b> Penalaran</td><td>3–4 menit/soal</td><td>Kerjakan setelah soal lain</td></tr>
+  </table></div>
+  <div class="box ingat"><div class="bt">📝 Jenis soal</div>
+    <ul><li><b>Pilihan ganda</b>: klik satu jawaban.</li>
+    <li><b>Pilihan ganda kompleks</b>: centang <b>semua</b> jawaban yang benar, lalu tekan <i>Periksa Jawaban</i>.</li>
+    <li><b>Benar–Salah</b>: pilih Benar atau Salah untuk tiap pernyataan, lalu tekan <i>Periksa Jawaban</i>.</li></ul></div>
+
+  <div class="scorebar" id="scorebar">
+    <div>Terjawab: <b id="sAns">0</b>/27</div>
+    <div>Benar: <b id="sOk">0</b></div>
+    <div class="pg"><i id="sBar"></i></div>
+    <button type="button" id="resetQ">↻ Ulangi</button>
+  </div>
+
+  <div id="quiz"></div>
+
+  <div class="final" id="final">
+    <div>Skor akhir kamu</div>
+    <div class="big" id="fScore">0</div>
+    <div id="fMsg"></div>
+  </div>
+
+  <details class="kunci" style="margin-top:22px"><summary>Lihat tabel Kunci Jawaban</summary><div>
+    <div class="tw"><table>
+      <tr><th class="c">No</th><th class="c">Lv</th><th>Jawaban</th><th class="c">No</th><th class="c">Lv</th><th>Jawaban</th></tr>
+      <tr><td class="c">1</td><td class="c">L1</td><td>C</td><td class="c">15</td><td class="c">L2</td><td>B</td></tr>
+      <tr><td class="c">2</td><td class="c">L1</td><td>C</td><td class="c">16</td><td class="c">L2</td><td>B</td></tr>
+      <tr><td class="c">3</td><td class="c">L1</td><td>D</td><td class="c">17</td><td class="c">L2</td><td>B</td></tr>
+      <tr><td class="c">4</td><td class="c">L1</td><td>C</td><td class="c">18</td><td class="c">L2</td><td>B</td></tr>
+      <tr><td class="c">5</td><td class="c">L1</td><td>B</td><td class="c">19</td><td class="c">L3</td><td>B</td></tr>
+      <tr><td class="c">6</td><td class="c">L1</td><td>B</td><td class="c">20</td><td class="c">L3</td><td>C</td></tr>
+      <tr><td class="c">7</td><td class="c">L1</td><td>B</td><td class="c">21</td><td class="c">L3</td><td>Salah, Benar, Benar, Salah</td></tr>
+      <tr><td class="c">8</td><td class="c">L1</td><td>A, D, E</td><td class="c">22</td><td class="c">L3</td><td>A, B, D</td></tr>
+      <tr><td class="c">9</td><td class="c">L2</td><td>C</td><td class="c">23</td><td class="c">L3</td><td>C</td></tr>
+      <tr><td class="c">10</td><td class="c">L2</td><td>D</td><td class="c">24</td><td class="c">L3</td><td>C</td></tr>
+      <tr><td class="c">11</td><td class="c">L2</td><td>C</td><td class="c">25</td><td class="c">L3</td><td>B</td></tr>
+      <tr><td class="c">12</td><td class="c">L2</td><td>B</td><td class="c">26</td><td class="c">L3</td><td>B</td></tr>
+      <tr><td class="c">13</td><td class="c">L2</td><td>D</td><td class="c">27</td><td class="c">L3</td><td>C</td></tr>
+      <tr><td class="c">14</td><td class="c">L2</td><td>C</td><td></td><td></td><td></td></tr>
+    </table></div>
+    <p style="font-size:.9rem">Soal benar–salah: urutan jawaban mengikuti urutan pernyataan 1 sampai 4.</p>
+  </div></details>
+
+  <p style="text-align:center;margin-top:24px;color:var(--muted);font-style:italic">Semoga bermanfaat. Lanjut ke Modul 3 (Peluang) setelah kaidah pencacahan benar-benar lancar.</p>
+</section>
+
+</main>
+</div>
+
+<footer class="site-foot">
+  <b>VisualMath.Lim</b> · TKA Matematika Wajib SMA · Modul 2 Kaidah Pencacahan<br>
+  <a href="index.html" style="color:var(--yellow);font-weight:800">← Kembali ke Home</a>
+</footer>
+<button class="totop" id="totop" aria-label="Ke atas" title="Ke atas">↑</button>
+
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+'use strict';
+var R = String.raw;
+
+/* ---------- Math rendering ---------- */
+var MATH_OPTS = {
+  delimiters: [{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],
+  macros: {'\\P':'{}_{#1}P_{#2}','\\C':'{}_{#1}C_{#2}'},
+  throwOnError:false
+};
+function math(el){ if (window.renderMathInElement) { try { renderMathInElement(el || document.body, MATH_OPTS); } catch(e){} } }
+
+/* ---------- Ukuran tulisan (zoom) ---------- */
+var fs = 17;
+try { var sv = parseInt(localStorage.getItem('vm_fs'), 10); if (sv >= 13 && sv <= 28) fs = sv; } catch(e){}
+function setFs(v){ fs = Math.max(13, Math.min(28, v)); document.documentElement.style.setProperty('--fs', fs + 'px'); try { localStorage.setItem('vm_fs', fs); } catch(e){} }
+setFs(fs);
+document.getElementById('zIn').onclick  = function(){ setFs(fs + 1); };
+document.getElementById('zOut').onclick = function(){ setFs(fs - 1); };
+document.getElementById('zRes').onclick = function(){ setFs(17); };
+
+/* ---------- Navigasi ---------- */
+var toc = document.getElementById('toc'), navBtn = document.getElementById('navBtn');
+navBtn.onclick = function(){ var o = toc.classList.toggle('open'); navBtn.setAttribute('aria-expanded', o); };
+toc.addEventListener('click', function(e){ if (e.target.tagName === 'A') { toc.classList.remove('open'); navBtn.setAttribute('aria-expanded', false); } });
+var links = [].slice.call(toc.querySelectorAll('a'));
+var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+function spy(){
+  var y = window.scrollY + 140, cur = 0;
+  secs.forEach(function(s, i){ if (s && s.offsetTop <= y) cur = i; });
+  links.forEach(function(a, i){ a.classList.toggle('on', i === cur); });
+  document.getElementById('totop').style.display = window.scrollY > 500 ? 'block' : 'none';
+}
+window.addEventListener('scroll', spy, {passive:true}); spy();
+document.getElementById('totop').onclick = function(){ window.scrollTo({top:0, behavior:'smooth'}); };
+
+/* ---------- Data soal ---------- */
+var L = ['A','B','C','D','E'];
+var Q = [
+
+/* ===== LEVEL 1 ===== */
+{n:1,lv:1,tag:'Menghitung — Faktorial',type:'pg',
+ q:R`Nilai dari $\dfrac{5!}{3!}$ adalah ....`,
+ opts:['6','10','20','60','120'],ans:[2],
+ cepat:R`Coret $3!$ yang sama: $5 \times 4 = 20$.`,
+ steps:[
+  R`Ingat arti faktorial: $5! = 5 \times 4 \times 3 \times 2 \times 1$ dan $3! = 3 \times 2 \times 1$.`,
+  R`Uraikan $5!$ sampai muncul $3!$: $5! = 5 \times 4 \times 3!$.`,
+  R`Substitusikan, lalu coret $3!$ di atas dan di bawah: $$\frac{5!}{3!} = \frac{5 \times 4 \times 3!}{3!} = 5 \times 4$$`,
+  R`Hitung: $5 \times 4 = 20$. Jawaban: <b>C</b>.`]},
+
+{n:2,lv:1,tag:'Menghitung — Nilai 0! dan faktorial kecil',type:'pg',
+ q:R`Nilai dari $0! + 3!$ adalah ....`,
+ opts:['3','6','7','9','24'],ans:[2],
+ cepat:R`$0! = 1$ dan $3! = 6$, jadi $1 + 6 = 7$.`,
+ steps:[
+  R`Ingat aturan khusus: $0! = 1$ (bukan 0).`,
+  R`Hitung $3! = 3 \times 2 \times 1 = 6$.`,
+  R`Jumlahkan: $$0! + 3! = 1 + 6 = 7$$ Jawaban: <b>C</b>.`]},
+
+{n:3,lv:1,tag:'Menghitung — Aturan perkalian',type:'pg',
+ q:R`Seorang siswa memiliki 3 kemeja, 4 celana, dan 2 pasang sepatu. Banyak setelan (kemeja, celana, sepatu) yang dapat dipakai adalah ....`,
+ opts:['9','12','18','24','36'],ans:[3],
+ cepat:R`Kemeja <b>dan</b> celana <b>dan</b> sepatu → kalikan: $3 \times 4 \times 2 = 24$.`,
+ steps:[
+  R`Ada 3 tahap: pilih kemeja (3 cara), pilih celana (4 cara), pilih sepatu (2 cara).`,
+  R`Semua tahap harus dipilih (kata “dan”), sehingga dipakai <b>aturan perkalian</b>.`,
+  R`$$3 \times 4 \times 2 = 12 \times 2 = 24$$ Jawaban: <b>D</b>.`]},
+
+{n:4,lv:1,tag:'Menghitung — Aturan penjumlahan',type:'pg',
+ q:R`Dari kota A ke kota B dapat ditempuh dengan 3 jenis bus, atau 2 jenis kereta, atau 2 jenis pesawat. Banyak cara bepergian dari A ke B adalah ....`,
+ opts:['5','6','7','10','12'],ans:[2],
+ cepat:R`Bus <b>atau</b> kereta <b>atau</b> pesawat → jumlahkan: $3 + 2 + 2 = 7$.`,
+ steps:[
+  R`Orang itu cukup memilih <b>salah satu</b> jenis kendaraan (bus <i>atau</i> kereta <i>atau</i> pesawat).`,
+  R`Kata “atau” berarti <b>aturan penjumlahan</b>.`,
+  R`$$3 + 2 + 2 = 7$$ Jawaban: <b>C</b>.`]},
+
+{n:5,lv:1,tag:'Menghitung — Permutasi nPr',type:'pg',
+ q:R`Nilai dari $\P{5}{2}$ adalah ....`,
+ opts:['10','20','25','60','120'],ans:[1],
+ cepat:R`2 faktor turun dari 5: $5 \times 4 = 20$.`,
+ steps:[
+  R`Tulis rumus permutasi: $$\P{5}{2} = \frac{5!}{(5-2)!} = \frac{5!}{3!}$$`,
+  R`Uraikan $5! = 5 \times 4 \times 3!$ lalu coret $3!$: $$\frac{5 \times 4 \times 3!}{3!} = 5 \times 4$$`,
+  R`Hasilnya $20$. Jawaban: <b>B</b>.`],
+ note:R`Pengecoh 10 adalah $\C{5}{2}$ (kombinasi).`},
+
+{n:6,lv:1,tag:'Menghitung — Kombinasi nCr',type:'pg',
+ q:R`Nilai dari $\C{6}{2}$ adalah ....`,
+ opts:['12','15','30','36','720'],ans:[1],
+ cepat:R`$\dfrac{6 \times 5}{2 \times 1} = \dfrac{30}{2} = 15$.`,
+ steps:[
+  R`Tulis rumus kombinasi: $$\C{6}{2} = \frac{6!}{2! \times (6-2)!} = \frac{6!}{2! \times 4!}$$`,
+  R`Uraikan $6! = 6 \times 5 \times 4!$ lalu coret $4!$: $$\frac{6 \times 5 \times 4!}{2 \times 1 \times 4!} = \frac{6 \times 5}{2 \times 1}$$`,
+  R`$$\frac{30}{2} = 15$$ Jawaban: <b>B</b>.`],
+ note:R`Pengecoh 30 adalah $\P{6}{2}$ (permutasi).`},
+
+{n:7,lv:1,tag:'Mengidentifikasi — Permutasi atau kombinasi',type:'pg',
+ q:R`Situasi berikut yang penyelesaiannya menggunakan <b>permutasi</b> (urutan penting) adalah ....`,
+ opts:['Memilih 3 siswa dari 10 siswa untuk mewakili lomba cerdas cermat','Memilih 3 siswa dari 10 siswa sebagai ketua, wakil ketua, dan sekretaris','Memilih 2 buku dari 5 buku untuk dibawa liburan','Memilih 4 orang dari 8 orang sebagai panitia tanpa jabatan','Mengambil 3 kartu sekaligus dari 10 kartu'],ans:[1],
+ cepat:R`Cari yang ada <b>jabatan</b> berbeda → hanya B.`,
+ steps:[
+  R`Ajukan pertanyaan kunci pada tiap pilihan: “Jika dua orang/benda <b>tukar posisi</b>, apakah hasilnya berbeda?”`,
+  R`A, C, D, E hanya memilih kelompok (tukar posisi tidak mengubah apa pun) → <b>kombinasi</b>.`,
+  R`B: ketua, wakil, sekretaris adalah jabatan berbeda, sehingga tukar posisi menghasilkan susunan berbeda → <b>permutasi</b>. Jawaban: <b>B</b>.`]},
+
+{n:8,lv:1,tag:'Mengelompokkan — Kelompok kombinasi (pilih lebih dari satu)',type:'multi',
+ q:R`Pilihlah <b>semua</b> situasi yang termasuk <b>kombinasi</b> (urutan tidak penting).`,
+ opts:['Memilih 3 siswa mewakili lomba','Memilih ketua, wakil, dan sekretaris','Menyusun password 4 angka berbeda','Memilih 2 buku dari 5 buku','Mengambil 3 kartu sekaligus dari 10 kartu'],ans:[0,3,4],
+ cepat:R`Kombinasi = hanya <b>memilih kelompok</b>: A, D, E. Jabatan dan password = permutasi.`,
+ steps:[
+  R`Gunakan pertanyaan kunci: “apakah urutan penting?” untuk tiap pernyataan.`,
+  R`A: hanya memilih wakil → urutan tidak penting → <b>kombinasi</b> ✔.`,
+  R`B: ketua, wakil, sekretaris berbeda jabatan → <b>permutasi</b> ✘.`,
+  R`C: password 1234 berbeda dengan 4321 → urutan penting → <b>permutasi</b> ✘.`,
+  R`D: dua buku yang sama dipilih tanpa urutan → <b>kombinasi</b> ✔.`,
+  R`E: mengambil sekaligus → tidak ada urutan → <b>kombinasi</b> ✔. Jawaban: <b>A, D, E</b>.`]},
+
+/* ===== LEVEL 2 ===== */
+{n:9,lv:2,tag:'Menerapkan — Pengisian tempat (bilangan genap)',type:'pg',
+ q:R`Dari angka $1, 2, 3, 4, 5$ akan dibentuk bilangan genap tiga angka dengan angka-angka berbeda. Banyak bilangan yang dapat dibentuk adalah ....`,
+ opts:['12','18','24','30','60'],ans:[2],
+ cepat:R`Satuan genap $\{2, 4\}$ = 2 pilihan, lalu $4$, lalu $3$: $2 \times 4 \times 3 = 24$.`,
+ steps:[
+  R`Gambar 3 kotak: Ratusan, Puluhan, Satuan. Isi kotak <b>bersyarat</b> dulu.`,
+  R`<b>Satuan</b> harus genap: $2$ atau $4$ → <b>2 pilihan</b>.`,
+  R`<b>Ratusan</b>: dari 5 angka, satu sudah dipakai di satuan → <b>4 pilihan</b>.`,
+  R`<b>Puluhan</b>: sisa 3 angka → <b>3 pilihan</b>.`,
+  R`Kalikan: $$2 \times 4 \times 3 = 24$$ Jawaban: <b>C</b>.`]},
+
+{n:10,lv:2,tag:'Memodelkan — Permutasi (jabatan)',type:'pg',
+ q:R`Dari 7 calon akan dipilih ketua, sekretaris, dan bendahara OSIS. Banyak susunan pengurus yang mungkin adalah ....`,
+ opts:['35','70','105','210','343'],ans:[3],
+ cepat:R`3 jabatan → $\P{7}{3} = 7 \times 6 \times 5 = 210$.`,
+ steps:[
+  R`Ketua, sekretaris, bendahara adalah jabatan berbeda → urutan penting → <b>permutasi</b>, $n = 7$, $r = 3$.`,
+  R`$$\P{7}{3} = \frac{7!}{(7-3)!} = \frac{7!}{4!}$$`,
+  R`Uraikan $7! = 7 \times 6 \times 5 \times 4!$ lalu coret $4!$: $$7 \times 6 \times 5 = 42 \times 5 = 210$$ Jawaban: <b>D</b>.`],
+ note:R`Pengecoh 35 adalah $\C{7}{3}$.`},
+
+{n:11,lv:2,tag:'Menerapkan — Kombinasi bersyarat',type:'pg',
+ q:R`Dari 6 siswa putra dan 4 siswa putri akan dipilih 4 orang untuk tim, terdiri atas 2 putra dan 2 putri. Banyak cara memilih tim adalah ....`,
+ opts:['60','80','90','120','210'],ans:[2],
+ cepat:R`$\C{6}{2} \times \C{4}{2} = 15 \times 6 = 90$.`,
+ steps:[
+  R`Tim tanpa jabatan → <b>kombinasi</b>. Pisahkan menjadi dua kelompok: putra dan putri.`,
+  R`Pilih 2 putra dari 6: $$\C{6}{2} = \frac{6 \times 5}{2} = 15$$`,
+  R`Pilih 2 putri dari 4: $$\C{4}{2} = \frac{4 \times 3}{2} = 6$$`,
+  R`Kata “dan” antar kelompok → kalikan: $15 \times 6 = 90$. Jawaban: <b>C</b>.`],
+ note:R`Pengecoh 210 adalah $\C{10}{4}$ tanpa syarat.`},
+
+{n:12,lv:2,tag:'Menerapkan — Permutasi unsur sama',type:'pg',
+ q:R`Banyak susunan huruf berbeda yang dapat dibentuk dari semua huruf kata JAKARTA adalah ....`,
+ opts:['420','840','1.260','2.520','5.040'],ans:[1],
+ cepat:R`7 huruf, A ada 3: $\dfrac{7!}{3!} = 7 \times 6 \times 5 \times 4 = 840$.`,
+ steps:[
+  R`Hitung huruf: J-A-K-A-R-T-A → total $n = 7$ huruf; huruf A muncul 3 kali, huruf lain sekali.`,
+  R`Pakai rumus unsur sama: $$\frac{7!}{3!} = \frac{7 \times 6 \times 5 \times 4 \times 3!}{3!}$$`,
+  R`$$7 \times 6 \times 5 \times 4 = 840$$ Jawaban: <b>B</b>.`],
+ note:R`Pengecoh 5.040 $= 7!$ (lupa membagi unsur yang sama).`},
+
+{n:13,lv:2,tag:'Memodelkan — Password (angka boleh berulang)',type:'pg',
+ q:R`Sebuah kode terdiri atas 3 angka yang dipilih dari angka 0 sampai 9, dan angka boleh berulang. Banyak kode yang dapat dibuat adalah ....`,
+ opts:['30','720','900','1.000','10.000'],ans:[3],
+ cepat:R`Boleh berulang → tiap posisi 10 pilihan: $10 \times 10 \times 10 = 1.000$.`,
+ steps:[
+  R`Gambar 3 kotak untuk 3 angka. Angka yang tersedia: $0, 1, \dots, 9$ (ada 10).`,
+  R`Karena <b>boleh berulang</b>, tiap kotak tetap punya 10 pilihan.`,
+  R`$$10 \times 10 \times 10 = 1.000$$ Jawaban: <b>D</b>.`],
+ note:R`Pengecoh 720 $= \P{10}{3}$ (angka tidak boleh berulang).`},
+
+{n:14,lv:2,tag:'Menerapkan — Bilangan ganjil dengan angka 0',type:'pg',
+ q:R`Dari angka $0, 1, 2, 3, 4, 5$ dibentuk bilangan ganjil tiga angka dengan angka-angka berbeda. Banyak bilangan yang dapat dibentuk adalah ....`,
+ opts:['36','40','48','60','100'],ans:[2],
+ cepat:R`Satuan ganjil $\{1,3,5\}$ = 3, ratusan 4 (bukan 0 dan bukan satuan), puluhan 4: $3 \times 4 \times 4 = 48$.`,
+ steps:[
+  R`Gambar 3 kotak: Ratusan, Puluhan, Satuan. Isi yang bersyarat dulu.`,
+  R`<b>Satuan</b> harus ganjil: $1, 3,$ atau $5$ → <b>3 pilihan</b>.`,
+  R`<b>Ratusan</b>: dari 6 angka, buang angka 0 dan angka yang dipakai di satuan → $6 - 2 = $ <b>4 pilihan</b>.`,
+  R`<b>Puluhan</b>: dari 6 angka, sudah terpakai 2 (ratusan dan satuan) → <b>4 pilihan</b> (angka 0 boleh di sini).`,
+  R`$$3 \times 4 \times 4 = 48$$ Jawaban: <b>C</b>.`]},
+
+{n:15,lv:2,tag:'Menerapkan — Kombinasi (jabat tangan)',type:'pg',
+ q:R`Delapan orang saling berjabat tangan satu kali dengan setiap orang lainnya. Banyak jabat tangan yang terjadi adalah ....`,
+ opts:['16','28','36','56','64'],ans:[1],
+ cepat:R`$\dfrac{n(n-1)}{2} = \dfrac{8 \times 7}{2} = 28$.`,
+ steps:[
+  R`Satu jabat tangan melibatkan 2 orang, dan A–B sama dengan B–A → urutan tidak penting → <b>kombinasi</b>.`,
+  R`$$\C{8}{2} = \frac{8 \times 7}{2 \times 1} = \frac{56}{2} = 28$$ Jawaban: <b>B</b>.`],
+ note:R`Pengecoh 56 $= \P{8}{2}$.`},
+
+{n:16,lv:2,tag:'Menginterpretasikan — Tim vs jabatan',type:'pg',
+ q:R`Dari 8 siswa dipilih 3 orang. Banyak cara memilih 3 orang sebagai <b>tim</b> dan banyak cara memilih 3 orang sebagai <b>ketua, wakil, dan sekretaris</b> berturut-turut adalah ....`,
+ opts:['56 dan 56','56 dan 336','336 dan 56','336 dan 336','24 dan 56'],ans:[1],
+ cepat:R`Tim: $\C{8}{3} = \dfrac{8 \times 7 \times 6}{6} = 56$. Jabatan: $\P{8}{3} = 8 \times 7 \times 6 = 336$.`,
+ steps:[
+  R`<b>Tim</b>: urutan tidak penting → kombinasi: $$\C{8}{3} = \frac{8 \times 7 \times 6}{3 \times 2 \times 1} = \frac{336}{6} = 56$$`,
+  R`<b>Jabatan</b>: urutan penting → permutasi: $$\P{8}{3} = 8 \times 7 \times 6 = 336$$`,
+  R`Periksa hubungan: $336 = 56 \times 3!$ ($3! = 6$) — setiap tim bisa diurutkan 6 cara. Jawaban: <b>B</b>.`]},
+
+{n:17,lv:2,tag:'Menerapkan — Permutasi siklis',type:'pg',
+ q:R`Enam orang duduk mengelilingi sebuah meja bundar. Banyak susunan duduk yang berbeda adalah ....`,
+ opts:['24','120','360','720','1.440'],ans:[1],
+ cepat:R`Siklis: $(6-1)! = 5! = 120$.`,
+ steps:[
+  R`Duduk melingkar: memutar semua orang satu kursi tidak mengubah susunan.`,
+  R`Jadikan satu orang sebagai patokan, lalu atur 5 orang sisanya.`,
+  R`$$(6-1)! = 5! = 5 \times 4 \times 3 \times 2 \times 1 = 120$$ Jawaban: <b>B</b>.`],
+ note:R`Pengecoh 720 $= 6!$ (lupa bahwa putaran dihitung sama).`},
+
+{n:18,lv:2,tag:'Menerapkan — Susunan berdampingan',type:'pg',
+ q:R`Lima orang berdiri berjajar. Jika A dan B harus berdampingan, banyak susunan yang mungkin adalah ....`,
+ opts:['24','48','60','96','120'],ans:[1],
+ cepat:R`Paket A–B = 1 unit → 4 unit: $4! \times 2! = 24 \times 2 = 48$.`,
+ steps:[
+  R`Anggap A dan B satu paket. Unit yang disusun: [AB], C, D, E = <b>4 unit</b>.`,
+  R`Susun 4 unit: $4! = 24$.`,
+  R`Di dalam paket, A dan B bisa bertukar tempat: $2! = 2$.`,
+  R`$$4! \times 2! = 24 \times 2 = 48$$ Jawaban: <b>B</b>.`]},
+
+/* ===== LEVEL 3 ===== */
+{n:19,lv:3,tag:'Menganalisis — Siklis berdampingan',type:'pg',
+ q:R`Lima orang duduk mengelilingi meja bundar. Jika dua orang tertentu harus duduk berdampingan, banyak susunan duduk yang mungkin adalah ....`,
+ opts:['6','12','24','48','120'],ans:[1],
+ cepat:R`Paket → 4 unit melingkar: $(4-1)! \times 2 = 6 \times 2 = 12$.`,
+ steps:[
+  R`Anggap dua orang itu satu paket. Sekarang ada $5 - 1 = 4$ unit yang duduk melingkar.`,
+  R`Siklis 4 unit: $(4-1)! = 3! = 6$.`,
+  R`Di dalam paket, kedua orang bisa bertukar tempat: $2! = 2$.`,
+  R`$$(4-1)! \times 2! = 6 \times 2 = 12$$ Jawaban: <b>B</b>.`]},
+
+{n:20,lv:3,tag:'Memecahkan masalah — Pengisian tempat dengan angka 0',type:'pg',
+ q:R`Dari angka $0, 1, 2, 3, 4$ dibentuk bilangan tiga angka berbeda yang lebih dari 200. Banyak bilangan yang mungkin adalah ....`,
+ opts:['24','30','36','48','60'],ans:[2],
+ cepat:R`Ratusan $\{2,3,4\}$ = 3, lalu 4, lalu 3: $3 \times 4 \times 3 = 36$.`,
+ steps:[
+  R`Gambar 3 kotak. Syarat “lebih dari 200” membatasi kotak <b>ratusan</b>, jadi isi dulu.`,
+  R`<b>Ratusan</b>: harus $2, 3,$ atau $4$ → <b>3 pilihan</b>.`,
+  R`<b>Puluhan</b>: sisa 4 angka (termasuk 0) → <b>4 pilihan</b>.`,
+  R`<b>Satuan</b>: sisa 3 angka → <b>3 pilihan</b>.`,
+  R`$$3 \times 4 \times 3 = 36$$ Jawaban: <b>C</b>.`]},
+
+{n:21,lv:3,tag:'Mengevaluasi — Pernyataan pencacahan (benar–salah)',type:'bs',
+ q:R`Tentukan <b>Benar atau Salah</b> tiap pernyataan.`,
+ st:[R`Banyak susunan huruf kata KAKAK adalah $5! = 120$.`,
+     R`Nilai $\C{8}{3}$ sama dengan nilai $\C{8}{5}$.`,
+     R`$\P{6}{2} = \C{6}{2} \times 2!$`,
+     R`Banyak susunan melingkar 4 orang adalah $4! = 24$.`],
+ bsans:[false,true,true,false],
+ ks:[R`Salah: ada unsur sama (K 3, A 2). Seharusnya $\dfrac{5!}{3!\,2!} = 10$.`,
+     R`Benar: $\C{n}{r} = \C{n}{n-r}$, jadi $\C{8}{3} = \C{8}{5} = 56$.`,
+     R`Benar: $\P{6}{2} = 30$ dan $\C{6}{2} \times 2! = 15 \times 2 = 30$.`,
+     R`Salah: siklis 4 orang $= (4-1)! = 3! = 6$.`],
+ cepat:R`(1) ada huruf sama → bagi → <b>Salah</b>. (2) simetri → <b>Benar</b>. (3) $\P{n}{r} = \C{n}{r} \times r!$ → <b>Benar</b>. (4) siklis $(n-1)!$ → <b>Salah</b>.`,
+ steps:[
+  R`<b>Pernyataan 1.</b> KAKAK punya K 3 buah dan A 2 buah, sehingga $$\frac{5!}{3! \times 2!} = \frac{120}{12} = 10 \neq 120.$$ → <b>Salah</b>.`,
+  R`<b>Pernyataan 2.</b> Sifat simetri $\C{n}{r} = \C{n}{n-r}$. Karena $8 - 3 = 5$, maka $\C{8}{3} = \C{8}{5}$ (keduanya 56). → <b>Benar</b>.`,
+  R`<b>Pernyataan 3.</b> $\P{6}{2} = 6 \times 5 = 30$. Ruas kanan: $\C{6}{2} \times 2! = 15 \times 2 = 30$. Sama (rumus $\P{n}{r} = \C{n}{r} \times r!$). → <b>Benar</b>.`,
+  R`<b>Pernyataan 4.</b> Siklis 4 unsur $= (4-1)! = 3! = 6$, bukan $24$. → <b>Salah</b>.`]},
+
+{n:22,lv:3,tag:'Melakukan generalisasi — Sifat kombinasi (pilih lebih dari satu)',type:'multi',
+ q:R`Pilihlah <b>semua</b> pernyataan yang benar untuk bilangan asli $n \geq r$.`,
+ opts:[R`$\C{n}{r} = \C{n}{n-r}$`,R`$\P{n}{r} = \C{n}{r} \times r!$`,R`$\C{n}{r} = \P{n}{r} \times r!$`,R`$\C{n}{0} = 1$`,R`$\C{n}{n} = n$`],ans:[0,1,3],
+ cepat:R`Ingat: $\C{n}{r} = \P{n}{r} \div r!$ (dibagi, bukan dikali) dan $\C{n}{n} = 1$. Jadi C dan E salah.`,
+ steps:[
+  R`<b>A</b> benar: sifat simetri kombinasi.`,
+  R`<b>B</b> benar: kombinasi (memilih) dikali pengurutan $r!$ menghasilkan permutasi.`,
+  R`<b>C</b> salah: terbalik. Yang benar $\C{n}{r} = \dfrac{\P{n}{r}}{r!}$.`,
+  R`<b>D</b> benar: hanya ada satu cara memilih 0 unsur (tidak memilih apa pun), $\C{n}{0} = 1$.`,
+  R`<b>E</b> salah: memilih semua $n$ unsur hanya 1 cara, $\C{n}{n} = 1$. Jawaban: <b>A, B, D</b>.`]},
+
+{n:23,lv:3,tag:'Memecahkan masalah — Kombinasi “paling sedikit”',type:'pg',
+ q:R`Dari 5 siswa putra dan 4 siswa putri akan dipilih tim beranggotakan 3 orang. Jika tim harus memuat <b>paling sedikit satu putri</b>, banyak cara memilih tim adalah ....`,
+ opts:['40','64','74','80','84'],ans:[2],
+ cepat:R`Semua − tanpa putri $= \C{9}{3} - \C{5}{3} = 84 - 10 = 74$.`,
+ steps:[
+  R`“Paling sedikit satu putri” = 1, 2, atau 3 putri. Lebih singkat pakai <b>kebalikannya</b>: tim tanpa putri.`,
+  R`Semua tim (9 orang, pilih 3): $$\C{9}{3} = \frac{9 \times 8 \times 7}{3 \times 2 \times 1} = 84$$`,
+  R`Tim tanpa putri (pilih 3 dari 5 putra): $$\C{5}{3} = \frac{5 \times 4 \times 3}{3 \times 2 \times 1} = 10$$`,
+  R`Kurangkan: $84 - 10 = 74$. Jawaban: <b>C</b>.`]},
+
+{n:24,lv:3,tag:'Menganalisis — Tidak berdampingan',type:'pg',
+ q:R`Lima orang berdiri berjajar. Banyak susunan jika A dan B <b>tidak boleh</b> berdampingan adalah ....`,
+ opts:['36','48','72','96','120'],ans:[2],
+ cepat:R`Semua − berdampingan $= 5! - 4! \times 2! = 120 - 48 = 72$.`,
+ steps:[
+  R`Kata “tidak” → hitung <b>semua</b> lalu kurangi yang <b>dilarang</b> (berdampingan).`,
+  R`Semua susunan: $5! = 120$.`,
+  R`Susunan A–B berdampingan: paket → 4 unit, $4! = 24$, dikali tukar di dalam paket $2! = 2$ → $48$.`,
+  R`$$120 - 48 = 72$$ Jawaban: <b>C</b>.`]},
+
+{n:25,lv:3,tag:'Memecahkan masalah — Pergi-pulang dengan syarat',type:'pg',
+ q:R`Dari kota A ke kota B ada 3 jalan, dan dari kota B ke kota C ada 4 jalan. Seseorang pergi dari A ke C melalui B, lalu pulang dari C ke A melalui B dengan syarat <b>tidak boleh memakai jalan yang sama</b> dengan saat pergi. Banyak cara perjalanan pergi-pulang adalah ....`,
+ opts:['36','72','108','144','288'],ans:[1],
+ cepat:R`Pergi: $3 \times 4 = 12$. Pulang: $(4-1) \times (3-1) = 3 \times 2 = 6$. Total $12 \times 6 = 72$.`,
+ steps:[
+  R`<b>Pergi</b> (A→B lalu B→C): $3 \times 4 = 12$ cara.`,
+  R`<b>Pulang</b> mulai dari C→B: jalan yang dipakai saat pergi tidak boleh dipakai lagi, sisa $4 - 1 = 3$ jalan.`,
+  R`Lanjut B→A: sisa $3 - 1 = 2$ jalan.`,
+  R`Cara pulang $= 3 \times 2 = 6$.`,
+  R`Pergi <b>dan</b> pulang → kalikan: $$12 \times 6 = 72$$ Jawaban: <b>B</b>.`],
+ note:R`Pengecoh 144 $= 12 \times 12$ (tanpa syarat).`},
+
+{n:26,lv:3,tag:'Menjustifikasi — Menilai alasan',type:'pg',
+ q:R`Budi menyatakan: “Memilih 3 dari 10 siswa sebagai ketua, wakil, dan sekretaris menghasilkan banyak cara yang sama dengan memilih 3 siswa sebagai tim, karena sama-sama 3 orang dari 10.” Penilaian yang tepat adalah ....`,
+ opts:['Benar, karena jumlah orang yang dipilih sama',R`Salah, karena jabatan membuat urutan penting sehingga $\P{10}{3} = 720$, sedangkan tim $\C{10}{3} = 120$`,'Salah, karena banyak cara memilih tim lebih besar daripada memilih jabatan',R`Benar, karena $\P{n}{r}$ selalu sama dengan $\C{n}{r}$`,R`Salah, karena $\P{10}{3} = \C{10}{3} \times 2$`],ans:[1],
+ cepat:R`Jabatan → permutasi $720$; tim → kombinasi $120$. Beda, karena $720 = 120 \times 3!$. Jawaban B.`,
+ steps:[
+  R`Jabatan (ketua, wakil, sekretaris) → urutan penting → permutasi: $$\P{10}{3} = 10 \times 9 \times 8 = 720$$`,
+  R`Tim → urutan tidak penting → kombinasi: $$\C{10}{3} = \frac{10 \times 9 \times 8}{3 \times 2 \times 1} = 120$$`,
+  R`Keduanya berbeda. Hubungannya $720 = 120 \times 3!$ (dikali $6$, bukan dikali $2$).`,
+  R`Jadi alasan Budi salah; penilaian yang tepat adalah <b>B</b>.`]},
+
+{n:27,lv:3,tag:'Menyimpulkan — Perbandingan boleh berulang vs tidak',type:'pg',
+ q:R`Dari huruf A, B, C, D, E disusun “kata” 3 huruf. Selisih banyak kata jika huruf <b>boleh berulang</b> dan jika huruf <b>tidak boleh berulang</b> adalah ....`,
+ opts:['25','60','65','125','185'],ans:[2],
+ cepat:R`$5 \times 5 \times 5 = 125$ dan $5 \times 4 \times 3 = 60$. Selisih $125 - 60 = 65$.`,
+ steps:[
+  R`<b>Boleh berulang</b>: tiap kotak 5 pilihan: $$5 \times 5 \times 5 = 125$$`,
+  R`<b>Tidak boleh berulang</b> (permutasi): $$\P{5}{3} = 5 \times 4 \times 3 = 60$$`,
+  R`Selisih: $125 - 60 = 65$. Jawaban: <b>C</b>.`]}
+];
+
+/* ---------- Render soal ---------- */
+var quiz = document.getElementById('quiz');
+var state = {};   // n -> {done, right}
+var lvInfo = {
+  1:['lv1','LEVEL 1 — Pengetahuan dan Pemahaman','Knowing and Understanding · soal 1–8'],
+  2:['lv2','LEVEL 2 — Aplikasi','Applying · soal 9–18'],
+  3:['lv3','LEVEL 3 — Penalaran','Reasoning · soal 19–27']
+};
+
+function el(tag, cls, html){ var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
+function setEq(a, b){ if (a.length !== b.length) return false; for (var i = 0; i < a.length; i++) if (a[i] !== b[i]) return false; return true; }
+
+function explainHTML(q){
+  var h = '<div class="solve">';
+  h += '<div class="way cepat"><div class="wt">⚡ Cara Cepat</div>' + q.cepat + '</div>';
+  h += '<div class="way lengkap"><div class="wt">📝 Cara Lengkap</div><ol class="steps">';
+  q.steps.forEach(function(s){ h += '<li>' + s + '</li>'; });
+  h += '</ol></div></div>';
+  if (q.note) h += '<div class="pun">💬 ' + q.note + '</div>';
+  return h;
+}
+
+function finishQ(card, q, right, extraHTML){
+  state[q.n] = {done:true, right:right};
+  card.classList.add('done', right ? 'right' : 'wrong');
+  var ex = card.querySelector('.explain');
+  var v = '<div class="verdict ' + (right ? 'ok' : 'no') + '">' + (right ? '✅ Jawabanmu benar!' : '❌ Belum tepat. Pelajari pembahasannya di bawah.') + '</div>';
+  ex.innerHTML = v + (extraHTML || '') + explainHTML(q);
+  math(card);
+  updateScore();
+}
+
+function buildQ(q){
+  var card = el('div', 'q'); card.id = 'soal' + q.n;
+  var top = el('div', 'q-top');
+  top.appendChild(el('div', 'q-no', q.n));
+  var body = el('div'); body.style.minWidth = 0; body.style.flex = 1;
+  body.appendChild(el('div', 'q-tag', q.tag));
+  body.appendChild(el('div', 'q-text', q.q));
+  top.appendChild(body); card.appendChild(top);
+
+  var area = el('div'); card.appendChild(area);
+  card.appendChild(el('div', 'explain'));
+
+  if (q.type === 'pg') {
+    var opts = el('div', 'opts');
+    q.opts.forEach(function(t, i){
+      var b = el('button', 'opt', '<span class="k">' + L[i] + '</span><span>' + t + '</span>');
+      b.type = 'button';
+      b.onclick = function(){
+        if (state[q.n] && state[q.n].done) return;
+        var ok = (i === q.ans[0]);
+        [].forEach.call(opts.children, function(c, j){
+          c.disabled = true;
+          if (j === q.ans[0]) c.classList.add('right');
+        });
+        if (!ok) b.classList.add('wrong');
+        finishQ(card, q, ok);
+      };
+      opts.appendChild(b);
+    });
+    area.appendChild(opts);
+  }
+
+  if (q.type === 'multi') {
+    var opts2 = el('div', 'opts'), sel = [];
+    q.opts.forEach(function(t, i){
+      var b = el('button', 'opt', '<span class="k">' + L[i] + '</span><span>☐ ' + t + '</span>');
+      b.type = 'button';
+      b.onclick = function(){
+        var idx = sel.indexOf(i);
+        if (idx >= 0) { sel.splice(idx, 1); b.classList.remove('sel'); b.lastChild.firstChild.nodeValue = '☐ '; }
+        else { sel.push(i); b.classList.add('sel'); b.lastChild.firstChild.nodeValue = '☑ '; }
+        chk.disabled = sel.length === 0;
+      };
+      opts2.appendChild(b);
+    });
+    var chk = el('button', 'check-btn', 'Periksa Jawaban'); chk.type = 'button'; chk.disabled = true;
+    chk.onclick = function(){
+      var s = sel.slice().sort(), a = q.ans.slice().sort();
+      var ok = setEq(s, a);
+      [].forEach.call(opts2.children, function(c, j){
+        c.disabled = true;
+        var should = a.indexOf(j) >= 0, chose = s.indexOf(j) >= 0;
+        c.classList.remove('sel');
+        if (should) c.classList.add('right'); else if (chose) c.classList.add('wrong');
+      });
+      chk.disabled = true;
+      finishQ(card, q, ok, '<p style="margin:6px 0">Jawaban yang benar: <b>' + q.ans.map(function(i){ return L[i]; }).join(', ') + '</b></p>');
+    };
+    area.appendChild(opts2); area.appendChild(chk);
+  }
+
+  if (q.type === 'bs') {
+    var rows = el('div', 'opts'); rows.style.gap = '0';
+    var picks = q.st.map(function(){ return null; });
+    q.st.forEach(function(t, i){
+      var r = el('div', 'bs-row');
+      r.appendChild(el('div', 'st', '<b>' + (i + 1) + '.</b> ' + t));
+      ['Benar', 'Salah'].forEach(function(lab, k){
+        var lb = el('label', null, '<input type="radio" name="bs' + q.n + '_' + i + '"> ' + lab);
+        lb.firstChild.onchange = function(){ picks[i] = (k === 0); chk2.disabled = picks.some(function(p){ return p === null; }); };
+        r.appendChild(lb);
+      });
+      rows.appendChild(r);
+    });
+    var chk2 = el('button', 'check-btn', 'Periksa Jawaban'); chk2.type = 'button'; chk2.disabled = true;
+    chk2.onclick = function(){
+      var ok = true;
+      [].forEach.call(rows.children, function(r, i){
+        var good = picks[i] === q.bsans[i]; if (!good) ok = false;
+        r.classList.add(good ? 'ok' : 'no');
+        [].forEach.call(r.querySelectorAll('input'), function(x){ x.disabled = true; });
+        r.appendChild(el('div', 'ks', (good ? '✅ ' : '❌ ') + q.ks[i]));
+      });
+      chk2.disabled = true;
+      finishQ(card, q, ok);
+    };
+    area.appendChild(rows); area.appendChild(chk2);
+  }
+  return card;
+}
+
+function renderAll(){
+  quiz.innerHTML = ''; state = {};
+  var last = 0;
+  Q.forEach(function(q){
+    if (q.lv !== last) {
+      last = q.lv;
+      var info = lvInfo[q.lv];
+      quiz.appendChild(el('div', 'lvhead ' + info[0], info[1] + '<small>' + info[2] + '</small>'));
+    }
+    quiz.appendChild(buildQ(q));
+  });
+  math(quiz);
+  updateScore();
+}
+
+function updateScore(){
+  var ans = 0, ok = 0;
+  Object.keys(state).forEach(function(k){ if (state[k].done) { ans++; if (state[k].right) ok++; } });
+  document.getElementById('sAns').textContent = ans;
+  document.getElementById('sOk').textContent = ok;
+  document.getElementById('sBar').style.width = (ans / Q.length * 100) + '%';
+  var f = document.getElementById('final');
+  if (ans === Q.length) {
+    var pct = Math.round(ok / Q.length * 100);
+    document.getElementById('fScore').textContent = ok + ' / ' + Q.length + '  (' + pct + '%)';
+    document.getElementById('fMsg').textContent = pct >= 85 ? 'Luar biasa! Kamu siap lanjut ke Modul 3 (Peluang).' : pct >= 70 ? 'Bagus! Ulangi soal yang salah dan pelajari cara lengkapnya.' : 'Tetap semangat! Baca ulang Bab 1–4, lalu ulangi latihan ini.';
+    f.classList.add('show');
+  } else f.classList.remove('show');
+}
+
+document.getElementById('resetQ').onclick = function(){ renderAll(); document.getElementById('bab6').scrollIntoView({behavior:'smooth'}); };
+
+renderAll();
+math(document.querySelector('main'));
+});
+</script>
+</body>
+</html>
